@@ -14,7 +14,7 @@ const Index = () => {
       <RealResults/>
       <TechnologiesSection />
       <WhyUsSection />
-      <CTASection />
+      {/* <CTASection /> */}
     </>
   );
 };

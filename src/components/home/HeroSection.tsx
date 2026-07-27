@@ -128,14 +128,14 @@ const HeroSection = () => {
               )}
             </motion.h1>
 
-            <motion.p
+            {/* <motion.p
               variants={fadeUp}
               className="mt-6 max-w-xl text-base leading-8 text-slate-600 md:text-lg"
             >
               {isRTL
                 ? 'تجربة فاخرة تمزج بين الرعاية الطبية الدقيقة، الذوق الراقي، وأحدث التقنيات لتظهري بأجمل نسخة من نفسك بثقة وهدوء.'
                 : 'A refined experience blending medical precision, elevated taste, and modern technology so you can feel like the best version of yourself with confidence and calm.'}
-            </motion.p>
+            </motion.p> */}
 
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
               <a href="tel:01503656589" className="group">

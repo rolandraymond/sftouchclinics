@@ -34,8 +34,8 @@ const T: Record<string, TextPair> & {
     ar: "كل علاج هنا هو، حرفيًا، لقاء بين الضوء والبشرة.",
   },
   subtitle: {
-    en: "Advanced skin treatments delivered by specialist doctors using the latest technologies.",
-    ar: "علاجات متقدمة للبشرة تقدمها أيدي أطباء متخصصين باستخدام أحدث التقنيات.",
+    en: "",
+    ar: "",
   },
   cta: { en: "Book a consultation", ar: "احجز استشارة" },
   hover: { en: "Book now", ar: "احجز الآن" },

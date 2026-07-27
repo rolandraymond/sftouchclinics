@@ -169,12 +169,12 @@ const OffersSection = () => {
     },
     {
       number: "02",
-      title: language === "en" ? "Smile Makeover" : "تجميل الابتسامة",
+      title: language === "en" ? "Body Contouring" : "نحت القوام",
       description:
         language === "en"
-          ? "Premium veneers with complimentary whitening treatment."
-          : "قشور أسنان فاخرة مع تبييض مجاني مدمج.",
-      image: "/images/images (4).jpg",
+          ? "Advanced non-surgical body contouring treatments for a slimmer, more sculpted appearance."
+          : "تقنيات متطورة لنحت القوام بدون جراحة للحصول على جسم أكثر تناسقًا.",
+      image: "/images/image.png",
     },
   ];
 

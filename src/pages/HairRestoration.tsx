@@ -20,8 +20,8 @@ const T = {
     ar: 'استعد ثقتك — حلول متقدمة لنمو طبيعي ودائم.',
   },
   subtitle: {
-    en: 'Complete hair restoration solutions using the latest technologies and treatment methods.',
-    ar: 'حلول متكاملة لاستعادة الشعر باستخدام أحدث التقنيات والأساليب العلاجية.',
+    en: '',
+    ar: '',
   },
   cta: { en: 'Book a consultation', ar: 'احجز استشارة' },
   hover: { en: 'Explore', ar: 'اكتشف' },

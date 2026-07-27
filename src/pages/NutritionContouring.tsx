@@ -20,8 +20,8 @@ const T = {
     ar: "رحلة متكاملة — من اللي بتاكله للشكل اللي هتوصله.",
   },
   subtitle: {
-    en: "A comprehensive wellness journey from custom nutrition plans to advanced body sculpting.",
-    ar: "رحلة شاملة للعافية من خطط التغذية المخصصة إلى تقنيات نحت الجسم المتقدمة.",
+    en: "",
+    ar: "",
   },
   cta: { en: "Book a consultation", ar: "احجز استشارة" },
   hover: { en: "Explore", ar: "اكتشف" },

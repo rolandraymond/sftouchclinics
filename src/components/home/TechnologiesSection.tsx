@@ -52,14 +52,14 @@ const TechnologiesSection = () => {
       image: '/images/dev4.png',
       icon: Microscope, // أيقونة ميكروسكوب للفحص
     },
-    {
+  /*   {
       id: 5,
       name: 'Aquapure',
       description: 'Hydro-Facial & Pore Cleansing',
       arabicDescription: 'تنظيف عميق، شد البشرة، وعلاج المسام الواسعة',
       image: '/images/dev5.png',
       icon: Droplets, // أيقونة قطرات للماء/التنظيف
-    },
+    }, */
     {
       id: 6,
       name: 'Q-Switched Laser',
@@ -68,14 +68,14 @@ const TechnologiesSection = () => {
       image: '/images/dev6.png',
       icon: Eraser, // أيقونة ممحاة للإزالة
     },
-    {
+    /* {
       id: 7,
       name: 'Dermapen',
       description: 'Microneedling for Scars',
       arabicDescription: 'علاج آثار الحبوب وتفتيح التصبغات',
       image: '/images/dev7.png',
       icon: Syringe, // أيقونة قريبة للإبر
-    },
+    }, */
     {
       id: 8,
       name: 'Vivace',
@@ -94,14 +94,14 @@ const TechnologiesSection = () => {
     },
 
     // --- أجهزة التخسيس ونحت القوام ---
-    {
+    /* {
       id: 10,
       name: 'Deka Smart Lipo',
       description: 'Laser Liposuction',
       arabicDescription: 'شفط الدهون بالليزر (اللغد، الذراع، البطن) في جلسة واحدة',
       image: '/images/dev10.png',
       icon: Activity,
-    },
+    }, */
     {
       id: 11,
       name: 'Schwarzy',
@@ -112,7 +112,7 @@ const TechnologiesSection = () => {
     },
     {
       id: 12,
-      name: 'Onda Coolwaves',
+      name: 'Onda ',
       description: 'Body Contouring & Fat Melting',
       arabicDescription: 'نحت الجسم وإذابة الدهون بنسبة 80% بالموجات الباردة',
       image: '/images/dev12.png',
