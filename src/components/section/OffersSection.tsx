@@ -131,7 +131,7 @@ const PerspectiveCard = ({
           {offer.title}
         </h3>
 
-        <p className="max-w-[92%] text-sm md:text-[15px] leading-7 text-white/68">
+        <p className="max-w-[92%] text-sm md:text-[15px] leading-7 text-[#FFF7E6] drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
           {offer.description}
         </p>
 
@@ -229,7 +229,7 @@ const OffersSection = () => {
             )}
           >
             {language === "en"
-              ? "Discover our seasonal masterclasses in beauty and wellness."
+              ? "Your Destination for Beauty, Wellness & Confidence"
               : "اكتشفي باقاتنا الموسمية المختارة بعناية للجمال والصحة."}
           </motion.p>
         </div>
