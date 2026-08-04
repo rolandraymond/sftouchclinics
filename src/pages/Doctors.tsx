@@ -238,7 +238,7 @@ const Doctors = () => {
 
                         <button
                           type="button"
-                          onClick={() => navigate("/contact-us")}
+                          onClick={() => navigate("/contact-us ")}
                           className={cn(
                             "group/btn relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-slate-900 px-7 py-3.5 font-bold text-white shadow-lg transition-all hover:bg-amber-500 hover:shadow-amber-500/25 active:scale-95",
                             isRTL ? "flex-row-reverse" : ""
