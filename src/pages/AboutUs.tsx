@@ -60,7 +60,7 @@ const AboutUs = () => {
             <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
               <div className="h-[1px] w-12 bg-amber-600/50" />
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-700/80">
-                {isRTL ? "جوهر عيادتنا" : "Our Essence"}
+                {isRTL ? "جوهر SF Touch" : "Our Essence"}
               </span>
             </motion.div>
 
@@ -71,17 +71,17 @@ const AboutUs = () => {
             >
               {isRTL ? (
                 <>
-                  ندمج{" "}
+                  خبرة {" "}
                   <span className="relative inline-block">
                     <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400 font-bold">
-                      الفن
+                      طبية
                     </span>
                     <span className="absolute bottom-2 left-0 w-full h-3 bg-amber-100 -z-10 -rotate-2" />
                   </span>{" "}
-                  مع
+                  ودقة
                   {/* استخدام block للتحكم الكامل في المسافة الرأسية وتجنب تلاصق الكلمات */}
                   <span className="block mt-2 text-slate-800">
-                    الدقة الطبية.
+                      في كل تفصيلة
                   </span>
                 </>
               ) : (
@@ -106,8 +106,7 @@ const AboutUs = () => {
               className="mt-8 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-medium"
             >
               {isRTL
-                ? "لسنا مجرد مركز تجميل تقليدي. نحن منشأة طبية متخصصة تتبنى أحدث البروتوكولات العالمية، حيث يتم تخصيص كل خطة علاجية لتلائم طبيعتك البيولوجية وأهدافك الجمالية بأمان تام."
-                : "We are more than a traditional aesthetic center. We are a specialized medical facility adopting global protocols, where every treatment plan is biologically tailored to your aesthetic goals with absolute safety."}
+?"SF Touch مش مجرد عيادة تجميل، لكن مركز متخصص بيجمع بين الخبرة الطبية، أحدث التقنيات، والرعاية المتكاملة في الجلدية والليزر والتجميل والتغذية وزراعة الشعر. كل خطة علاج بتتحدد حسب احتياجات كل حالة، مع اهتمام بالتفاصيل من أول التقييم وحتى المتابعة"                : "We are more than a traditional aesthetic center. We are a specialized medical facility adopting global protocols, where every treatment plan is biologically tailored to your aesthetic goals with absolute safety."}
             </motion.p>
           </motion.div>
         </div>
@@ -150,26 +149,26 @@ const AboutUs = () => {
               <ShieldCheck className="w-6 h-6 stroke-[1.5]" />
             </div>
             <h3 className="text-2xl font-bold text-slate-900">
-              {isRTL ? "معايير طبية لا تقبل المساومة" : "Uncompromising Standards"}
+              {isRTL ? " معايير طبية غير قابلة للمساومة" : "Uncompromising Standards"}
             </h3>
           </div>
 
           <p className="text-slate-600 text-lg leading-8 mb-8 font-medium">
             {isRTL
-              ? "رؤيتنا لا تقتصر على التحسين المؤقت، بل بناء صحة مستدامة للبشرة والشعر. نستخدم حصرياً أجهزة معتمدة من هيئة الغذاء والدواء (FDA) لضمان نتائج طبيعية تدوم طويلاً."
+              ? "هدفنا مش مجرد تغيير مؤقت، لكن الوصول لنتائج طبيعية والحفاظ على صحة البشرة والشعر على المدى الطويل. بنستخدم أجهزة وتقنيات معتمدة ومواد طبية موثوقة، مع الالتزام بمعايير السلامة والجودة في كل خطوة."
               : "Our vision isn't just temporary enhancement, but building sustainable skin health. We exclusively use FDA-approved devices to ensure long-lasting, natural results."}
           </p>
 
           <div className="space-y-4">
             {[
               isRTL
-                ? "بروتوكولات تعقيم صارمة بمقاييس المستشفيات"
+                ?"تعقيم صارم بروتوكولات تعقيم دقيقة لضمان بيئة آمنة"
                 : "Hospital-grade sterilization protocols",
               isRTL
-                ? "تشخيص دقيق قبل أي تدخل تجميلي"
+                ? "تقييم دقيق قبل أي إجراء كل حالة بتبدأ بتقييم مناسب قبل تحديد الإجراء أو الخطة العلاجية."
                 : "Precise diagnostics prior to any procedure",
               isRTL
-                ? "متابعة طبية حثيثة بعد الجلسات"
+                ? "متابعة طبية مستمرة المتابعة جزء أساسي من رحلة العلاج، من أول جلسة وحتى ما بعد الإجراء."
                 : "Rigorous medical follow-up post-treatment",
             ].map((item, idx) => (
               <div
@@ -201,21 +200,21 @@ const AboutUs = () => {
                 icon: Stethoscope,
                 title: isRTL ? "خبرة طبية متخصصة" : "Specialized Expertise",
                 desc: isRTL
-                  ? "فريق طبي يحمل أعلى الشهادات في الجلدية والتجميل لضمان الجودة."
+                  ?"فريق طبي متخصص بخبرات وشهادات معتمدة في مجالات الجلدية والتجميل والتخصصات المرتبطة بها."
                   : "Medical team with top credentials in dermatology.",
               },
               {
                 icon: Sparkles,
-                title: isRTL ? "نتائج مصممة لكِ" : "Bespoke Results",
+                title: isRTL ? " خطط علاج مخصصة" : "Bespoke Results",
                 desc: isRTL
-                  ? "لا نؤمن بالحلول الجاهزة؛ كل وجه له هندسته وتفاصيله الفريدة."
+                  ? "مفيش حل واحد يناسب كل الحالات. كل خطة بتتحدد حسب احتياجات الحالة وأهدافها."
                   : "No cookie-cutter solutions; every face has its unique geometry.",
               },
               {
                 icon: ShieldCheck,
-                title: isRTL ? "تكنولوجيا آمنة" : "Safe Technology",
+                title: isRTL ? "تكنولوجيا متطورة" : "Safe Technology",
                 desc: isRTL
-                  ? "نستثمر في أحدث تقنيات الليزر وأجهزة النحت عالمياً لسلامتك."
+                  ? "بنستثمر في أحدث تقنيات الليزر وأجهزة نحت الجسم والتقنيات الطبية المتطورة، مع اختيار ما يناسب كل حالة."
                   : "Investing in the world's latest laser and contouring tech.",
               },
             ].map((pillar, idx) => (

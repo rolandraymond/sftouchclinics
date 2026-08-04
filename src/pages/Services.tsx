@@ -30,7 +30,7 @@ const Services = () => {
     },
     {
       id: '02',
-      title: t.services?.nutrition?.title || (isRTL ? 'التغذية ونحت القوام' : 'Nutrition & Contouring'),
+      title: t.services?.nutrition?.title || (isRTL ? 'نحت القوام' : 'Nutrition & Contouring'),
       description: t.services?.nutrition?.description || (isRTL ? 'برامج طبية مخصصة للوصول للوزن المثالي، مقترنة بأحدث أجهزة تفتيت الدهون ونحت الجسم غير الجراحي.' : 'Customized medical programs for ideal weight, paired with non-surgical fat freezing and contouring.'),
       icon: Apple,
       image: '/images/images (5).jpg',
@@ -216,7 +216,7 @@ const Services = () => {
                                 isRTL ? "flex-row-reverse" : ""
                               )}
                             >
-                              <span>{isRTL ? 'اكتشفي التفاصيل' : 'Discover Details'}</span>
+                              <span>{isRTL ? 'التفاصيل' : 'Discover Details'}</span>
                               <ArrowRight className={cn("w-4 h-4", isRTL ? "rotate-180" : "")} />
                             </Link>
                           </div>

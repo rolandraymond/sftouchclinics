@@ -159,11 +159,11 @@ const OffersSection = () => {
   const offers: Offer[] = [
     {
       number: "01",
-      title: language === "en" ? "Summer Glow Package" : "باقة توهج الصيف",
+      title: language === "en" ? "Summer Glow Package" : "باقة تجديد البشرة",
       description:
         language === "en"
           ? "Complete skin rejuvenation with Hydrafacial + LED therapy."
-          : "تجديد متكامل للبشرة مع هيدرا فيشل + العلاج بالضوء.",
+          : "تجديد متكامل للبشرة مع Hydrafacial والعلاج بالضوء.",
       image:
         "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80",
     },
@@ -173,7 +173,7 @@ const OffersSection = () => {
       description:
         language === "en"
           ? "Advanced non-surgical body contouring treatments for a slimmer, more sculpted appearance."
-          : "تقنيات متطورة لنحت القوام بدون جراحة للحصول على جسم أكثر تناسقًا.",
+          : "تقنيات متطورة لنحت القوام بدون جراحة، لمظهر أكثر تناسقًا",
       image: "/images/image123.png",
     },
   ];
@@ -181,7 +181,7 @@ const OffersSection = () => {
   const marqueeText =
     language === "en"
       ? ["BOOK NOW", "LIMITED SLOTS", "SPECIAL OFFER", "RADIANCE"]
-      : ["احجزي الآن", "أماكن محدودة", "عرض خاص", "إشراقة"];
+      : ["احجز الآن", "استشارة طبية", " تقنيات متطورة"];
 
   const marqueeItems = [...Array(6)].flatMap(() => marqueeText);
 
@@ -228,7 +228,7 @@ const OffersSection = () => {
           >
             {language === "en"
               ? "Your Destination for Beauty, Wellness & Confidence"
-              : "اكتشفي باقاتنا الموسمية المختارة بعناية للجمال والصحة."}
+              : "باقات موسمية مختارة بعناية للجمال والصحة"}
           </motion.p>
         </div>
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16 perspective-1000 relative z-10">

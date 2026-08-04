@@ -94,14 +94,7 @@ const TechnologiesSection = () => {
     },
 
     // --- أجهزة التخسيس ونحت القوام ---
-    /* {
-      id: 10,
-      name: 'Deka Smart Lipo',
-      description: 'Laser Liposuction',
-      arabicDescription: 'شفط الدهون بالليزر (اللغد، الذراع، البطن) في جلسة واحدة',
-      image: '/images/dev10.png',
-      icon: Activity,
-    }, */
+    
     {
       id: 11,
       name: 'Schwarzy',

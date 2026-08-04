@@ -45,7 +45,7 @@ const specialties: Specialty[] = [
   {
     id: "non-surgical",
     labelEn: "Non-Surgical",
-    labelAr: "التجميل اللاجراحي",
+    labelAr: "التجميل غير الجراحي",
     icon: <Sparkles className="w-5 h-5 md:w-6 md:h-6" />,
     mainLink: "/services/dermatology-laser",
     services: [
@@ -62,7 +62,7 @@ const specialties: Specialty[] = [
       {
         id: "liquid face lift",
         labelEn: "liquid face lift",
-        labelAr: "شد الوجه السائل",
+        labelAr: "شد الوجه المترهل",
         link: "/services/dermatology-laser",
         case: {
           before: "/images/imagecb20.png",
@@ -281,7 +281,7 @@ const RealResults = () => {
 
   const header = {
     subtitle:
-      language === "en" ? "Transformative Journeys" : "رحلات التحول الحقيقية",
+      language === "en" ? "Transformative Journeys" : "رحلات تحول حقيقية",
     title1: language === "en" ? "REAL" : "نتائج",
     title2: language === "en" ? "RESULTS" : "حقيقية",
   };
@@ -325,7 +325,7 @@ const RealResults = () => {
           >
             {language === "en"
               ? "Witness refined aesthetics through premium artistry and precise transformation."
-              : "شاهدوا الجمال الراقي من خلال لمسة فاخرة وتحول دقيق بأعلى جودة."}
+              : "نتائج حقيقية لحالات مختلفة، بخبرة طبية واهتمام بكل تفصيلة في رحلة العلاج."}
           </p>
         </div>
 

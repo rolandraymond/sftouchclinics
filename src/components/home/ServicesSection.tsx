@@ -113,12 +113,12 @@ const ServicesSection = () => {
   const clinicHighlights = [
     {
       icon: Stethoscope,
-      label: isRTL ? "إشراف طبي دقيق" : "Expert Medical Care",
+      label: isRTL ? "إشراف طبي متخصص" : "Expert Medical Care",
     },
     //{ icon: ShieldCheck, label: isRTL ? 'أجهزة معتمدة عالمياً' : 'FDA Approved Tech' },
     {
       icon: Award,
-      label: isRTL ? "نتائج طبيعية ومضمونة" : "Natural & Proven Results",
+      label: isRTL ? "نتائج طبيعية " : "Natural & Proven Results",
     },
   ];
 
@@ -158,7 +158,7 @@ const ServicesSection = () => {
               >
                 <div className="flex h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-widest text-amber-800">
-                  {isRTL ? "تميز طبي، لمسة فنية" : "Medical Excellence"}
+                  {isRTL ? "تميُّز طبي  لمسة فنية" : "Medical Excellence"}
                 </span>
               </div>
             </motion.div>
@@ -169,11 +169,11 @@ const ServicesSection = () => {
             >
               {isRTL ? (
                 <>
-                  أبرزي{" "}
+                  جمال بثقة أعلى{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-400">
-                    جمالكِ
+                    برعاية{" "}
                   </span>
-                  <br /> برعاية طبية فائقة
+                  <br /> طبية متخصصة
                 </>
               ) : (
                 <>
@@ -191,7 +191,7 @@ const ServicesSection = () => {
               className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg"
             >
               {isRTL
-                ? "في عيادتنا، ندمج بين أحدث التطورات الطبية والرؤية التجميلية لنقدم لكِ رحلة علاجية آمنة، مخصصة، ومصممة لتمنحكِ الثقة التي تستحقينها."
+                ? "في SF Touch بنجمع بين الخبرة الطبية وأحدث التقنيات التجميلية علشان نقدم رعاية آمنة ومخصصة، تناسب احتياجات كل حالة وتوصل لنتائج طبيعية."
                 : "At our clinic, we merge the latest medical advancements with an aesthetic vision to provide a safe, personalized journey designed to give you the confidence you deserve."}
             </motion.p>
 
@@ -226,7 +226,7 @@ const ServicesSection = () => {
                 className={`group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-slate-900 px-8 py-4 font-bold text-white transition-all hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 active:scale-95 ${isRTL ? "flex-row-reverse" : ""}`}
               >
                 <span className="relative z-10">
-                  {isRTL ? "احجزي استشارتك الآن" : "Book Consultation"}
+                  {isRTL ? "ابدأ رحلتك" : "Book Consultation"}
                 </span>
                 <ArrowRight
                   className={`relative z-10 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 ${isRTL ? "rotate-180 group-hover:-translate-x-1" : ""}`}
@@ -235,7 +235,7 @@ const ServicesSection = () => {
             </motion.div>
           </motion.div>
 
-         {/* Creative Bento Grid for Services */}
+          {/* Creative Bento Grid for Services */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -269,7 +269,6 @@ const ServicesSection = () => {
 
                     {/* Content Layer */}
                     <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10">
-                      
                       {/* Top Header */}
                       {/* تم حذف الأيقونة من هنا وتعديل المحاذاة لـ justify-end ليبقى الرقم في مكانه */}
                       <div className="flex items-start justify-end">
@@ -293,7 +292,7 @@ const ServicesSection = () => {
                           className={`mt-6 flex items-center gap-2 opacity-0 transition-all duration-500 delay-100 group-hover:opacity-100 ${isRTL ? "flex-row-reverse justify-start" : ""}`}
                         >
                           <span className="text-sm font-bold text-amber-400">
-                            {isRTL ? "اكتشفي التفاصيل" : "Discover Details"}
+                            {isRTL ? "التفاصيل" : "Discover Details"}
                           </span>
                           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-400/20 text-amber-400">
                             <ChevronRight

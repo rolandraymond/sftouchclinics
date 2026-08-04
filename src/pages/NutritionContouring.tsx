@@ -40,18 +40,7 @@ const services = [
       ar: "برامج غذائية مصممة خصيصاً لأهدافك الصحية.",
     },
   },
- /*  {
-    icon: Zap,
-    color: "#D97A3E",
-    glow: "#F6C88A",
-    image:
-      "/images/imagedev.png",
-    title: { en: "Smart Lipo", ar: "سمارت ليبو" },
-    description: {
-      en: "Advanced technology for fat melting and body sculpting.",
-      ar: "تقنية متقدمة لإذابة الدهون ونحت الجسم.",
-    },
-  }, */
+ 
   {
     icon: Activity,
     color: "#3D6E8F",
