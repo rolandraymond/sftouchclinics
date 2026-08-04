@@ -295,27 +295,32 @@ const RealResults = () => {
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.35)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* تم تعديل هذا الجزء: إزالة md:flex-row و justify-between لضمان المحاذاة */}
-        <div className="flex flex-col mb-12 md:mb-24 gap-4 md:gap-6">
+        {/* تم ضبط المسافات والتنسيق لضمان الفصل التام بين العنوان والبراجراف */}
+        <div className="flex flex-col mb-12 md:mb-24">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
             <span className="text-[#D4AF37] text-lg md:text-2xl mb-2 md:mb-4 block font-bold font-serif">
               {header.subtitle}
             </span>
-            <h2 className="text-5xl md:text-[8rem] font-serif font-black tracking-tighter leading-[0.9] uppercase text-[#0B1120] whitespace-nowrap">
+            <h2 className="text-4xl sm:text-6xl md:text-[7.5rem] font-serif font-black tracking-tighter leading-[1] md:leading-[0.95] uppercase text-[#0B1120] pb-2">
               {header.title1}{" "}
-              <span className="text-[#D4AF37] italic ms-2 md:ms-4">
+              <span className="text-[#D4AF37] italic ms-2 md:ms-4 inline-block">
                 {header.title2}
               </span>
             </h2>
           </motion.div>
 
+          {/* فصلنا البراجراف بـ margin مناسب لحجم العنوان الكبير */}
           <p
             className={cn(
-              "text-[#0B1120]/45 text-xs md:text-sm max-w-xl uppercase font-bold tracking-[0.2em] md:tracking-[0.3em] leading-relaxed",
-              language === "ar" ? "text-right" : "text-left",
+              "text-[#0B1120]/60 text-xs md:text-sm max-w-xl font-bold leading-relaxed mt-6 md:mt-10",
+              language === "en"
+                ? "uppercase tracking-[0.2em] md:tracking-[0.3em] text-left"
+                : "text-right tracking-normal font-cairo text-sm md:text-base"
             )}
           >
             {language === "en"
