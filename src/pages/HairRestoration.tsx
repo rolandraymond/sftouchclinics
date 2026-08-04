@@ -76,7 +76,7 @@ const services = [
     icon: Activity,
     color: '#466C8C',
     glow: '#98BBE0',
-    image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=600&q=75',
+    image: '/images/imagedev3.png',
     title: { en: 'Hair Analysis', ar: 'تحليل الشعر' },
     description: {
       en: 'Accurate diagnosis of hair and scalp problems.',

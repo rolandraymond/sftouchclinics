@@ -174,7 +174,7 @@ const OffersSection = () => {
         language === "en"
           ? "Advanced non-surgical body contouring treatments for a slimmer, more sculpted appearance."
           : "تقنيات متطورة لنحت القوام بدون جراحة للحصول على جسم أكثر تناسقًا.",
-      image: "/images/image.png",
+      image: "/images/image123.png",
     },
   ];
 

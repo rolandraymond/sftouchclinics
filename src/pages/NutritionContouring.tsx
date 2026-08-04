@@ -45,7 +45,7 @@ const services = [
     color: "#D97A3E",
     glow: "#F6C88A",
     image:
-      "https://images.unsplash.com/photo-1717500251979-8a53b300d89b?auto=format&fit=crop&w=600&q=75",
+      "/images/imagedev.png",
     title: { en: "Smart Lipo", ar: "سمارت ليبو" },
     description: {
       en: "Advanced technology for fat melting and body sculpting.",
@@ -92,7 +92,7 @@ const services = [
     icon: Target,
     color: "#2F6F62",
     glow: "#8FCBB8",
-    image: "",
+    image: "/images/imagedev2.png",
     title: { en: "Body Sculpting", ar: "نحت الجسم" },
     description: {
       en: "Multiple techniques for achieving your ideal body.",

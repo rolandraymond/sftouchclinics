@@ -49,12 +49,55 @@ const specialties: Specialty[] = [
     icon: <Sparkles className="w-5 h-5 md:w-6 md:h-6" />,
     mainLink: "/services/dermatology-laser",
     services: [
+        {
+        id: "fillers unser eye",
+        labelEn: "fillers unser eye",
+        labelAr: "",
+        link: "/services/dermatology-laser",
+        case: { before: "/images/imagecb25.png", after: "/images/imageca25.png" },
+      },
+      {
+        id: "liquid face lift",
+        labelEn: "liquid face lift",
+        labelAr: "",
+        link: "/services/dermatology-laser",
+        case: { before: "/images/imagecb20.png", after: "/images/imageca20.png" },
+      },
+      {
+        id: "TEXAS",
+        labelEn: "TEXAS",
+        labelAr: "",
+        link: "/services/dermatology-laser",
+        case: { before: "/images/imagecb21.png", after: "/images/imageca21.png" },
+      },
+      {
+        id: "Templa Erea Filler",
+        labelEn: "Templa Erea Filler",
+        labelAr: "",
+        link: "/services/dermatology-laser",
+        case: { before: "/images/imagecb22.png", after: "/images/imageca22.png" },
+      },
+      {
+        id: "biostimulator (Poly-L-Lactic Acid)",
+        labelEn: "Biostimulator (Poly-L-Lactic Acid)",
+        labelAr: "",
+        link: "/services/dermatology-laser",
+        case: { before: "/images/imagecb23.png", after: "/images/imageca23.png" },
+      },
+      {
+        id: "jawline",
+        labelEn: "Jawline",
+        labelAr: "",
+        link: "/services/dermatology-laser",
+        case: { before: "/images/imagecb24.png", after: "/images/imageca24.png" },
+      },
+    
       {
         id: "fillers",
         labelEn: "Fillers",
         labelAr: "الفيلر",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb1.png", after: "/images/imageca1.png" },
+        case: { before: "/images/imagecb26.png", after: "/images/imageca26.png" },
       },
       {
         id: "botox",
@@ -63,23 +106,17 @@ const specialties: Specialty[] = [
         link: "/services/dermatology-laser",
         case: { before: "/images/imagecb5.png", after: "/images/imageca5.png" },
       },
-      {
-        id: "skin-booster",
-        labelEn: "Skin Booster",
-        labelAr: "إسكين بوستر",
+      
+       {
+        id: "acne scars treatment",
+        labelEn: "Acne Scars Treatment",
+        labelAr: "",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb8.png", after: "/images/imageca8.png" },
-      },
-      {
-        id: "Hair Restoration",
-        labelEn: "Hair Restoration",
-        labelAr: "زراعه الشعر",
-        link: "/services/hair-restoration",
-        case: { before: "/images/image (37).png", after: "/images/image (38).png" },
+        case: { before: "/images/imagecb19.png", after: "/images/imageca19.png" },
       },
     ],
   },
-  {
+ /*  {
     id: "surgical",
     labelEn: "Surgical Aesthetics",
     labelAr: "التجميل الجراحي",
@@ -106,38 +143,9 @@ const specialties: Specialty[] = [
           after: "/images/imageca13.png",
         },
       },
-      {
-        id: "lipo",
-        labelEn: "Lipo & Injection",
-        labelAr: "شفط وحقن الدهون",
-        link: "/services/plastic-surgery",
-        case: {
-          before: "/images/cases/lipo-before.jpg",
-          after: "/images/cases/lipo-after.jpg",
-        },
-      },
-      {
-        id: "body-contour",
-        labelEn: "Body Contouring",
-        labelAr: "نحت الجسم",
-        link: "/services/plastic-surgery",
-        case: {
-          before: "/images/cases/contour-before.jpg",
-          after: "/images/cases/contour-after.jpg",
-        },
-      },
-      {
-        id: "buttock",
-        labelEn: "Buttock Augmentation",
-        labelAr: "تكبير المؤخرة",
-        link: "/services/plastic-surgery",
-        case: {
-          before: "/images/cases/buttock-before.jpg",
-          after: "/images/cases/buttock-after.jpg",
-        },
-      },
+     
     ],
-  },
+  }, */
 ];
 
 const BeforeAfterSlider = ({
