@@ -195,24 +195,25 @@ const OffersSection = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_26%),radial-gradient(circle_at_top_right,rgba(11,17,32,0.10),transparent_24%),radial-gradient(circle_at_bottom,rgba(212,175,55,0.08),transparent_36%)]" />{" "}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.38)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.38)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="mb-16 flex flex-col gap-8 md:mb-24 md:flex-row md:items-end md:justify-between">
+        {/* تم تعديل هذا الجزء لتوسيط العنوان والبراجراف في منتصف الشاشة */}
+        <div className="mb-16 md:mb-24 flex flex-col items-center justify-center text-center gap-4 md:gap-6">
           <motion.div
-            initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className={cn("max-w-2xl", isRTL && "md:text-right")}
+            className="max-w-2xl text-center"
           >
             <span
-              className="mb-4 block text-2xl md:text-3xl font-serif text-[#D4AF37]"
+              className="mb-3 block text-2xl md:text-3xl font-serif text-[#D4AF37]"
               style={{ fontFamily: "'Dancing Script', cursive" }}
             >
               {language === "en" ? "Exclusive Offers" : "عروض حصرية"}
             </span>
 
-            <h2 className="text-5xl md:text-7xl font-serif font-black tracking-tighter leading-[0.88] text-[#0B1120]">
-              {language === "en" ? "CURATED" : "عروض"} <br />
-              <span className="text-[#D4AF37] italic">
+            <h2 className="text-5xl md:text-7xl font-serif font-black tracking-tighter leading-[0.9] text-[#0B1120]">
+              {language === "en" ? "CURATED" : "عروض"}{" "}
+              <span className="text-[#D4AF37] italic block md:inline">
                 {language === "en" ? "EXPERIENCES" : "مختارة"}
               </span>
             </h2>
@@ -223,17 +224,13 @@ const OffersSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className={cn(
-              "max-w-xs text-sm md:text-base uppercase tracking-[0.22em] font-bold leading-loose text-[#0B1120]/45",
-              isRTL ? "md:text-right" : "md:text-left",
-            )}
+            className="max-w-md text-center text-sm md:text-base uppercase tracking-[0.22em] font-bold leading-relaxed text-[#0B1120]/45"
           >
             {language === "en"
               ? "Your Destination for Beauty, Wellness & Confidence"
               : "اكتشفي باقاتنا الموسمية المختارة بعناية للجمال والصحة."}
           </motion.p>
         </div>
-
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16 perspective-1000 relative z-10">
           {offers.map((offer, index) => (
             <PerspectiveCard

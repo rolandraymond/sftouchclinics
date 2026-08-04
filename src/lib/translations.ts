@@ -157,7 +157,7 @@ export const translations: Record<Language, TranslationContent> = {
       title: 'Why Choose SF Touch',
       subtitle: 'Excellence in every detail',
       doctorsCare: {
-        title: 'Doctors Perform All Procedures',
+        title: 'Perfect Doctors ',
         description: 'Unlike other clinics, all treatments are performed directly by our qualified doctors, not assistants.',
       },
       technology: {
@@ -253,7 +253,7 @@ export const translations: Record<Language, TranslationContent> = {
       title: 'لماذا إس إف تاتش',
       subtitle: 'التميز في كل التفاصيل',
       doctorsCare: {
-        title: 'الأطباء يجرون جميع العمليات',
+        title: 'الأطباء مميزون ',
         description: 'على عكس العيادات الأخرى، جميع العلاجات تتم مباشرة من قبل أطبائنا المؤهلين وليس المساعدين.',
       },
       technology: {

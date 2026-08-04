@@ -49,55 +49,76 @@ const specialties: Specialty[] = [
     icon: <Sparkles className="w-5 h-5 md:w-6 md:h-6" />,
     mainLink: "/services/dermatology-laser",
     services: [
-        {
+      {
         id: "fillers unser eye",
         labelEn: "fillers unser eye",
-        labelAr: "",
+        labelAr: "فيلر تحت العين",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb25.png", after: "/images/imageca25.png" },
+        case: {
+          before: "/images/imagecb25.png",
+          after: "/images/imageca25.png",
+        },
       },
       {
         id: "liquid face lift",
         labelEn: "liquid face lift",
-        labelAr: "",
+        labelAr: "شد الوجه السائل",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb20.png", after: "/images/imageca20.png" },
+        case: {
+          before: "/images/imagecb20.png",
+          after: "/images/imageca20.png",
+        },
       },
       {
         id: "TEXAS",
         labelEn: "TEXAS",
-        labelAr: "",
+        labelAr: "حقن تكساس",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb21.png", after: "/images/imageca21.png" },
+        case: {
+          before: "/images/imagecb21.png",
+          after: "/images/imageca21.png",
+        },
       },
       {
         id: "Templa Erea Filler",
         labelEn: "Templa Erea Filler",
-        labelAr: "",
+        labelAr: "فيلر منطقة الصدغين",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb22.png", after: "/images/imageca22.png" },
+        case: {
+          before: "/images/imagecb22.png",
+          after: "/images/imageca22.png",
+        },
       },
       {
         id: "biostimulator (Poly-L-Lactic Acid)",
         labelEn: "Biostimulator (Poly-L-Lactic Acid)",
-        labelAr: "",
+        labelAr: "المحفز الحيوي (حمض البولي-إي-لاكتيك)",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb23.png", after: "/images/imageca23.png" },
+        case: {
+          before: "/images/imagecb23.png",
+          after: "/images/imageca23.png",
+        },
       },
       {
         id: "jawline",
         labelEn: "Jawline",
-        labelAr: "",
+        labelAr: "خط الفك",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb24.png", after: "/images/imageca24.png" },
+        case: {
+          before: "/images/imagecb24.png",
+          after: "/images/imageca24.png",
+        },
       },
-    
+
       {
         id: "fillers",
         labelEn: "Fillers",
         labelAr: "الفيلر",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb26.png", after: "/images/imageca26.png" },
+        case: {
+          before: "/images/imagecb26.png",
+          after: "/images/imageca26.png",
+        },
       },
       {
         id: "botox",
@@ -106,17 +127,20 @@ const specialties: Specialty[] = [
         link: "/services/dermatology-laser",
         case: { before: "/images/imagecb5.png", after: "/images/imageca5.png" },
       },
-      
-       {
+
+      {
         id: "acne scars treatment",
         labelEn: "Acne Scars Treatment",
-        labelAr: "",
+        labelAr: "علاج ندبات حب الشباب",
         link: "/services/dermatology-laser",
-        case: { before: "/images/imagecb19.png", after: "/images/imageca19.png" },
+        case: {
+          before: "/images/imagecb19.png",
+          after: "/images/imageca19.png",
+        },
       },
     ],
   },
- /*  {
+  /*  {
     id: "surgical",
     labelEn: "Surgical Aesthetics",
     labelAr: "التجميل الجراحي",
@@ -271,7 +295,8 @@ const RealResults = () => {
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.35)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-24 gap-6 md:gap-10">
+        {/* تم تعديل هذا الجزء: إزالة md:flex-row و justify-between لضمان المحاذاة */}
+        <div className="flex flex-col mb-12 md:mb-24 gap-4 md:gap-6">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -279,9 +304,9 @@ const RealResults = () => {
             <span className="text-[#D4AF37] text-lg md:text-2xl mb-2 md:mb-4 block font-bold font-serif">
               {header.subtitle}
             </span>
-            <h2 className="text-5xl md:text-[9rem] font-serif font-black tracking-tighter leading-[0.9] uppercase text-[#0B1120]">
-              {header.title1} <br className="hidden md:block" />
-              <span className="text-[#D4AF37] italic md:ml-4">
+            <h2 className="text-5xl md:text-[8rem] font-serif font-black tracking-tighter leading-[0.9] uppercase text-[#0B1120] whitespace-nowrap">
+              {header.title1}{" "}
+              <span className="text-[#D4AF37] italic ms-2 md:ms-4">
                 {header.title2}
               </span>
             </h2>
@@ -289,8 +314,8 @@ const RealResults = () => {
 
           <p
             className={cn(
-              "text-[#0B1120]/45 text-xs md:text-sm max-w-xs uppercase font-bold tracking-[0.2em] md:tracking-[0.3em] leading-relaxed",
-              language === "ar" && "text-right",
+              "text-[#0B1120]/45 text-xs md:text-sm max-w-xl uppercase font-bold tracking-[0.2em] md:tracking-[0.3em] leading-relaxed",
+              language === "ar" ? "text-right" : "text-left",
             )}
           >
             {language === "en"
@@ -300,6 +325,7 @@ const RealResults = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-start">
+          {/* باقي الكود الخاص بالـ specialties */}
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-6 overflow-x-auto sm:overflow-visible pb-4 md:pb-0">
             {specialties.map((specialty) => {
               const isActive = activeSpecialty.id === specialty.id;

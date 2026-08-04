@@ -39,7 +39,7 @@ const Offers = () => {
     {
       id: '03',
       icon: Star,
-      title: language === 'ar' ? 'بكج العروسة' : 'Bridal Queen',
+      title: language === 'ar' ? 'بكدج العروسة' : 'Bridal Queen',
       value: 'VIP',
       description: language === 'ar' ? 'تجهيزات متكاملة للبشرة والقوام قبل ليلة الزفاف' : 'Comprehensive skin & body prep before the big day',
       code: 'BRIDE2024',
