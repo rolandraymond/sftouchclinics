@@ -28,10 +28,10 @@ interface Doctor {
 const doctors: Doctor[] = [
   {
     id: "02",
-    name: "Dr. Freehan Zakria",
-    nameAr: "د. فريحان زكريا",
+    name: "Dr. Frehaan zakria",
+    nameAr: "د. فريهان زكريا ",
     specialty: "Dermatology & Aesthetics Consultant",
-    specialtyAr: "استشاري الجلدية والتجميل",
+    specialtyAr: " اخصائية الجلدية والليزر والتجميل والتغذية العلاجية",
     quote: "Restoring youth and vitality while preserving your unique identity.",
     quoteAr: "نستعيد شبابكِ وحيويتكِ، مع الحفاظ التام على هويتكِ وملامحكِ الفريدة.",
     image: "/images/OES02435.jpg",
@@ -52,8 +52,8 @@ const doctors: Doctor[] = [
   },
   {
     id: "03",
-    name: "Dr. Mai Magdy",
-    nameAr: "د. مي مجدي",
+    name: "Dr. Mai Romaya",
+    nameAr: "د.  مي روميا",
     specialty: "Clinical Nutrition Consultant",
     specialtyAr: "استشاري التغذية العلاجية",
     quote: "True beauty and perfect contouring always begin from within.",
