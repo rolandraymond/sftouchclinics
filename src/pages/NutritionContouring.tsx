@@ -40,7 +40,7 @@ const services = [
       ar: "برامج غذائية مصممة خصيصاً لأهدافك الصحية.",
     },
   },
-  {
+ /*  {
     icon: Zap,
     color: "#D97A3E",
     glow: "#F6C88A",
@@ -51,14 +51,14 @@ const services = [
       en: "Advanced technology for fat melting and body sculpting.",
       ar: "تقنية متقدمة لإذابة الدهون ونحت الجسم.",
     },
-  },
+  }, */
   {
     icon: Activity,
     color: "#3D6E8F",
     glow: "#9AC6E0",
     image:
       "https://images.unsplash.com/photo-1731355774353-4131a8e13e55?auto=format&fit=crop&w=600&q=75",
-    title: { en: "Onda Coolwaves", ar: "أوندا كولويفز" },
+    title: { en: "Onda ", ar: "أوندا " },
     description: {
       en: "Coolwaves for cellulite and fat reduction.",
       ar: "موجات باردة لتقليل السيلوليت والدهون.",

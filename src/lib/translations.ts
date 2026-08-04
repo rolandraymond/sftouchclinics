@@ -141,7 +141,7 @@ export const translations: Record<Language, TranslationContent> = {
       },
       nutrition: {
         title: 'Clinical Nutrition & Body Contouring',
-        description: 'Personalized diet plans, Smart Lipo, and advanced body sculpting devices for your wellness journey.',
+        description: 'Personalized diet plans,  and advanced body sculpting devices for your wellness journey.',
       },
       hair: {
         title: 'Hair Restoration',
@@ -162,7 +162,7 @@ export const translations: Record<Language, TranslationContent> = {
       },
       technology: {
         title: 'Latest Technology',
-        description: 'We invest in cutting-edge equipment including Deka Again, Motus Pro, Smart Lipo, and Onda Coolwaves.',
+        description: 'We invest in cutting-edge equipment including Deka Again, Motus Pro,  and Onda .',
       },
       customized: {
         title: 'Customized Treatment Plans',
@@ -258,7 +258,7 @@ export const translations: Record<Language, TranslationContent> = {
       },
       technology: {
         title: 'أحدث التقنيات',
-        description: 'نستثمر في أحدث المعدات بما في ذلك Deka Again و Motus Pro و Smart Lipo و Onda Coolwaves.',
+        description: 'نستثمر في أحدث المعدات بما في ذلك Deka Again و Motus Pro  و Onda .',
       },
       customized: {
         title: 'خطط علاج مخصصة',

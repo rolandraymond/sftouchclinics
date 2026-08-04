@@ -105,11 +105,11 @@ const HeroSection = () => {
             >
               {isRTL ? (
                 <>
-                  جمالك يبدأ من
+                  جمالك يبدأ 
                   <br />
                   <span className="relative inline-block">
                     <span className="bg-gradient-to-r from-yellow-600 via-amber-500 to-yellow-400 bg-clip-text text-transparent">
-                      هنا
+                     من هنا
                     </span>
                     <span className="absolute -bottom-2 left-0 h-3 w-full rounded-full bg-yellow-300/40 blur-md" />
                   </span>

@@ -113,83 +113,82 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* ======================= ASYMMETRICAL STORY BLOCK ======================= */}
-      <section className="relative py-20 px-6">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-0 items-center">
-            
-            {/* Image Block */}
-            <motion.div
-              style={{ y: ySlow }}
-              className={cn(
-                "lg:col-span-7 relative z-10",
-                // تعديل الترتيب بناءً على اتجاه اللغة
-                isRTL ? "lg:order-1" : "lg:order-1" // مع استخدام dir='rtl' في الأب، العناصر تترتب تلقائياً
-              )}
-            >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-2xl">
-                <img
-                  src="\images\IMG_9314 1.png"
-                  alt="Clinic Atmosphere"
-                  className="w-full h-full object-cover opacity-95 scale-105 hover:scale-100 transition-transform duration-1000"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent mix-blend-multiply" />
-              </div>
-            </motion.div>
+     {/* ======================= ASYMMETRICAL STORY BLOCK ======================= */}
+<section className="relative py-24 px-6">
+  <div className="container mx-auto max-w-6xl">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      {/* Image Block */}
+      <motion.div
+        style={{ y: ySlow }}
+        className={cn(
+          "lg:col-span-6 relative",
+          isRTL ? "lg:order-2" : "lg:order-1"
+        )}
+      >
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-2xl">
+          <img
+            src="/images/IMG_9314 1.png"
+            alt="Clinic Atmosphere"
+            className="w-full h-full object-cover opacity-95 scale-105 hover:scale-100 transition-transform duration-1000"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent mix-blend-multiply" />
+        </div>
+      </motion.div>
 
-            {/* Content Overlap Block */}
-            <motion.div
-              style={{ y: yFast }}
-              className={cn(
-                "lg:col-span-6 relative z-20 bg-white/80 backdrop-blur-xl p-10 sm:p-14 rounded-[2rem] shadow-[0_20px_60px_rgba(15,23,42,0.06)] border border-slate-100",
-                isRTL ? "lg:-mr-24" : "lg:-ml-24"
-              )}
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-50 text-emerald-600">
-                  <ShieldCheck className="w-6 h-6 stroke-[1.5]" />
+      {/* Content Block */}
+      <motion.div
+        style={{ y: yFast }}
+        className={cn(
+          "lg:col-span-6 relative",
+          isRTL ? "lg:order-1" : "lg:order-2"
+        )}
+      >
+        <div className="bg-white/85 backdrop-blur-xl p-8 sm:p-12 rounded-[2rem] shadow-[0_20px_60px_rgba(15,23,42,0.08)] border border-slate-100">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-50 text-emerald-600">
+              <ShieldCheck className="w-6 h-6 stroke-[1.5]" />
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900">
+              {isRTL ? "معايير طبية لا تقبل المساومة" : "Uncompromising Standards"}
+            </h3>
+          </div>
+
+          <p className="text-slate-600 text-lg leading-8 mb-8 font-medium">
+            {isRTL
+              ? "رؤيتنا لا تقتصر على التحسين المؤقت، بل بناء صحة مستدامة للبشرة والشعر. نستخدم حصرياً أجهزة معتمدة من هيئة الغذاء والدواء (FDA) لضمان نتائج طبيعية تدوم طويلاً."
+              : "Our vision isn't just temporary enhancement, but building sustainable skin health. We exclusively use FDA-approved devices to ensure long-lasting, natural results."}
+          </p>
+
+          <div className="space-y-4">
+            {[
+              isRTL
+                ? "بروتوكولات تعقيم صارمة بمقاييس المستشفيات"
+                : "Hospital-grade sterilization protocols",
+              isRTL
+                ? "تشخيص دقيق قبل أي تدخل تجميلي"
+                : "Precise diagnostics prior to any procedure",
+              isRTL
+                ? "متابعة طبية حثيثة بعد الجلسات"
+                : "Rigorous medical follow-up post-treatment",
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {isRTL
-                    ? "معايير طبية لا تقبل المساومة"
-                    : "Uncompromising Standards"}
-                </h3>
+                <span className="text-slate-800 font-bold">{item}</span>
               </div>
-
-              <p className="text-slate-600 text-lg leading-8 mb-8 font-medium">
-                {isRTL
-                  ? "رؤيتنا لا تقتصر على التحسين المؤقت، بل بناء صحة مستدامة للبشرة والشعر. نستخدم حصرياً أجهزة معتمدة من هيئة الغذاء والدواء (FDA) لضمان نتائج طبيعية تدوم طويلاً."
-                  : "Our vision isn't just temporary enhancement, but building sustainable skin health. We exclusively use FDA-approved devices to ensure long-lasting, natural results."}
-              </p>
-
-              {/* النقاط الثلاثة - تم تعديلها لتكون بطاقات جمالية ومحاذاتها مضمونة */}
-              <div className="space-y-4">
-                {[
-                  isRTL
-                    ? "بروتوكولات تعقيم صارمة بمقاييس المستشفيات"
-                    : "Hospital-grade sterilization protocols",
-                  isRTL
-                    ? "تشخيص دقيق قبل أي تدخل تجميلي"
-                    : "Precise diagnostics prior to any procedure",
-                  isRTL
-                    ? "متابعة طبية حثيثة بعد الجلسات"
-                    : "Rigorous medical follow-up post-treatment",
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-md transition-all duration-300"
-                  >
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 shrink-0">
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                    </div>
-                    <span className="text-slate-800 font-bold">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
       {/* ======================= CREATIVE STATS / PILLARS ======================= */}
       <section className="py-24 px-6 mt-10 relative">
