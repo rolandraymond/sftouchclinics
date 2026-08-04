@@ -1,9 +1,20 @@
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { Sparkles, Zap, Syringe, Sun, Target, Waves } from "lucide-react";
+import {
+  Sparkles,
+  Zap,
+  Syringe,
+  Sun,
+  Target,
+  Waves,
+  CalendarCheck,
+  Quote,
+  ArrowRight,
+  type LucideIcon,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState, type ComponentType, type SVGProps } from "react";
-
+import { cn } from "@/lib/utils";
 const CONTACT_PATH = "/contact-us";
 
 type LocaleKey = "en" | "ar";
@@ -13,7 +24,7 @@ interface TextPair {
   ar: string;
 }
 
-interface ServiceItem {
+/* interface ServiceItem {
   icon: ComponentType<
     SVGProps<SVGSVGElement> & { size?: number | string; strokeWidth?: number }
   >;
@@ -22,21 +33,16 @@ interface ServiceItem {
   image: string;
   title: TextPair;
   description: TextPair;
-}
+} */
 
-const T: Record<string, TextPair> & {
-  hover: TextPair;
-} = {
+const T: Record<string, TextPair> & { hover: TextPair } = {
   eyebrow: { en: "Our Services", ar: "خدماتنا" },
   title: { en: "Dermatology & Laser", ar: "الجلدية والليزر" },
   heroLine: {
     en: "Every treatment here is, quite literally, light meeting skin.",
     ar: "كل علاج هنا هو، حرفيًا، لقاء بين الضوء والبشرة.",
   },
-  subtitle: {
-    en: "",
-    ar: "",
-  },
+  subtitle: { en: "", ar: "" },
   cta: { en: "Book a consultation", ar: "احجز استشارة" },
   hover: { en: "Book now", ar: "احجز الآن" },
 };
@@ -116,13 +122,13 @@ const services: ServiceItem[] = [
   },
 ];
 
-interface LightOrbProps {
+/* interface LightOrbProps {
   color: string;
   Icon: ServiceItem["icon"];
   id: number;
   image: string;
   alt: string;
-}
+} */
 
 const LightOrb = ({ color, Icon, id, image, alt }: LightOrbProps) => {
   return (
@@ -156,6 +162,7 @@ const LightOrb = ({ color, Icon, id, image, alt }: LightOrbProps) => {
             <feGaussianBlur stdDeviation="3.4" />
           </filter>
         </defs>
+
         <circle
           cx="100"
           cy="100"
@@ -165,6 +172,7 @@ const LightOrb = ({ color, Icon, id, image, alt }: LightOrbProps) => {
           strokeOpacity="0.35"
           strokeWidth="2"
         />
+
         <rect
           x="6"
           y="58"
@@ -174,6 +182,7 @@ const LightOrb = ({ color, Icon, id, image, alt }: LightOrbProps) => {
           filter={`url(#blur-${id})`}
           transform="rotate(-18 100 100)"
         />
+
         <ellipse
           cx="72"
           cy="60"
@@ -211,6 +220,8 @@ const TiltCard = ({ service, index, dir, onNavigate }: TiltCardProps) => {
   const ref = useRef<HTMLButtonElement | null>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0, active: false });
 
+  const isRtl = dir === "ar";
+
   const handleMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const el = ref.current;
     if (!el) return;
@@ -247,7 +258,10 @@ const TiltCard = ({ service, index, dir, onNavigate }: TiltCardProps) => {
         transition: "transform 0.25s ease-out",
         transformStyle: "preserve-3d",
       }}
-      className="group relative w-full text-left rounded-[28px] p-7 bg-white/80 backdrop-blur-sm border border-black/[0.04] shadow-[0_18px_45px_-20px_rgba(40,30,20,0.25)] overflow-hidden cursor-pointer"
+      className={cn(
+        "group relative w-full rounded-[28px] p-7 bg-white/80 backdrop-blur-sm border border-black/[0.04] shadow-[0_18px_45px_-20px_rgba(40,30,20,0.25)] overflow-hidden cursor-pointer",
+        isRtl ? "text-right" : "text-left"
+      )}
       aria-label={`${service.title[dir]} - ${T.hover[dir]}`}
     >
       <div
@@ -283,12 +297,15 @@ const TiltCard = ({ service, index, dir, onNavigate }: TiltCardProps) => {
       </p>
 
       <div
-        className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium tracking-wide relative"
+        className={cn(
+          "mt-5 inline-flex items-center gap-1.5 text-xs font-medium tracking-wide relative",
+          isRtl ? "flex-row-reverse" : ""
+        )}
         style={{ color: service.color, transform: "translateZ(20px)" }}
       >
         <span>{T.hover[dir]}</span>
         <span className="inline-block transition-transform group-hover:translate-x-1">
-          {dir === "ar" ? "←" : "→"}
+          {isRtl ? "←" : "→"}
         </span>
       </div>
     </motion.button>
@@ -303,37 +320,37 @@ const DermatologyLaser = () => {
   const isRtl = dir === "ar";
 
   return (
-    <div style={{ background: "#FAF6F1" }} dir={isRtl ? "rtl" : "ltr"}>
-      {" "}
+    <div dir={isRtl ? "rtl" : "ltr"} className="min-h-screen" style={{ background: "#FAF6F1" }}>
       <style>{`
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380;9..144,560&family=Cairo:wght@400;600;800&family=Inter:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380;9..144,560&family=Cairo:wght@400;600;800&family=Inter:wght@400;500&display=swap');
 
-    @keyframes drift {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(14px, -18px) scale(1.05); }
-    }
+        @keyframes drift {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(14px, -18px) scale(1.05); }
+        }
 
-    @keyframes rise {
-      0% { transform: translateY(0); opacity: 0; }
-      15% { opacity: 0.9; }
-      100% { transform: translateY(-140px); opacity: 0; }
-    }
+        @keyframes rise {
+          0% { transform: translateY(0); opacity: 0; }
+          15% { opacity: 0.9; }
+          100% { transform: translateY(-140px); opacity: 0; }
+        }
 
-    @keyframes beamSweep {
-      0% { transform: translateX(-30%) rotate(-20deg); opacity: 0; }
-      20% { opacity: 0.5; }
-      80% { opacity: 0.5; }
-      100% { transform: translateX(130%) rotate(-20deg); opacity: 0; }
-    }
+        @keyframes beamSweep {
+          0% { transform: translateX(-30%) rotate(-20deg); opacity: 0; }
+          20% { opacity: 0.5; }
+          80% { opacity: 0.5; }
+          100% { transform: translateX(130%) rotate(-20deg); opacity: 0; }
+        }
 
-    .df-serif { font-family: 'Fraunces', serif; }
-    .df-arabic { font-family: 'Cairo', sans-serif; }
-    .df-body { font-family: 'Inter', sans-serif; }
+        .df-serif { font-family: 'Fraunces', serif; }
+        .df-arabic { font-family: 'Cairo', sans-serif; }
+        .df-body { font-family: 'Inter', sans-serif; }
 
-    @media (prefers-reduced-motion: reduce) {
-      .df-particle, .df-beam, .df-orb-float { animation: none !important; }
-    }
-  `}</style>
+        @media (prefers-reduced-motion: reduce) {
+          .df-particle, .df-beam, .df-orb-float { animation: none !important; }
+        }
+      `}</style>
+
       <section className="relative pt-32 pb-24 overflow-hidden">
         {[...Array(7)].map((_, i) => (
           <span
@@ -352,13 +369,13 @@ const DermatologyLaser = () => {
           />
         ))}
 
-        <div className="container-custom relative">
+        <div className="container mx-auto px-6 relative">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className={isRtl ? "text-right" : "text-left"}
+              className={cn(isRtl ? "text-right" : "text-left", isRtl ? "df-arabic" : "df-body")}
             >
               <span
                 className="inline-block text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-5"
@@ -368,9 +385,7 @@ const DermatologyLaser = () => {
               </span>
 
               <h1
-                className={`text-5xl md:text-6xl font-medium leading-[1.05] mb-6 ${
-                  isRtl ? "df-arabic" : "df-serif"
-                }`}
+                className={`text-5xl md:text-6xl font-medium leading-[1.05] mb-6 ${isRtl ? "df-arabic" : "df-serif"}`}
                 style={{ color: "#2B2620" }}
               >
                 {T.title[dir]}
@@ -384,9 +399,7 @@ const DermatologyLaser = () => {
               </p>
 
               <p
-                className={`text-base leading-relaxed max-w-md mb-8 ${
-                  isRtl ? "df-arabic" : "df-body"
-                }`}
+                className={`text-base leading-relaxed max-w-md mb-8 ${isRtl ? "df-arabic" : "df-body"}`}
                 style={{ color: "#6B6154" }}
               >
                 {T.subtitle[dir]}
@@ -428,6 +441,7 @@ const DermatologyLaser = () => {
                   transform: "rotateX(8deg) rotateY(-10deg)",
                 }}
               />
+
               <div
                 className="df-beam absolute inset-0 rounded-full overflow-hidden"
                 style={{ transform: "rotateX(8deg) rotateY(-10deg)" }}
@@ -441,6 +455,7 @@ const DermatologyLaser = () => {
                   }}
                 />
               </div>
+
               <div
                 className="absolute inset-6 rounded-full flex items-center justify-center"
                 style={{
@@ -455,8 +470,9 @@ const DermatologyLaser = () => {
           </div>
         </div>
       </section>
-      <section className="section-padding pb-28">
-        <div className="container-custom">
+
+      <section className="pb-28">
+        <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
             {services.map((service, index) => (
               <TiltCard
