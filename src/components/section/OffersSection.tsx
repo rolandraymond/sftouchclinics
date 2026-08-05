@@ -163,7 +163,7 @@ const OffersSection = () => {
       description:
         language === "en"
           ? "Complete skin rejuvenation with Hydrafacial + LED therapy."
-          : "تجديد متكامل للبشرة مع Hydrafacial والعلاج بالضوء.",
+          : "جديد متكامل للبشرة مع الهيدرا فيشل وتقنيات متقدمة للعناية بالبشرة.",
       image:
         "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80",
     },
