@@ -9,6 +9,8 @@ import {
   ArrowRight,
   Sparkles,
   SendHorizontal,
+  MessageSquareText,
+  Navigation,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +31,7 @@ interface Branch {
   name: TextPair;
   address: TextPair;
   phones: string[];
+  hours: TextPair;
 }
 
 interface FormDataState {
@@ -45,12 +48,14 @@ const BRANCHES: Branch[] = [
     name: { en: "Damietta Branch", ar: "فرع دمياط" },
     address: { en: "Safwa Mall, 2nd Floor", ar: "مول صفوة، الدور الثاني" },
     phones: ["01006901892", "01503656589", "01031746006", "01558008978"],
+    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 12 ظهرًا إلى 10 مساءً" },
   },
   {
     id: "02",
     name: { en: "New Damietta", ar: "فرع دمياط الجديدة" },
     address: { en: "Central Zone", ar: "المنطقة المركزية" },
     phones: ["01006901892", "01503656589", "01031746006", "01558008978"],
+    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 12 ظهرًا إلى 10 مساءً" },
   },
 ];
 
@@ -80,24 +85,24 @@ const ContactUs = () => {
     const lines =
       dir === "ar"
         ? [
-            "طلب حجز / تواصل جديد",
-            "----------------------",
+            "صفحة تواصل معنا",
+            "----------------",
             `الاسم: ${formData.fullName || "غير مذكور"}`,
             `رقم الهاتف: ${formData.phone || "غير مذكور"}`,
             `البريد الإلكتروني: ${formData.email || "غير مذكور"}`,
-            `الفرع: ${selectedBranch.name.ar}`,
+            `الفرع المطلوب: ${selectedBranch.name.ar}`,
             `العنوان: ${selectedBranch.address.ar}`,
             "",
             "الرسالة:",
             formData.message || "لا توجد رسالة.",
           ]
         : [
-            "New booking / contact request",
-            "-----------------------------",
+            "Contact us page",
+            "----------------",
             `Name: ${formData.fullName || "Not provided"}`,
             `Phone: ${formData.phone || "Not provided"}`,
             `Email: ${formData.email || "Not provided"}`,
-            `Branch: ${selectedBranch.name.en}`,
+            `Preferred branch: ${selectedBranch.name.en}`,
             `Address: ${selectedBranch.address.en}`,
             "",
             "Message:",
@@ -114,9 +119,15 @@ const ContactUs = () => {
   };
 
   const inputBase =
-    "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent";
+    "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent transition-colors duration-300 focus:border-amber-500";
   const labelBase =
     "absolute top-3 text-slate-400 transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-amber-600 peer-focus:font-bold peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 pointer-events-none";
+
+  const sectionTitle = isRTL ? "صفحة تواصل معنا" : "Contact Us";
+  const heroTitlePrimary = isRTL ? "خلّينا على تواصل" : "Let's stay in touch";
+  const heroText = isRTL
+    ? "عندك استفسار أو حابب تعرف تفاصيل أكتر عن الخدمات؟ فريقنا الطبي والمنسقين موجودين للرد على الاستفسارات ومساعدتك في اختيار الخدمة المناسبة وتحديد الموعد."
+    : "Do you have a question or want more details about our services? Our medical team and coordinators are ready to help you choose the right service and book the best time.";
 
   return (
     <div
@@ -135,33 +146,37 @@ const ContactUs = () => {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-20 max-w-3xl mx-auto"
+          className="text-center mb-20 max-w-4xl mx-auto"
         >
           <div className="inline-flex items-center justify-center gap-3 mb-6 px-4 py-1.5 rounded-full bg-white border border-slate-100 shadow-sm">
             <Sparkles className="w-4 h-4 text-amber-500" />
             <span className="text-amber-700 text-[11px] font-bold tracking-[0.25em] uppercase">
-              {isRTL ? "خدمة العملاء والحجوزات" : "Concierge & Booking"}
+              {sectionTitle}
             </span>
             <Sparkles className="w-4 h-4 text-amber-500" />
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.05] tracking-tight">
             {isRTL ? (
               <>
-                نحن أقرب إليكِ <br />
+                {heroTitlePrimary} <br />
                 <span className="font-light text-slate-500 italic">
-                  مما تتخيلين
+                  بسهولة واهتمام
                 </span>
               </>
             ) : (
               <>
-                We are closer <br />
+                {heroTitlePrimary} <br />
                 <span className="font-light text-slate-500 italic">
-                  than you think
+                  with care and clarity
                 </span>
               </>
             )}
           </h1>
+
+          <p className="mt-8 text-base md:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+            {heroText}
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -174,38 +189,35 @@ const ContactUs = () => {
               isRTL ? "lg:order-2" : "lg:order-1",
             )}
           >
-            {branches.map((branch) => (
+            {branches.map((branch, index) => (
               <div
                 key={branch.id}
-                className="group relative bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_20px_60px_rgb(0,0,0,0.06)] hover:border-amber-100 overflow-hidden text-left"
+                className="group relative bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_20px_60px_rgb(0,0,0,0.06)] hover:border-amber-100 overflow-hidden"
               >
-                {/* Big watermark number stays on the left in both languages */}
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-300 via-amber-500 to-orange-400 opacity-70" />
+
                 <div
                   dir="ltr"
-                  className={cn(
-                    "absolute -top-6 left-0 -translate-x-1/4 text-[8rem] font-black text-slate-50 font-serif leading-none select-none pointer-events-none transition-colors duration-500 group-hover:text-amber-50/50",
-                    isRTL
-                      ? "left-0 -translate-x-1/4"
-                      : "left-0 -translate-x-1/4",
-                  )}
+                  className="absolute -top-6 left-0 -translate-x-1/4 text-[8rem] font-black text-slate-50 font-serif leading-none select-none pointer-events-none transition-colors duration-500 group-hover:text-amber-50/70"
                 >
                   {branch.id}
                 </div>
 
                 <div className="relative z-10">
-                  {/* Title only aligns right in Arabic */}
-                  <h3
-                    className={cn(
-                      "text-2xl font-bold text-slate-900 mb-6",
-                      isRTL ? "text-right" : "text-left",
-                    )}
-                  >
-                    {branch.name[dir]}
-                  </h3>
+                  <div className="flex items-center justify-between gap-4 mb-6">
+                    <h3 className={cn("text-2xl font-bold text-slate-900", isRTL ? "text-right" : "text-left")}>
+                      {branch.name[dir]}
+                    </h3>
+
+                    <div className="flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-amber-700 text-xs font-bold">
+                      <Navigation className="w-3.5 h-3.5" />
+                      {isRTL ? "زيارة" : "Visit"}
+                    </div>
+                  </div>
 
                   <div className="space-y-5">
                     <div className="flex items-start gap-4">
-                      <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
+                      <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
                         <MapPin className="w-5 h-5 stroke-[1.5]" />
                       </div>
 
@@ -220,15 +232,14 @@ const ContactUs = () => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 mt-2 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors uppercase tracking-wider"
                         >
-                          {t.common?.directions ||
-                            (isRTL ? "الخريطة والاتجاهات" : "Map & Directions")}
+                          {isRTL ? "الخريطة والاتجاهات" : "Map & Directions"}
                           <ArrowRight className="w-3.5 h-3.5" />
                         </a>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-4">
-                      <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
+                      <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
                         <Phone className="w-5 h-5 stroke-[1.5]" />
                       </div>
 
@@ -244,6 +255,16 @@ const ContactUs = () => {
                           </a>
                         ))}
                       </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
+                        <Clock className="w-5 h-5 stroke-[1.5]" />
+                      </div>
+
+                      <p className="text-slate-600 font-medium leading-relaxed">
+                        {branch.hours[dir]}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -261,13 +282,19 @@ const ContactUs = () => {
             )}
           >
             <div className="mb-12">
+              <div className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-amber-700 font-bold text-xs tracking-[0.2em] uppercase mb-5">
+                <MessageSquareText className="w-4 h-4" />
+                {isRTL ? "نموذج سريع" : "Quick Form"}
+              </div>
+
               <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                {isRTL ? "أرسلي استفساركِ" : "Send an Inquiry"}
+                {isRTL ? "اكتب رسالتك" : "Write your message"}
               </h2>
-              <p className="text-slate-500 font-medium leading-relaxed max-w-md">
+
+              <p className="text-slate-500 font-medium leading-relaxed max-w-xl">
                 {isRTL
-                  ? "فريقنا الطبي والمنسقون مستعدون لتلقي رسالتك، وسنقوم بالرد في أقرب وقت لتحديد موعدك."
-                  : "Our medical team and coordinators are ready to receive your message and will reply shortly."}
+                  ? "املأ البيانات الأساسية، واختار الفرع المناسب، ثم أرسل التفاصيل مباشرة إلى الفريق عبر واتساب."
+                  : "Fill in the basic details, choose the right branch, then send your request directly to the team on WhatsApp."}
               </p>
             </div>
 
@@ -283,14 +310,9 @@ const ContactUs = () => {
                     placeholder=" "
                     autoComplete="name"
                     dir={isRTL ? "rtl" : "ltr"}
-                    className={cn(
-                      inputBase,
-                      isRTL ? "text-right" : "text-left",
-                    )}
+                    className={cn(inputBase, isRTL ? "text-right" : "text-left")}
                   />
-                  <label
-                    className={cn(labelBase, isRTL ? "right-0" : "left-0")}
-                  >
+                  <label className={cn(labelBase, isRTL ? "right-0" : "left-0")}>
                     {isRTL ? "الاسم بالكامل" : "Full Name"}
                   </label>
                   <div
@@ -314,14 +336,9 @@ const ContactUs = () => {
                     placeholder=" "
                     autoComplete="tel"
                     dir="ltr"
-                    className={cn(
-                      inputBase,
-                      isRTL ? "text-right" : "text-left",
-                    )}
+                    className={cn(inputBase, isRTL ? "text-right" : "text-left")}
                   />
-                  <label
-                    className={cn(labelBase, isRTL ? "right-0" : "left-0")}
-                  >
+                  <label className={cn(labelBase, isRTL ? "right-0" : "left-0")}>
                     {isRTL ? "رقم الهاتف" : "Phone Number"}
                   </label>
                   <div
@@ -347,14 +364,9 @@ const ContactUs = () => {
                     placeholder=" "
                     autoComplete="email"
                     dir="ltr"
-                    className={cn(
-                      inputBase,
-                      isRTL ? "text-right" : "text-left",
-                    )}
+                    className={cn(inputBase, isRTL ? "text-right" : "text-left")}
                   />
-                  <label
-                    className={cn(labelBase, isRTL ? "right-0" : "left-0")}
-                  >
+                  <label className={cn(labelBase, isRTL ? "right-0" : "left-0")}>
                     {isRTL ? "البريد الإلكتروني" : "Email Address"}
                   </label>
                   <div
@@ -376,7 +388,7 @@ const ContactUs = () => {
                     onBlur={() => setFocusedInput(null)}
                     dir={isRTL ? "rtl" : "ltr"}
                     className={cn(
-                      "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none appearance-none",
+                      "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none appearance-none transition-colors duration-300 focus:border-amber-500",
                       isRTL ? "text-right" : "text-left",
                     )}
                   >
@@ -418,10 +430,10 @@ const ContactUs = () => {
                   onFocus={() => setFocusedInput("message")}
                   onBlur={() => setFocusedInput(null)}
                   placeholder=" "
-                  rows={4}
+                  rows={5}
                   dir={isRTL ? "rtl" : "ltr"}
                   className={cn(
-                    "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent resize-none",
+                    "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent resize-none transition-colors duration-300 focus:border-amber-500",
                     isRTL ? "text-right" : "text-left",
                   )}
                 />
@@ -431,9 +443,7 @@ const ContactUs = () => {
                     isRTL ? "right-0" : "left-0",
                   )}
                 >
-                  {isRTL
-                    ? "رسالتك أو تفاصيل الحجز..."
-                    : "Your Message or Booking Details..."}
+                  {isRTL ? "اكتب استفسارك أو تفاصيل الحجز" : "Write your inquiry or booking details"}
                 </label>
                 <div
                   className={cn(
@@ -455,15 +465,12 @@ const ContactUs = () => {
                   )}
                 >
                   <span className="relative z-10 tracking-wide">
-                    {t.contact?.send ||
-                      (isRTL ? "إرسال الرسالة" : "Send Message")}
+                    {isRTL ? "إرسال للفريق" : "Send to Team"}
                   </span>
                   <SendHorizontal
                     className={cn(
                       "relative z-10 w-5 h-5 transition-transform duration-300 group-hover/submit:translate-x-1",
-                      isRTL
-                        ? "rotate-180 group-hover/submit:-translate-x-1"
-                        : "",
+                      isRTL ? "rotate-180 group-hover/submit:-translate-x-1" : "",
                     )}
                   />
                 </button>
