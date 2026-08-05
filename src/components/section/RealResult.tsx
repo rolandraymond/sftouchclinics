@@ -50,8 +50,8 @@ const specialties: Specialty[] = [
     mainLink: "/services/dermatology-laser",
     services: [
       {
-        id: "fillers unser eye",
-        labelEn: "fillers unser eye",
+        id: "fillers under eye",
+        labelEn: "fillers under eye",
         labelAr: "فيلر تحت العين",
         link: "/services/dermatology-laser",
         case: {
