@@ -30,10 +30,13 @@ const doctors: Doctor[] = [
     id: "01",
     name: "Dr. Freehan Zakria",
     nameAr: "د. فريهان زكريا",
-    specialty: "Dermatology, Aesthetics, Laser & Therapeutic Nutrition",
+    specialty: "Dermatology, Aesthetic Medicine, Laser & Clinical Nutrition Specialist",
     specialtyAr: "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية",
     quote:
-      "Comprehensive care that blends dermatology, aesthetics, laser, and nutrition.",
+      "Dermatology, Aesthetic Medicine, Laser & Clinical Nutrition Specialist\n\n" +
+      "Bachelor of Medicine & Surgery – Kasr Al Ainy\n" +
+      "Master’s Degree in Dermatology – Suez Canal University\n" +
+      "Diploma in Clinical Nutrition – National Nutrition Institute",
     quoteAr:
       "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية\n\n" +
       "بكالوريوس الطب والجراحة – القصر العيني\n" +
@@ -48,10 +51,12 @@ const doctors: Doctor[] = [
     id: "02",
     name: "Dr. Sally Eladawy",
     nameAr: "د. سالي العدوي",
-    specialty: "Dermatology, Aesthetics & Laser Specialist",
+    specialty: "Dermatology, Aesthetic Medicine & Laser Specialist",
     specialtyAr: "أخصائية الجلدية والتجميل والليزر",
     quote:
-      "Precision in every procedure, with a deep focus on detail and refinement.",
+      "Dermatology, Aesthetic Medicine & Laser Specialist\n\n" +
+      "Diploma in Dermatology, Aesthetic Medicine & Venereology – Menoufia University\n" +
+      "Diploma in Laser Medicine – National Institute of Laser Sciences, Cairo University",
     quoteAr:
       "أخصائية الجلدية والتجميل والليزر\n\n" +
       "دبلومة في الأمراض الجلدية والتجميل والتناسلية – جامعة المنوفية\n" +
@@ -65,10 +70,12 @@ const doctors: Doctor[] = [
     id: "03",
     name: "Dr. Mai Romeya",
     nameAr: "د. مي رومية",
-    specialty: "Clinical Pharmacist & Nutrition Specialist",
+    specialty: "Clinical Pharmacist and Nutritionist",
     specialtyAr: "صيدلانية إكلينيكية وأخصائية تغذية",
     quote:
-      "Clinical pharmacy and evidence-based nutrition working together for precise, personalized care.",
+      "Clinical Pharmacist and Nutritionist from MSA and Tanta University\n" +
+      "Clinical Researcher from Harvard Medical School\n" +
+      "Official Trainer from Ain Shams University",
     quoteAr:
       "صيدلانية إكلينيكية وأخصائية تغذية من جامعتي MSA وطنطا\n" +
       "باحثة في الأبحاث الإكلينيكية من كلية الطب بجامعة هارفارد\n" +
