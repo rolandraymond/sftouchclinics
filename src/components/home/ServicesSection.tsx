@@ -173,7 +173,7 @@ const ServicesSection = () => {
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-400">
                     برعاية{" "}
                   </span>
-                  <br />  متخصصة
+                   متخصصة
                 </>
               ) : (
                 <>
