@@ -65,12 +65,19 @@ const WhyUsSection = () => {
              </span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-cairo">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 font-cairo">
             {isRTL ? 'خبرة تصنع الفرق' : 'Making a Difference in'} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-yellow-500">
               {isRTL ? 'فريق طبي متخصص' : 'Aesthetic World'}
             </span>
           </h2>
+
+          {/* الجملة المضافة تحت العنوان */}
+          <p className="text-slate-600 text-base md:text-lg leading-relaxed font-medium font-cairo">
+            {isRTL 
+              ? 'كل إجراء يتم على يد أطباء متخصصين ومؤهلين، لضمان أعلى مستوى من الرعاية في كل خطوة.' 
+              : 'Every procedure is performed by qualified specialists to ensure the highest standard of care at every step.'}
+          </p>
         </motion.div>
 
         {/* The Spotlight Grid */}
@@ -166,7 +173,6 @@ const SpotlightCard = ({ feature, index, isRTL }: { feature: FeatureItem, index:
              0{index + 1}
            </span>
            
-           {/* السهم السفلي: تم تصحيح الخطأ هنا باستخدام كلاس واحد ديناميكي */}
            <div 
              className={`w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform ${isRTL ? 'translate-x-4 group-hover:translate-x-0' : '-translate-x-4 group-hover:translate-x-0'}`}
            >
