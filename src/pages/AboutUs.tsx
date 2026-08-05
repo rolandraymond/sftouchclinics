@@ -78,10 +78,10 @@ const AboutUs = () => {
                     </span>
                     <span className="absolute bottom-2 left-0 w-full h-3 bg-amber-100 -z-10 -rotate-2" />
                   </span>{" "}
-                  ودقة
+                  
                   {/* استخدام block للتحكم الكامل في المسافة الرأسية وتجنب تلاصق الكلمات */}
                   <span className="block mt-2 text-slate-800">
-                      في كل تفصيلة
+                   ودقة في كل تفصيلة
                   </span>
                 </>
               ) : (
