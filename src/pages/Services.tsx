@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Apple, Scissors, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
 
@@ -27,7 +27,6 @@ const Services = () => {
         ? 'علاجات متقدمة للبشرة وإجراءات الليزر والحقن التجميلية، بإشراف أطباء جلدية متخصصين.' 
         : (t.services?.dermatology?.description || 'Advanced skin treatments, laser procedures, and cosmetic injections supervised by specialist dermatologists.'),
       buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
-      icon: Sparkles,
       image: '/images/64b91e60ee991bc3355749ae_laser.jpeg',
       href: '/services/dermatology-laser',
       accent: 'text-amber-500',
@@ -42,7 +41,6 @@ const Services = () => {
         ? 'خطط غذائية مخصصة وتقنيات متقدمة لنحت الجسم، منها أجهزة نحت الجسم، حسب احتياجات كل حالة.' 
         : (t.services?.nutrition?.description || 'Customized nutrition plans and advanced body contouring technologies tailored to individual needs.'),
       buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
-      icon: Apple,
       image: '/images/images (5).jpg',
       href: '/services/nutrition-contouring',
       accent: 'text-emerald-500',
@@ -57,7 +55,6 @@ const Services = () => {
         ? 'زراعة الشعر وعلاجات متطورة لتحسين كثافة الشعر ومظهره، مع خطة تناسب كل حالة.' 
         : (t.services?.hair?.description || 'Hair transplantation and advanced treatments to restore density and appearance tailored to each case.'),
       buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
-      icon: Scissors,
       image: '/images/6485892b-1ae1-45e5-b3dc-6aa57ed65001-1.png',
       href: '/services/hair-restoration',
       accent: 'text-rose-500',
@@ -94,13 +91,25 @@ const Services = () => {
             </div>
             
             <h2 className="text-4xl md:text-6xl font-black text-slate-950 leading-[1.2] font-cairo mb-4">
-              {isRTL ? 'تخصصات متكاملة لرعاية أفضل' : 'Integrated Specialties for Better Care'}
+              {isRTL ? (
+                <>
+                  تخصصات متكاملة
+                  <br />
+                  لرعاية أفضل
+                </>
+              ) : (
+                <>
+                  Integrated Specialties
+                  <br />
+                  for Better Care
+                </>
+              )}
             </h2>
 
             <p className="text-slate-600 text-base md:text-lg leading-relaxed font-medium font-cairo">
               {isRTL 
                 ? 'من الجلدية والليزر، للتغذية ونحت الجسم، وزراعة وعلاج الشعر.. كل الخدمات تحت سقف واحد، بخبرة طبية وتقنيات متطورة.' 
-                : 'From dermatology and laser to nutrition, body contouring, and hair restoration... all services under one roof with medical expertise and advanced technologies.'}
+                : 'From dermatology and laser to nutrition, body contouring, and hair care... all services under one roof with medical expertise and advanced technologies.'}
             </p>
           </div>
           
@@ -139,16 +148,13 @@ const Services = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
                 
-                {/* Floating Icon Badge on Image */}
+                {/* Floating Title on Image */}
                 <motion.div 
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                   className="absolute bottom-8 start-8 end-8 z-20 flex items-center gap-4"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shrink-0">
-                    {React.createElement(services[activeIndex].icon, { className: "w-6 h-6" })}
-                  </div>
                   <span className="text-white font-bold text-xl md:text-2xl tracking-wide font-cairo shadow-black/50 drop-shadow-lg">
                     {services[activeIndex].title}
                   </span>
@@ -220,7 +226,6 @@ const Services = () => {
                           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          {/* ps-16 md:ps-24 تضمن محاذاة النص والزر بشكل دقيق تحت العنوان تماماً باللغتين */}
                           <div className="pt-6 pb-2 ps-16 md:ps-[88px]">
                             <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6 font-medium font-cairo">
                               {service.description}

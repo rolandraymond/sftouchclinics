@@ -46,7 +46,7 @@ const offers: Offer[] = [
     title: 'Bridal Queen Package',
     titleAr: 'باكدج العروسة',
     value: 'VIP',
-    description: 'Comprehensive skin & body prep before the big day',
+    description: 'Comprehensive skin rejuvenation with HydraFacial and advanced skincare technologies.',
     descriptionAr: 'تجهيز متكامل للبشرة والجسم والتغذية قبل مناسبتك',
     code: 'BRIDE2024',
     gradient: 'from-amber-100/80 via-amber-50/50 to-white',

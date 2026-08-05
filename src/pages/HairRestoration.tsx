@@ -48,7 +48,7 @@ interface LightOrbProps {
 
 const T: Record<string, TextPair> & { hover: TextPair } = {
   eyebrow: { en: "Our Services", ar: "خدماتنا" },
-  title: { en: "Hair Restoration", ar: "استعادة الشعر" },
+  title: { en: "Hair Care", ar: "عناية الشعر" },
   heroLine: {
     en: "Revive your confidence — advanced solutions for natural, lasting growth.",
     ar: "استعادة ثقتك بنفسك — حلول متقدمة لنمو الشعر بشكل طبيعي ومستدام.",

@@ -92,8 +92,8 @@ const Footer = () => {
     },
     {
       label: isRTL ? "واتساب الحجز" : "WhatsApp Booking",
-      display: "+20 155 800 8978",
-      value: "+201558008978",
+      display: "0 155 800 8978",
+      value: "01558008978",
     },
     {
       label: isRTL ? "فرع دمياط" : "Damietta Branch",
@@ -102,8 +102,8 @@ const Footer = () => {
     },
     {
       label: isRTL ? "فرع دمياط الجديدة" : "New Damietta Branch",
-      display: "+20 15 0365 6589",
-      value: "+201503656589",
+      display: "0 15 0365 6589",
+      value: "01503656589",
     },
   ];
 

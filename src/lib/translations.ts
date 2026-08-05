@@ -144,7 +144,7 @@ export const translations: Record<Language, TranslationContent> = {
         description: 'Personalized diet plans,  and advanced body sculpting devices for your wellness journey.',
       },
       hair: {
-        title: 'Hair Restoration',
+        title: 'Hair Care',
         description: 'State-of-the-art hair transplant procedures and treatments for natural, lasting results.',
       },
       learnMore: 'Learn More',

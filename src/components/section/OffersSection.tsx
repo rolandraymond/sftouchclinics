@@ -180,7 +180,7 @@ const OffersSection = () => {
 
   const marqueeText =
     language === "en"
-      ? ["BOOK NOW", "LIMITED SLOTS", "SPECIAL OFFER", "RADIANCE"]
+      ? ["BOOK NOW", "Technologies", "Consultations "]
       : ["احجز الآن", "استشارة طبية", " تقنيات متطورة"];
 
   const marqueeItems = [...Array(6)].flatMap(() => marqueeText);

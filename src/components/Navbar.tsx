@@ -73,7 +73,7 @@ const Navbar = () => {
     },
     {
       id: 'laser',
-      label: language === 'en' ? 'Hair Restoration' : 'استعادة الشعر',
+      label: language === 'en' ? 'Hair Care' : 'عناية الشعر',
       desc: language === 'en' ? 'Modern transplant technologies' : 'أحدث تقنيات زراعة وعلاج الشعر',
       icon: Zap,
       href: '/services/hair-restoration'
