@@ -20,8 +20,13 @@ const Services = () => {
   const services = [
     {
       id: '01',
-      title: t.services?.dermatology?.title || (isRTL ? 'الجلدية والليزر' : 'Dermatology & Laser'),
-      description: t.services?.dermatology?.description || (isRTL ? 'بروتوكولات متقدمة لتوحيد لون البشرة وإزالة التصبغات، مع أحدث تقنيات الليزر الآمنة لإزالة الشعر بدون ألم.' : 'Advanced protocols for skin tone evening and pigmentation removal, with the latest safe laser tech.'),
+      title: isRTL 
+        ? 'الجلدية والليزر' 
+        : (t.services?.dermatology?.title || 'Dermatology & Laser'),
+      description: isRTL 
+        ? 'علاجات متقدمة للبشرة وإجراءات الليزر والحقن التجميلية، بإشراف أطباء جلدية متخصصين.' 
+        : (t.services?.dermatology?.description || 'Advanced skin treatments, laser procedures, and cosmetic injections supervised by specialist dermatologists.'),
+      buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
       icon: Sparkles,
       image: '/images/64b91e60ee991bc3355749ae_laser.jpeg',
       href: '/services/dermatology-laser',
@@ -30,8 +35,13 @@ const Services = () => {
     },
     {
       id: '02',
-      title: t.services?.nutrition?.title || (isRTL ? 'نحت القوام' : 'Nutrition & Contouring'),
-      description: t.services?.nutrition?.description || (isRTL ? 'برامج طبية مخصصة للوصول للوزن المثالي، مقترنة بأحدث أجهزة تفتيت الدهون ونحت الجسم غير الجراحي.' : 'Customized medical programs for ideal weight, paired with non-surgical fat freezing and contouring.'),
+      title: isRTL 
+        ? 'التغذية العلاجية ونحت الجسم' 
+        : (t.services?.nutrition?.title || 'Clinical Nutrition & Body Contouring'),
+      description: isRTL 
+        ? 'خطط غذائية مخصصة وتقنيات متقدمة لنحت الجسم، منها أجهزة نحت الجسم، حسب احتياجات كل حالة.' 
+        : (t.services?.nutrition?.description || 'Customized nutrition plans and advanced body contouring technologies tailored to individual needs.'),
+      buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
       icon: Apple,
       image: '/images/images (5).jpg',
       href: '/services/nutrition-contouring',
@@ -40,8 +50,13 @@ const Services = () => {
     },
     {
       id: '03',
-      title: t.services?.hair?.title || (isRTL ? 'علاج وتجميل الشعر' : 'Hair Restoration'),
-      description: t.services?.hair?.description || (isRTL ? 'علاجات مبتكرة لتساقط الشعر، حقن البلازما، وتقنيات حديثة لاستعادة كثافة وحيوية الشعر بشكل طبيعي.' : 'Innovative treatments for hair loss, PRP injections, and modern tech to restore density and vitality naturally.'),
+      title: isRTL 
+        ? 'زراعة وعلاج الشعر' 
+        : (t.services?.hair?.title || 'Hair Restoration & Treatment'),
+      description: isRTL 
+        ? 'زراعة الشعر وعلاجات متطورة لتحسين كثافة الشعر ومظهره، مع خطة تناسب كل حالة.' 
+        : (t.services?.hair?.description || 'Hair transplantation and advanced treatments to restore density and appearance tailored to each case.'),
+      buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
       icon: Scissors,
       image: '/images/6485892b-1ae1-45e5-b3dc-6aa57ed65001-1.png',
       href: '/services/hair-restoration',
@@ -54,6 +69,7 @@ const Services = () => {
     <section 
       id="services" 
       ref={sectionRef} 
+      dir={isRTL ? "rtl" : "ltr"}
       className="relative pt-32 pb-32 bg-[#FAFAFA] overflow-hidden selection:bg-slate-900 selection:text-white"
     >
       {/* ================= BACKGROUND DECORATION ================= */}
@@ -67,34 +83,34 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={cn("mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8", isRTL ? "md:flex-row-reverse" : "")}
+          className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 text-start"
         >
-          <div className={isRTL ? "text-right" : "text-left"}>
-            <div className={cn("flex items-center gap-3 mb-4", isRTL ? "justify-end" : "justify-start")}>
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-4">
               <span className="h-px w-10 bg-amber-600"></span>
-              <span className="text-amber-700 font-bold text-sm tracking-widest uppercase">
-                {isRTL ? 'فن العناية والتجميل' : 'The Art of Care'}
+              <span className="text-amber-700 font-bold text-sm tracking-widest uppercase font-cairo">
+                {isRTL ? 'صفحة خدماتنا' : 'Our Services'}
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-950 leading-[1.1] font-cairo">
-              {isRTL ? (
-                <>رحلتك نحو <span className="italic font-light text-slate-500">الكمال</span> <br /> تبدأ من هنا.</>
-              ) : (
-                <>Your journey to <span className="italic font-light text-slate-500">Perfection</span> <br /> begins here.</>
-              )}
+            
+            <h2 className="text-4xl md:text-6xl font-black text-slate-950 leading-[1.2] font-cairo mb-4">
+              {isRTL ? 'تخصصات متكاملة لرعاية أفضل' : 'Integrated Specialties for Better Care'}
             </h2>
+
+            <p className="text-slate-600 text-base md:text-lg leading-relaxed font-medium font-cairo">
+              {isRTL 
+                ? 'من الجلدية والليزر، للتغذية ونحت الجسم، وزراعة وعلاج الشعر.. كل الخدمات تحت سقف واحد، بخبرة طبية وتقنيات متطورة.' 
+                : 'From dermatology and laser to nutrition, body contouring, and hair restoration... all services under one roof with medical expertise and advanced technologies.'}
+            </p>
           </div>
           
-          <div className={isRTL ? "text-right md:text-left" : "text-left md:text-right"}>
+          <div className="shrink-0">
              <Link 
                to="/services" 
-               className={cn(
-                 "inline-flex items-center gap-2 pb-1 border-b-2 border-slate-900 text-slate-900 font-bold hover:text-amber-600 hover:border-amber-600 transition-colors duration-300",
-                 isRTL ? "flex-row-reverse" : ""
-               )}
+               className="inline-flex items-center gap-2 pb-1 border-b-2 border-slate-900 text-slate-900 font-bold hover:text-amber-600 hover:border-amber-600 transition-colors duration-300 font-cairo"
              >
-               {isRTL ? 'عرض كل الخدمات' : 'View All Services'}
-               <ArrowUpRight className={cn("w-5 h-5", isRTL ? "-scale-x-100" : "")} />
+               <span>{isRTL ? 'عرض الخدمات' : 'View All Services'}</span>
+               <ArrowUpRight className={cn("w-5 h-5 transition-transform", isRTL ? "-scale-x-100" : "")} />
              </Link>
           </div>
         </motion.div>
@@ -102,13 +118,10 @@ const Services = () => {
         {/* ================= INTERACTIVE EDITORIAL LAYOUT ================= */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
-          {/* LEFT SIDE: Dynamic Image Showcase (Sticky) */}
+          {/* LEFT/RIGHT SIDE: Dynamic Image Showcase (Sticky) */}
           <motion.div 
             style={{ y: yBg }}
-            className={cn(
-              "lg:col-span-6 sticky top-32 h-[450px] lg:h-[650px] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 order-2",
-              isRTL ? "lg:order-1" : "lg:order-1"
-            )}
+            className="lg:col-span-6 sticky top-32 h-[450px] lg:h-[650px] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -124,19 +137,19 @@ const Services = () => {
                   alt={services[activeIndex].title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
                 
                 {/* Floating Icon Badge on Image */}
                 <motion.div 
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
-                  className={cn("absolute bottom-8 z-20 flex items-center gap-4", isRTL ? "right-8 flex-row-reverse" : "left-8")}
+                  className="absolute bottom-8 start-8 end-8 z-20 flex items-center gap-4"
                 >
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white">
+                  <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shrink-0">
                     {React.createElement(services[activeIndex].icon, { className: "w-6 h-6" })}
                   </div>
-                  <span className="text-white font-bold text-xl tracking-wide font-cairo shadow-black/50 drop-shadow-lg">
+                  <span className="text-white font-bold text-xl md:text-2xl tracking-wide font-cairo shadow-black/50 drop-shadow-lg">
                     {services[activeIndex].title}
                   </span>
                 </motion.div>
@@ -144,8 +157,8 @@ const Services = () => {
             </AnimatePresence>
           </motion.div>
 
-          {/* RIGHT SIDE: Interactive Accordion List */}
-          <div className={cn("lg:col-span-6 flex flex-col justify-center order-1", isRTL ? "lg:order-2" : "lg:order-2")}>
+          {/* RIGHT/LEFT SIDE: Interactive Accordion List */}
+          <div className="lg:col-span-6 flex flex-col justify-center">
             <div className="flex flex-col border-t border-slate-200">
               {services.map((service, index) => {
                 const isActive = activeIndex === index;
@@ -154,13 +167,13 @@ const Services = () => {
                   <div 
                     key={service.id}
                     onMouseEnter={() => setActiveIndex(index)}
-                    onClick={() => setActiveIndex(index)} // For Mobile
+                    onClick={() => setActiveIndex(index)}
                     className={cn(
-                      "group relative border-b border-slate-200 py-8 cursor-pointer transition-all duration-500",
+                      "group relative border-b border-slate-200 py-8 cursor-pointer transition-all duration-500 text-start",
                       isActive ? "opacity-100" : "opacity-40 hover:opacity-70"
                     )}
                   >
-                    {/* Active Background Highlight (Subtle) */}
+                    {/* Active Background Highlight */}
                     {isActive && (
                       <motion.div 
                         layoutId="activeServiceBg" 
@@ -168,33 +181,36 @@ const Services = () => {
                       />
                     )}
 
-                    <div className={cn("flex items-center justify-between", isRTL ? "flex-row-reverse" : "")}>
-                      <div className={cn("flex items-center gap-6", isRTL ? "flex-row-reverse" : "")}>
-                        {/* Huge Number */}
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-6">
+                        {/* Service Number */}
                         <span className={cn(
-                          "text-5xl md:text-6xl font-black font-serif transition-colors duration-500",
+                          "text-4xl md:text-6xl font-black font-serif transition-colors duration-500 shrink-0",
                           isActive ? service.accent : "text-slate-300"
                         )}>
                           {service.id}
                         </span>
                         
                         {/* Title */}
-                        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 font-cairo">
+                        <h3 className="text-xl md:text-3xl font-bold text-slate-900 font-cairo">
                           {service.title}
                         </h3>
                       </div>
                       
-                      {/* Arrow Icon */}
+                      {/* Interactive Arrow Button */}
                       <div className={cn(
-                        "w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-500",
-                        isActive ? `border-transparent ${service.bgAccent} text-white` : "border-slate-200 text-slate-400",
-                        isRTL ? (isActive ? "-rotate-45" : "rotate-180") : (isActive ? "rotate-45" : "rotate-0")
+                        "w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-500 shrink-0",
+                        isActive ? `border-transparent ${service.bgAccent} text-white` : "border-slate-200 text-slate-400"
                       )}>
-                        <ArrowRight className="w-5 h-5" />
+                        <ArrowRight className={cn(
+                          "w-5 h-5 transition-transform duration-300",
+                          isRTL ? "rotate-180" : "rotate-0",
+                          isActive && (isRTL ? "-translate-x-1" : "translate-x-1")
+                        )} />
                       </div>
                     </div>
 
-                    {/* Expandable Description (Accordion) */}
+                    {/* Expandable Description */}
                     <AnimatePresence>
                       {isActive && (
                         <motion.div
@@ -204,19 +220,19 @@ const Services = () => {
                           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className={cn("pt-6 pb-2", isRTL ? "pl-0 pr-[88px] text-right" : "pr-0 pl-[88px] text-left")}>
-                            <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
+                          {/* ps-16 md:ps-24 تضمن محاذاة النص والزر بشكل دقيق تحت العنوان تماماً باللغتين */}
+                          <div className="pt-6 pb-2 ps-16 md:ps-[88px]">
+                            <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6 font-medium font-cairo">
                               {service.description}
                             </p>
                             <Link 
                               to={service.href}
                               className={cn(
-                                "inline-flex items-center gap-2 font-bold text-sm uppercase tracking-wider transition-colors",
-                                service.accent,
-                                isRTL ? "flex-row-reverse" : ""
+                                "inline-flex items-center gap-2 font-bold text-sm uppercase tracking-wider transition-colors font-cairo",
+                                service.accent
                               )}
                             >
-                              <span>{isRTL ? 'التفاصيل' : 'Discover Details'}</span>
+                              <span>{service.buttonText}</span>
                               <ArrowRight className={cn("w-4 h-4", isRTL ? "rotate-180" : "")} />
                             </Link>
                           </div>

@@ -8,13 +8,11 @@ import {
   Sun,
   Target,
   Waves,
-  CalendarCheck,
-  Quote,
-  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
+
 const CONTACT_PATH = "/contact-us";
 
 type LocaleKey = "en" | "ar";
@@ -24,26 +22,32 @@ interface TextPair {
   ar: string;
 }
 
-/* interface ServiceItem {
-  icon: ComponentType<
-    SVGProps<SVGSVGElement> & { size?: number | string; strokeWidth?: number }
-  >;
+interface ServiceItem {
+  icon: LucideIcon;
   color: string;
   glow: string;
   image: string;
   title: TextPair;
   description: TextPair;
-} */
+}
+
+interface LightOrbProps {
+  color: string;
+  Icon: LucideIcon;
+  id: number;
+  image: string;
+  alt: string;
+}
 
 const T: Record<string, TextPair> & { hover: TextPair } = {
-  eyebrow: { en: "Our Services", ar: "خدماتنا" },
-  title: { en: "Dermatology & Laser", ar: "الجلدية والليزر" },
+  eyebrow: { en: "Dermatology & Laser", ar: "صفحة الجلدية والليزر" },
+  titleLine1: { en: "Healthy Skin,", ar: "بشرة صحية" },
+  titleLine2: { en: "Naturally", ar: "بشكل طبيعي" },
   heroLine: {
-    en: "Every treatment here is, quite literally, light meeting skin.",
-    ar: "كل علاج هنا هو، حرفيًا، لقاء بين الضوء والبشرة.",
+    en: "From skin treatments to lasers and cosmetic injections, we offer specialized medical solutions using the latest technologies.",
+    ar: "من علاج مشاكل البشرة لليزر والحقن التجميلية، بنقدم حلول متخصصة بإشراف طبي وفي ضوء أحدث التقنيات.",
   },
-  subtitle: { en: "", ar: "" },
-  cta: { en: "Book a consultation", ar: "احجز استشارة" },
+  cta: { en: "Book a consultation", ar: "احجز استشارتك" },
   hover: { en: "Book now", ar: "احجز الآن" },
 };
 
@@ -56,8 +60,8 @@ const services: ServiceItem[] = [
       "https://images.unsplash.com/photo-1731514771613-991a02407132?auto=format&fit=crop&w=600&q=75",
     title: { en: "Skin Treatment", ar: "علاج البشرة" },
     description: {
-      en: "Advanced treatments for acne, pigmentation, and scars.",
-      ar: "علاجات متقدمة لحب الشباب والتصبغات والندبات.",
+      en: "Advanced treatments for skin issues like acne, pigmentation, and scars.",
+      ar: "علاجات متقدمة لمشاكل البشرة، زي حب الشباب والتصبغات والندبات.",
     },
   },
   {
@@ -68,8 +72,8 @@ const services: ServiceItem[] = [
       "https://images.unsplash.com/photo-1746806942799-b4db209e9a6b?auto=format&fit=crop&w=600&q=75",
     title: { en: "Laser Hair Removal", ar: "إزالة الشعر بالليزر" },
     description: {
-      en: "Motus Pro technology for safe, permanent removal.",
-      ar: "تقنية Motus Pro للإزالة الآمنة والدائمة.",
+      en: "Motus Pro technology for laser hair removal, tailored to each case for a safe and effective experience.",
+      ar: "تقنية Motus Pro لإزالة الشعر، مع إعدادات تناسب كل حالة للحصول على تجربة آمنة وفعالة.",
     },
   },
   {
@@ -80,8 +84,8 @@ const services: ServiceItem[] = [
       "https://images.unsplash.com/photo-1731355771317-b2ab72c79124?auto=format&fit=crop&w=600&q=75",
     title: { en: "Botox & Fillers", ar: "البوتوكس والفيلر" },
     description: {
-      en: "Aesthetic injectables for facial rejuvenation.",
-      ar: "حقن تجميلية لتجديد شباب الوجه.",
+      en: "Medically supervised aesthetic injections to enhance facial appearance while maintaining natural results.",
+      ar: "حقن تجميلية بإشراف طبي، لتحسين مظهر الوجه والحفاظ على نتائج طبيعية.",
     },
   },
   {
@@ -92,8 +96,8 @@ const services: ServiceItem[] = [
       "https://images.unsplash.com/photo-1730288951113-9cc087c14b83?auto=format&fit=crop&w=600&q=75",
     title: { en: "Pigmentation Treatment", ar: "علاج التصبغات" },
     description: {
-      en: "Advanced techniques for even skin tone.",
-      ar: "تقنيات متطورة لتوحيد لون البشرة.",
+      en: "Advanced techniques to target pigmentation and unify skin tone based on individual skin nature.",
+      ar: "تقنيات متطورة للتعامل مع التصبغات وتوحيد مظهر البشرة، حسب طبيعة كل حالة.",
     },
   },
   {
@@ -104,8 +108,8 @@ const services: ServiceItem[] = [
       "https://images.unsplash.com/photo-1761718209708-9ab9ba1c7252?auto=format&fit=crop&w=600&q=75",
     title: { en: "Acne Treatment", ar: "علاج حب الشباب" },
     description: {
-      en: "Comprehensive programs for clear skin.",
-      ar: "برامج علاجية شاملة للحصول على بشرة صافية.",
+      en: "Specialized treatment plans for acne and its effects customized to skin condition.",
+      ar: "خطط علاجية متخصصة للتعامل مع حب الشباب وآثاره، حسب حالة البشرة.",
     },
   },
   {
@@ -116,19 +120,11 @@ const services: ServiceItem[] = [
       "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=75",
     title: { en: "Skin Tightening", ar: "شد البشرة" },
     description: {
-      en: "RF techniques for non-surgical skin tightening.",
-      ar: "تقنيات RF لشد البشرة بدون جراحة.",
+      en: "RF technologies for non-surgical skin tightening and rejuvenation suited to your needs.",
+      ar: "تقنيات RF لشد وتحسين مظهر البشرة بدون جراحة، حسب احتياجات كل حالة.",
     },
   },
 ];
-
-/* interface LightOrbProps {
-  color: string;
-  Icon: ServiceItem["icon"];
-  id: number;
-  image: string;
-  alt: string;
-} */
 
 const LightOrb = ({ color, Icon, id, image, alt }: LightOrbProps) => {
   return (
@@ -283,14 +279,14 @@ const TiltCard = ({ service, index, dir, onNavigate }: TiltCardProps) => {
       </div>
 
       <h3
-        className="text-xl font-semibold mb-2 relative"
+        className="text-xl font-semibold mb-2 relative font-cairo"
         style={{ color: "#2B2620", transform: "translateZ(20px)" }}
       >
         {service.title[dir]}
       </h3>
 
       <p
-        className="text-sm leading-relaxed relative"
+        className="text-sm leading-relaxed relative font-cairo"
         style={{ color: "#6B6154", transform: "translateZ(15px)" }}
       >
         {service.description[dir]}
@@ -298,13 +294,13 @@ const TiltCard = ({ service, index, dir, onNavigate }: TiltCardProps) => {
 
       <div
         className={cn(
-          "mt-5 inline-flex items-center gap-1.5 text-xs font-medium tracking-wide relative",
+          "mt-5 inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide relative font-cairo",
           isRtl ? "flex-row-reverse" : ""
         )}
         style={{ color: service.color, transform: "translateZ(20px)" }}
       >
         <span>{T.hover[dir]}</span>
-        <span className="inline-block transition-transform group-hover:translate-x-1">
+        <span className={cn("inline-block transition-transform duration-300", isRtl ? "group-hover:-translate-x-1" : "group-hover:translate-x-1")}>
           {isRtl ? "←" : "→"}
         </span>
       </div>
@@ -378,31 +374,25 @@ const DermatologyLaser = () => {
               className={cn(isRtl ? "text-right" : "text-left", isRtl ? "df-arabic" : "df-body")}
             >
               <span
-                className="inline-block text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-5"
+                className="inline-block text-xs font-semibold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-5 font-cairo"
                 style={{ color: "#B85C2E", background: "#F6E4D2" }}
               >
                 {T.eyebrow[dir]}
               </span>
 
               <h1
-                className={`text-5xl md:text-6xl font-medium leading-[1.05] mb-6 ${isRtl ? "df-arabic" : "df-serif"}`}
+                className={`text-5xl md:text-6xl font-black leading-[1.15] mb-6 ${isRtl ? "df-arabic" : "df-serif"}`}
                 style={{ color: "#2B2620" }}
               >
-                {T.title[dir]}
+                {T.titleLine1[dir]} <br />
+                {T.titleLine2[dir]}
               </h1>
 
               <p
-                className={`text-lg mb-3 ${isRtl ? "df-arabic" : "df-body"}`}
-                style={{ color: "#5B7A3A" }}
-              >
-                {T.heroLine[dir]}
-              </p>
-
-              <p
-                className={`text-base leading-relaxed max-w-md mb-8 ${isRtl ? "df-arabic" : "df-body"}`}
+                className={`text-lg md:text-xl font-medium leading-relaxed max-w-xl mb-8 ${isRtl ? "df-arabic" : "df-body"}`}
                 style={{ color: "#6B6154" }}
               >
-                {T.subtitle[dir]}
+                {T.heroLine[dir]}
               </p>
 
               <motion.button
@@ -412,7 +402,7 @@ const DermatologyLaser = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate(CONTACT_PATH)}
-                className={`px-7 py-3.5 rounded-full text-white text-sm font-semibold ${
+                className={`px-8 py-4 rounded-full text-white text-base font-bold transition-all ${
                   isRtl ? "df-arabic" : "df-body"
                 }`}
                 style={{

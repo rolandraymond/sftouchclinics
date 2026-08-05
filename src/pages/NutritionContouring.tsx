@@ -17,7 +17,7 @@ const T = {
   title: { en: "Nutrition & Body Contouring", ar: "التغذية ونحت الجسم" },
   heroLine: {
     en: "A complete journey — from what you eat to the shape you become.",
-    ar: "رحلة متكاملة — من اللي بتاكله للشكل اللي هتوصله.",
+    ar: "خطط غذائية وتقنيات متقدمة لنحت الجسم، بتتحدد حسب احتياجات وأهداف كل حالة.",
   },
   subtitle: {
     en: "",
