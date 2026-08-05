@@ -50,15 +50,16 @@ const specialties: Specialty[] = [
     mainLink: "/services/dermatology-laser",
     services: [
       {
-        id: "Fillers Under Eye",
-        labelEn: "Fillers Under Eye",
-        labelAr: "فيلر تحت العين",
+        id: "acne scars treatment",
+        labelEn: "Acne Scars Treatment",
+        labelAr: "علاج ندبات حب الشباب",
         link: "/services/dermatology-laser",
         case: {
-          before: "/images/imagecb25.png",
-          after: "/images/imageca25.png",
+          before: "/images/imagecb19.png",
+          after: "/images/imageca19.png",
         },
       },
+      
       {
         id: "liquid face lift",
         labelEn: "liquid face lift",
@@ -121,6 +122,16 @@ const specialties: Specialty[] = [
         },
       },
       {
+        id: "Fillers Under Eye",
+        labelEn: "Fillers Under Eye",
+        labelAr: "فيلر تحت العين",
+        link: "/services/dermatology-laser",
+        case: {
+          before: "/images/imagecb25.png",
+          after: "/images/imageca25.png",
+        },
+      },
+      {
         id: "botox",
         labelEn: "Botox",
         labelAr: "البوتوكس",
@@ -128,16 +139,7 @@ const specialties: Specialty[] = [
         case: { before: "/images/imagecb5.png", after: "/images/imageca5.png" },
       },
 
-      {
-        id: "acne scars treatment",
-        labelEn: "Acne Scars Treatment",
-        labelAr: "علاج ندبات حب الشباب",
-        link: "/services/dermatology-laser",
-        case: {
-          before: "/images/imagecb19.png",
-          after: "/images/imageca19.png",
-        },
-      },
+      
     ],
   },
   /*  {
