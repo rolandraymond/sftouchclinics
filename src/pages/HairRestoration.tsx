@@ -501,4 +501,4 @@ const HairRestoration = () => {
   );
 };
 
-export default HairRestoration;
+export default HairRestoration; 
