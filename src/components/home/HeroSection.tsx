@@ -128,27 +128,19 @@ const HeroSection = () => {
               )}
             </motion.h1>
 
-            {/* <motion.p
-              variants={fadeUp}
-              className="mt-6 max-w-xl text-base leading-8 text-slate-600 md:text-lg"
-            >
-              {isRTL
-                ? 'تجربة فاخرة تمزج بين الرعاية الطبية الدقيقة، الذوق الراقي، وأحدث التقنيات لتظهري بأجمل نسخة من نفسك بثقة وهدوء.'
-                : 'A refined experience blending medical precision, elevated taste, and modern technology so you can feel like the best version of yourself with confidence and calm.'}
-            </motion.p> */}
-
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-4">
-              <a href="tel:01503656589" className="group">
-                <button className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-7 py-4 text-sm font-bold text-white shadow-[0_18px_50px_rgba(15,23,42,0.18)] transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
-                  <PhoneCall className="h-4 w-4" />
-                  <span>{t.hero.cta || (isRTL ? 'احجزي موعدك' : 'Book Appointment')}</span>
-                  <ArrowRight
-                    className={`h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 ${
-                      isRTL ? 'rotate-180 group-hover:-translate-x-1 group-hover:translate-x-0' : ''
-                    }`}
-                  />
-                </button>
-              </a>
+              <Link 
+                to="/contact-us" 
+                className="group inline-flex items-center gap-2 rounded-full bg-slate-950 px-7 py-4 text-sm font-bold text-white shadow-[0_18px_50px_rgba(15,23,42,0.18)] transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
+              >
+                <PhoneCall className="h-4 w-4" />
+                <span>{t.hero.cta || (isRTL ? 'احجزي موعدك' : 'Book Appointment')}</span>
+                <ArrowRight
+                  className={`h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 ${
+                    isRTL ? 'rotate-180 group-hover:-translate-x-1 group-hover:translate-x-0' : ''
+                  }`}
+                />
+              </Link>
 
               <Link
                 to="/services"
