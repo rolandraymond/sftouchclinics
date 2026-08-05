@@ -86,12 +86,12 @@ const Footer = () => {
 
   const phoneNumbers: PhoneItem[] = [
     {
-      label: isRTL ? "الحجز الرئيسي" : "Main Booking",
+      label: isRTL ? " تواصل معنا" : "Main Booking",
       display: "015 518 20062",
       value: "01551820062",
     },
     {
-      label: isRTL ? "واتساب الحجز" : "WhatsApp Booking",
+      label: isRTL ? " تواصل معنا" : "WhatsApp Booking",
       display: "015 580 08978",
       value: "01558008978",
     },
