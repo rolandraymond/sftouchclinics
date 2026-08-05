@@ -131,7 +131,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-2">
               <Clock className="w-3 h-3 text-slate-500" />
-              10:00 AM - 10:00 PM
+              1:00 AM - 1:00 PM
             </span>
             <button onClick={toggleLanguage} className="lg:hidden text-xs font-bold text-white hover:text-yellow-500">
               {language === 'en' ? 'AR' : 'EN'}
