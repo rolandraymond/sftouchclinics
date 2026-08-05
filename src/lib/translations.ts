@@ -277,7 +277,7 @@ export const translations: Record<Language, TranslationContent> = {
       damietta: 'دمياط - مول صفوة',
       newDamietta: 'دمياط الجديدة - المنطقة المركزية',
       workingHours: 'ساعات العمل',
-      hours: 'يومياً: ١٠ صباحاً - ١٠ مساءً',
+      hours: 'يومياً: 1 صباحاً - 1 مساءً',
       copyright: '© 2026 تنجستين ميديا اجينسي. جميع الحقوق محفوظة.',
       followUs: 'تابعنا',
     },

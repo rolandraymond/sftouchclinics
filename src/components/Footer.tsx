@@ -334,11 +334,11 @@ const Footer = () => {
                   </div>
 
                   <a
-                    href="mailto:info@sftouch.com"
+                    href="mailto:info@sftouchclinics.com"
                     className="inline-flex items-center gap-2 rounded-full border border-yellow-500/20 bg-yellow-500/10 px-4 py-2 text-sm text-yellow-200 transition-colors hover:bg-yellow-500/20 hover:text-white"
                   >
                     <Mail className="h-4 w-4" />
-                    info@sftouch.com
+                    info@sftouchclinics.com
                   </a>
                 </div>
               </div>

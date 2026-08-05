@@ -48,14 +48,14 @@ const BRANCHES: Branch[] = [
     name: { en: "Damietta Branch", ar: "فرع دمياط" },
     address: { en: "Safwa Mall, 2nd Floor", ar: "مول صفوة، الدور الثاني" },
     phones: ["01006901892", "01503656589", "01031746006", "01558008978"],
-    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 12 ظهرًا إلى 10 مساءً" },
+    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
   },
   {
     id: "02",
     name: { en: "New Damietta", ar: "فرع دمياط الجديدة" },
     address: { en: "Central Zone", ar: "المنطقة المركزية" },
     phones: ["01006901892", "01503656589", "01031746006", "01558008978"],
-    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 12 ظهرًا إلى 10 مساءً" },
+    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
   },
 ];
 
@@ -126,7 +126,7 @@ const ContactUs = () => {
   const sectionTitle = isRTL ? "صفحة تواصل معنا" : "Contact Us";
   const heroTitlePrimary = isRTL ? "خلّينا على تواصل" : "Let's stay in touch";
   const heroText = isRTL
-    ? "عندك استفسار أو حابب تعرف تفاصيل أكتر عن الخدمات؟ فريقنا الطبي والمنسقين موجودين للرد على الاستفسارات ومساعدتك في اختيار الخدمة المناسبة وتحديد الموعد."
+    ? "عندك استفسار أو حابب تعرف تفاصيل أكتر عن الخدمات؟ فريقنا الطبي الإداريين موجودين للرد على الاستفسارات ومساعدتك في اختيار الخدمة المناسبة وتحديد الموعد."
     : "Do you have a question or want more details about our services? Our medical team and coordinators are ready to help you choose the right service and book the best time.";
 
   return (
@@ -198,7 +198,10 @@ const ContactUs = () => {
 
                 <div
                   dir="ltr"
-                  className="absolute -top-6 left-0 -translate-x-1/4 text-[8rem] font-black text-slate-50 font-serif leading-none select-none pointer-events-none transition-colors duration-500 group-hover:text-amber-50/70"
+                  className={cn(
+                    "absolute -top-6 text-[8rem] font-black text-slate-50 font-serif leading-none select-none pointer-events-none transition-colors duration-500 group-hover:text-amber-50/70",
+                    isRTL ? "right-0 translate-x-1/4" : "left-0 -translate-x-1/4"
+                  )}
                 >
                   {branch.id}
                 </div>
@@ -221,7 +224,7 @@ const ContactUs = () => {
                         <MapPin className="w-5 h-5 stroke-[1.5]" />
                       </div>
 
-                      <div className="text-left">
+                      <div className={cn(isRTL ? "text-right" : "text-left")}>
                         <p className="text-slate-600 font-medium leading-relaxed">
                           {branch.address[dir]}
                         </p>
@@ -233,7 +236,7 @@ const ContactUs = () => {
                           className="inline-flex items-center gap-1.5 mt-2 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors uppercase tracking-wider"
                         >
                           {isRTL ? "الخريطة والاتجاهات" : "Map & Directions"}
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <ArrowRight className={cn("w-3.5 h-3.5", isRTL && "rotate-180")} />
                         </a>
                       </div>
                     </div>
@@ -243,12 +246,15 @@ const ContactUs = () => {
                         <Phone className="w-5 h-5 stroke-[1.5]" />
                       </div>
 
-                      <div className="space-y-2 text-left">
+                      <div className={cn("space-y-2", isRTL ? "text-right" : "text-left")}>
                         {branch.phones.map((phone) => (
                           <a
                             key={phone}
                             href={`tel:${phone.replace(/\s+/g, "")}`}
-                            className="block text-slate-600 font-medium hover:text-slate-900 transition-colors text-lg"
+                            className={cn(
+                              "block text-slate-600 font-medium hover:text-slate-900 transition-colors text-lg",
+                              isRTL ? "text-right" : "text-left"
+                            )}
                             dir="ltr"
                           >
                             {phone}
@@ -262,9 +268,11 @@ const ContactUs = () => {
                         <Clock className="w-5 h-5 stroke-[1.5]" />
                       </div>
 
-                      <p className="text-slate-600 font-medium leading-relaxed">
-                        {branch.hours[dir]}
-                      </p>
+                      <div className={cn(isRTL ? "text-right" : "text-left")}>
+                         <p className="text-slate-600 font-medium leading-relaxed">
+                           {branch.hours[dir]}
+                         </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -392,9 +400,7 @@ const ContactUs = () => {
                       isRTL ? "text-right" : "text-left",
                     )}
                   >
-                    <option value="" disabled>
-                      {isRTL ? "اختر الفرع" : "Select Branch"}
-                    </option>
+                    <option value="" disabled hidden></option>
                     {branches.map((branch) => (
                       <option key={branch.id} value={branch.id}>
                         {branch.name[dir]}
@@ -404,8 +410,11 @@ const ContactUs = () => {
 
                   <label
                     className={cn(
-                      "absolute top-3 text-slate-400 transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-amber-600 peer-focus:font-bold pointer-events-none",
-                      isRTL ? "right-0" : "left-0",
+                      "absolute transition-all duration-300 pointer-events-none",
+                      (focusedInput === "branch" || formData.branch)
+                        ? "-top-4 text-xs font-bold " + (focusedInput === "branch" ? "text-amber-600" : "text-slate-400")
+                        : "top-3 text-base text-slate-400",
+                      isRTL ? "right-0" : "left-0"
                     )}
                   >
                     {isRTL ? "الفرع المفضل" : "Preferred Branch"}

@@ -28,20 +28,21 @@ interface Doctor {
 const doctors: Doctor[] = [
   {
     id: "01",
-    name: "Dr. Mai Romaya",
-    nameAr: "د. مي رومية",
-    specialty: "Clinical Pharmacist & Nutrition Specialist",
-    specialtyAr: "صيدلانية إكلينيكية وأخصائية تغذية",
+    name: "Dr. Frehaan Zakria",
+    nameAr: "د. فريهان زكريا",
+    specialty: "Dermatology, Aesthetics, Laser & Therapeutic Nutrition",
+    specialtyAr: "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية",
     quote:
-      "Clinical pharmacy and evidence-based nutrition working together for precise, personalized care.",
+      "Comprehensive care that blends dermatology, aesthetics, laser, and nutrition.",
     quoteAr:
-      "صيدلانية إكلينيكية وأخصائية تغذية من جامعتي MSA وطنطا\n" +
-      "باحثة في الأبحاث الإكلينيكية من كلية الطب بجامعة هارفارد\n" +
-      "مدربة معتمدة من جامعة عين شمس\n\n" +
-      "خبرة تجمع بين التغذية الإكلينيكية والبحث العلمي لوضع خطط غذائية مبنية على أسس علمية.",
-    image: "/images/OES02404.jpg",
-    icon: Activity,
-    accent: "from-emerald-500/10 to-teal-500/0",
+      "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية\n\n" +
+      "بكالوريوس الطب والجراحة – القصر العيني\n" +
+      "ماجستير الأمراض الجلدية – جامعة قناة السويس\n" +
+      "دبلومة التغذية العلاجية – المعهد القومي للتغذية\n\n" +
+      "تجمع بين تخصص الجلدية والتجميل والليزر والتغذية العلاجية لتقديم رعاية متكاملة تناسب كل حالة.",
+    image: "/images/OES02435.jpg",
+    icon: Stethoscope,
+    accent: "from-rose-500/10 to-pink-500/0",
   },
   {
     id: "02",
@@ -62,21 +63,20 @@ const doctors: Doctor[] = [
   },
   {
     id: "03",
-    name: "Dr. Frehaan Zakria",
-    nameAr: "د. فريهان زكريا",
-    specialty: "Dermatology, Aesthetics, Laser & Therapeutic Nutrition",
-    specialtyAr: "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية",
+    name: "Dr. Mai Romaya",
+    nameAr: "د. مي رومية",
+    specialty: "Clinical Pharmacist & Nutrition Specialist",
+    specialtyAr: "صيدلانية إكلينيكية وأخصائية تغذية",
     quote:
-      "Comprehensive care that blends dermatology, aesthetics, laser, and nutrition.",
+      "Clinical pharmacy and evidence-based nutrition working together for precise, personalized care.",
     quoteAr:
-      "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية\n\n" +
-      "بكالوريوس الطب والجراحة – القصر العيني\n" +
-      "ماجستير الأمراض الجلدية – جامعة قناة السويس\n" +
-      "دبلومة التغذية العلاجية – المعهد القومي للتغذية\n\n" +
-      "تجمع بين تخصص الجلدية والتجميل والليزر والتغذية العلاجية لتقديم رعاية متكاملة تناسب كل حالة.",
-    image: "/images/OES02435.jpg",
-    icon: Stethoscope,
-    accent: "from-rose-500/10 to-pink-500/0",
+      "صيدلانية إكلينيكية وأخصائية تغذية من جامعتي MSA وطنطا\n" +
+      "باحثة في الأبحاث الإكلينيكية من كلية الطب بجامعة هارفارد\n" +
+      "مدربة معتمدة من جامعة عين شمس\n\n" +
+      "خبرة تجمع بين التغذية الإكلينيكية والبحث العلمي لوضع خطط غذائية مبنية على أسس علمية.",
+    image: "/images/OES02404.jpg",
+    icon: Activity,
+    accent: "from-emerald-500/10 to-teal-500/0",
   },
 ];
 
