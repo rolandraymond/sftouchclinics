@@ -87,22 +87,22 @@ const Footer = () => {
   const phoneNumbers: PhoneItem[] = [
     {
       label: isRTL ? "الحجز الرئيسي" : "Main Booking",
-      display: "010 3174 6006",
-      value: "01031746006",
+      display: "015 518 20062",
+      value: "01551820062",
     },
     {
       label: isRTL ? "واتساب الحجز" : "WhatsApp Booking",
-      display: "0 155 800 8978",
+      display: "015 580 08978",
       value: "01558008978",
     },
     {
-      label: isRTL ? "فرع دمياط" : "Damietta Branch",
-      display: "010 0690 1892",
-      value: "01006901892",
+      label: isRTL ? "فرع دمياط القديمة" : "Damietta Branch",
+      display: "015 580 08278",
+      value: "01558008278",
     },
     {
       label: isRTL ? "فرع دمياط الجديدة" : "New Damietta Branch",
-      display: "0 15 0365 6589",
+      display: "015 0365 6589",
       value: "01503656589",
     },
   ];

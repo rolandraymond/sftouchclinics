@@ -158,7 +158,7 @@ export const translations: Record<Language, TranslationContent> = {
       subtitle: 'Excellence in every detail',
       doctorsCare: {
         title: 'Perfect Doctors ',
-        description: 'Unlike other clinics, all treatments are performed directly by our qualified doctors, not assistants.',
+        description: ' all treatments are performed directly by our qualified doctors, not assistants.',
       },
       technology: {
         title: 'Latest Technology',

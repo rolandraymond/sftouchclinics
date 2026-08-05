@@ -28,7 +28,7 @@ interface Doctor {
 const doctors: Doctor[] = [
   {
     id: "01",
-    name: "Dr. Frehaan Zakria",
+    name: "Dr. Freehan Zakria",
     nameAr: "د. فريهان زكريا",
     specialty: "Dermatology, Aesthetics, Laser & Therapeutic Nutrition",
     specialtyAr: "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية",
@@ -63,7 +63,7 @@ const doctors: Doctor[] = [
   },
   {
     id: "03",
-    name: "Dr. Mai Romaya",
+    name: "Dr. Mai Romeya",
     nameAr: "د. مي رومية",
     specialty: "Clinical Pharmacist & Nutrition Specialist",
     specialtyAr: "صيدلانية إكلينيكية وأخصائية تغذية",

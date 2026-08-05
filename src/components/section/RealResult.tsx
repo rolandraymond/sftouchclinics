@@ -80,8 +80,8 @@ const specialties: Specialty[] = [
         },
       },
       {
-        id: "Templa Erea Filler",
-        labelEn: "Templa Erea Filler",
+        id: "Templa Area Filler",
+        labelEn: "Templa Area Filler",
         labelAr: "فيلر منطقة الصدغين",
         link: "/services/dermatology-laser",
         case: {
@@ -111,8 +111,8 @@ const specialties: Specialty[] = [
       },
 
       {
-        id: "fillers",
-        labelEn: "Fillers",
+        id: "Lip Fillers",
+        labelEn: "Lip Fillers",
         labelAr: "الفيلر",
         link: "/services/dermatology-laser",
         case: {

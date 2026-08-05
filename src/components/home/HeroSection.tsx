@@ -269,10 +269,10 @@ const HeroSection = () => {
               >
                 <div className="flex items-center gap-2 text-slate-950">
                   <Sparkles className="h-4 w-4 text-yellow-500" />
-                  <span className="text-sm font-bold">{isRTL ? 'لمسة فنية' : 'Artful touch'}</span>
+                  <span className="text-sm font-bold">{isRTL ? 'فريق واحد .. خبرات متعدده' : 'Artful touch'}</span>
                 </div>
                 <p className="mt-2 text-xs leading-5 text-slate-500">
-                  {isRTL ? 'تصميم يوازن بين الرقي والهدوء.' : 'A design that balances elegance and calm.'}
+                  {isRTL ? 'لأن كل تحتياج له التخصص المناسب' : 'A design that balances elegance and calm.'}
                 </p>
               </motion.div>
 

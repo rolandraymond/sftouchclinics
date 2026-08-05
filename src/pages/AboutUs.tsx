@@ -86,16 +86,16 @@ const AboutUs = () => {
                 </>
               ) : (
                 <>
-                  Merging{" "}
+                  Medical{" "}
                   <span className="relative inline-block">
                     <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400 font-bold">
-                      Art
+                      Expertise
                     </span>
                     <span className="absolute bottom-2 left-0 w-full h-3 bg-amber-100 -z-10 -rotate-2" />
                   </span>{" "}
-                  with
+                  Precision
                   <span className="block mt-2 text-slate-800">
-                    Clinical Precision.
+                    in Every Detail
                   </span>
                 </>
               )}

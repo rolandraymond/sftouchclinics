@@ -63,7 +63,7 @@ const T: Record<string, TextPair> & { hover: TextPair } = {
 
 const services: ServiceItem[] = [
   {
-    icon: Scissors,
+    icon: Droplets,
     color: "#8A5A44",
     glow: "#D4A373",
     image:
