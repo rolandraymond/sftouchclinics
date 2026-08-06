@@ -126,7 +126,7 @@ const ContactUs = () => {
   const sectionTitle = isRTL ? "صفحة تواصل معنا" : "Contact Us";
   const heroTitlePrimary = isRTL ? "خلّينا على تواصل" : "Let's stay in touch";
   const heroText = isRTL
-    ? "عندك استفسار أو حابب تعرف تفاصيل أكتر عن الخدمات؟ فريقنا الطبي الإداريين موجودين للرد على الاستفسارات ومساعدتك في اختيار الخدمة المناسبة وتحديد الموعد."
+    ? "عندك استفسار أو حابب تعرف تفاصيل أكتر عن الخدمات؟ فريقنا الطبي و المنسقين موجودين للرد على الاستفسارات ومساعدتك في اختيار الخدمة المناسبة وتحديد الموعد."
     : "Do you have a question or want more details about our services? Our medical team and coordinators are ready to help you choose the right service and book the best time.";
 
   return (
@@ -161,7 +161,6 @@ const ContactUs = () => {
               <>
                 {heroTitlePrimary} <br />
                 <span className="font-light text-slate-500 italic">
-                  بسهولة واهتمام
                 </span>
               </>
             ) : (

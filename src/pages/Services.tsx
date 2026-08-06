@@ -29,8 +29,8 @@ const Services = () => {
       buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
       image: '/images/64b91e60ee991bc3355749ae_laser.jpeg',
       href: '/services/dermatology-laser',
-      accent: 'text-amber-500',
-      bgAccent: 'bg-amber-500'
+      accent: 'text-amber-600',
+      bgAccent: 'bg-amber-600'
     },
     {
       id: '02',
@@ -38,27 +38,33 @@ const Services = () => {
         ? 'التغذية العلاجية ونحت الجسم' 
         : (t.services?.nutrition?.title || 'Clinical Nutrition & Body Contouring'),
       description: isRTL 
-        ? 'خطط غذائية مخصصة وتقنيات متقدمة لنحت الجسم، منها أجهزة نحت الجسم، حسب احتياجات كل حالة.' 
+        ? 'حياة صحية .. من التغذية لنحت الجسم' 
         : (t.services?.nutrition?.description || 'Customized nutrition plans and advanced body contouring technologies tailored to individual needs.'),
       buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
       image: '/images/images (5).jpg',
       href: '/services/nutrition-contouring',
-      accent: 'text-emerald-500',
-      bgAccent: 'bg-emerald-500'
+      accent: 'text-amber-600',
+      bgAccent: 'bg-amber-600'
     },
     {
       id: '03',
       title: isRTL 
-        ? 'زراعة وعلاج الشعر' 
+        ? 'زراعة وعناية الشعر' 
         : (t.services?.hair?.title || 'Hair Restoration & Treatment'),
       description: isRTL 
-        ? 'زراعة الشعر وعلاجات متطورة لتحسين كثافة الشعر ومظهره، مع خطة تناسب كل حالة.' 
+        ? (
+            <>
+              حلول متقدمة لصحة وكثافة الشعر
+              <br />
+              خطط وعلاجات متخصصة تناسب احتياجات كل حالة
+            </>
+          ) 
         : (t.services?.hair?.description || 'Hair transplantation and advanced treatments to restore density and appearance tailored to each case.'),
       buttonText: isRTL ? 'التفاصيل' : 'Discover Details',
       image: '/images/6485892b-1ae1-45e5-b3dc-6aa57ed65001-1.png',
       href: '/services/hair-restoration',
-      accent: 'text-rose-500',
-      bgAccent: 'bg-rose-500'
+      accent: 'text-amber-600',
+      bgAccent: 'bg-amber-600'
     },
   ];
 
@@ -67,7 +73,7 @@ const Services = () => {
       id="services" 
       ref={sectionRef} 
       dir={isRTL ? "rtl" : "ltr"}
-      className="relative pt-32 pb-32 bg-[#FAFAFA] overflow-hidden selection:bg-slate-900 selection:text-white"
+      className="relative pt-32 pb-32 bg-[#FAFAFA] overflow-hidden selection:bg-amber-100 selection:text-amber-900"
     >
       {/* ================= BACKGROUND DECORATION ================= */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
@@ -206,7 +212,7 @@ const Services = () => {
                       {/* Interactive Arrow Button */}
                       <div className={cn(
                         "w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-500 shrink-0",
-                        isActive ? `border-transparent ${service.bgAccent} text-white` : "border-slate-200 text-slate-400"
+                        isActive ? `border-transparent ${service.bgAccent} text-white shadow-md shadow-amber-600/20` : "border-slate-200 text-slate-400"
                       )}>
                         <ArrowRight className={cn(
                           "w-5 h-5 transition-transform duration-300",
