@@ -98,7 +98,7 @@ const Cases3DCarousel = () => {
     if (isHovered) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 2000); // تغيير الصورة كل 4 ثواني
+    }, 2000); // تغيير الصورة كل 2 ثواني
     return () => clearInterval(timer);
   }, [nextSlide, isHovered]);
 
@@ -207,12 +207,13 @@ const Cases3DCarousel = () => {
                   isCenter ? "shadow-[0_30px_60px_rgba(217,119,6,0.2)]" : "shadow-xl"
                 )}
               >
-                {/* Card Background / Image Placeholder */}
-                <div className="absolute inset-0 bg-slate-200">
+                {/* Card Background / Image Placeholder - تم تغيير الخلفية إلى داكنة لتناسب object-contain */}
+                <div className="absolute inset-0 bg-slate-950">
                   <img
                     src={item.image}
                     alt={isRTL ? item.titleAr : item.title}
-                    className="w-full h-full object-cover"
+                    // تم تغيير object-cover إلى object-contain لمنع الاقتصاص
+                    className="w-full h-full object-contain"
                     // في حال عدم وجود الصورة بعد، يمكنك استخدام هذا كبديل مؤقت:
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1512496015851-a1c8caac2126?q=80&w=1000&auto=format&fit=crop';
