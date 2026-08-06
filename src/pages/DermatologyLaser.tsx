@@ -44,7 +44,7 @@ const T: Record<string, TextPair> & { hover: TextPair } = {
   titleLine1: { en: "Healthy Skin,", ar: "بشرة صحية" },
   titleLine2: { en: "Naturally", ar: "بشكل طبيعي" },
   heroLine: {
-    en: "From skin treatments to lasers and cosmetic injections, we offer specialized medical solutions using the latest technologies.",
+    en: "From treating skin concerns to laser treatments and aesthetic injectables, we provide specialized solutions under medical supervision, using the latest technologies.",
     ar: "من علاج مشاكل البشرة لليزر والحقن التجميلية، بنقدم حلول متخصصة بإشراف طبي وفي ضوء أحدث التقنيات.",
   },
   cta: { en: "Book a consultation", ar: "احجز استشارتك" },

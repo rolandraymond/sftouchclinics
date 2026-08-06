@@ -162,7 +162,7 @@ const OffersSection = () => {
       title: language === "en" ? "Summer Glow Package" : "باقة تجديد البشرة",
       description:
         language === "en"
-          ? "Complete skin rejuvenation with Hydrafacial + LED therapy."
+          ? "Comprehensive skin rejuvenation with HydraFacial and advanced skincare technologies."
           : "جديد متكامل للبشرة مع الهيدرا فيشل وتقنيات متقدمة للعناية بالبشرة.",
       image:
         "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80",
