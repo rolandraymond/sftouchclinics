@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import Replicate from 'replicate';
 
 export default async function handler(
   req: VercelRequest,
@@ -10,11 +9,6 @@ export default async function handler(
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  // تهيئة Replicate
-  const replicate = new Replicate({
-    auth: process.env.REPLICATE_API_TOKEN,
-  });
-
   try {
     const { image } = req.body;
 
@@ -22,22 +16,39 @@ export default async function handler(
       return res.status(400).json({ error: 'الرجاء رفع صورة' });
     }
 
-    // إرسال الصورة للذكاء الاصطناعي
-    const output = await replicate.run(
-      "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
+    // استخراج بيانات الـ Base64 للـ صورة
+    const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
+
+    // إرسال الصورة لنموذج تعديل الصور المجاني على Hugging Face
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/timbrooks/instruct-pix2pix",
       {
-        input: {
-          image: image,
-          prompt: "high quality portrait, glowing perfect smooth skin, aesthetic clinic result, slightly fuller lips, symmetrical face, highly detailed, photorealistic, 8k",
-          negative_prompt: "ugly, blurry, malformed, cartoon, deformed eyes, extra limbs",
-          prompt_strength: 0.35, 
-          num_inference_steps: 30,
-        }
+        headers: {
+          Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          inputs: {
+            image: base64Data,
+            prompt: "make skin glowing, smooth, aesthetic clinic treatment, flawless complexion",
+          },
+        }),
       }
     );
 
-    // Vercel Serverless Function Response
-    return res.status(200).json({ result: (output as string[])[0] });
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error("Hugging Face Error:", errText);
+      return res.status(500).json({ error: "فشل معالجة الصورة بواسطة الذكاء الاصطناعي" });
+    }
+
+    // استقبال الصورة الناتجة وتحويلها إلى Base64 لإرسالها للفرونت إند
+    const arrayBuffer = await response.arrayBuffer();
+    const resultBuffer = Buffer.from(arrayBuffer);
+    const resultBase64 = `data:image/jpeg;base64,${resultBuffer.toString('base64')}`;
+
+    return res.status(200).json({ result: resultBase64 });
 
   } catch (error) {
     console.error("AI Generation Error:", error);
