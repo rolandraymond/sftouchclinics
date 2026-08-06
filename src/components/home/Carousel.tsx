@@ -5,22 +5,21 @@ import { ChevronRight, ChevronLeft, Sparkles, ImageIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // ================= DUMMY DATA =================
-// يُفضل أن يكون عدد العناصر فردياً (مثلاً 5 أو 7) لضبط المنتصف بدقة
 const casesData = [
   {
     id: 1,
-    image: '/images/cases/tungsten-dr.sally-cases-chinpng.png', // استبدل بمسار صورك الحقيقية
-    title: 'Glowing Skin Transformation',
+    image: '/images/cases/tungsten-dr.sally-cases-chinpng.png',
+    title: 'Chin Defination',
     titleAr: 'نضارة وتوحيد لون البشرة',
-    category: 'Dermatology',
-    categoryAr: 'الجلدية والليزر',
+    category: 'Filler',
+    categoryAr: 'فيلر',
   },
   {
     id: 2,
     image: '/images/cases/tungsten-dr.sally-cases-jawline..png',
-    title: 'Advanced Body Contouring',
+    title: 'Jaw Line',
     titleAr: 'نحت وتنسيق القوام',
-    category: 'Nutrition',
+    category: 'Filler',
     categoryAr: 'التغذية العلاجية',
   },
   {
@@ -42,6 +41,38 @@ const casesData = [
   {
     id: 5,
     image: '/images/cases/tungsten-dr.sally-cases-july-temple-area-filler.png',
+    title: 'Acne Scars Treatment',
+    titleAr: 'علاج آثار حب الشباب',
+    category: 'Aesthetics',
+    categoryAr: 'التجميل',
+  },
+  {
+    id: 6,
+    image: '/images/cases/farihan cace 3 july.png',
+    title: 'Acne Scars Treatment',
+    titleAr: 'علاج آثار حب الشباب',
+    category: 'Aesthetics',
+    categoryAr: 'التجميل',
+  },
+  {
+    id: 7,
+    image: '/images/cases/farihan cace 7 july.png',
+    title: 'Acne Scars Treatment',
+    titleAr: 'علاج آثار حب الشباب',
+    category: 'Aesthetics',
+    categoryAr: 'التجميل',
+  },
+  {
+    id: 8,
+    image: '/images/cases/feerhan aug case 2.png',
+    title: 'Acne Scars Treatment',
+    titleAr: 'علاج آثار حب الشباب',
+    category: 'Aesthetics',
+    categoryAr: 'التجميل',
+  },
+  {
+    id: 9,
+    image: '/images/cases/tungsten-dr.sally-biostimulator (Poly-L-Lactic Acid)-new-layout.jpg',
     title: 'Acne Scars Treatment',
     titleAr: 'علاج آثار حب الشباب',
     category: 'Aesthetics',
