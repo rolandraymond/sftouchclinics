@@ -53,26 +53,31 @@ const AIGeneratorSection = () => {
     setError(null);
 
     try {
-      const response = await fetch("/api/generate-ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/generate-ai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image: originalImage }),
       });
 
-      const data = await response.json();
+      // التحقق مما إذا كان الرد بصيغة JSON أم لا (لتجنب خطأ الـ SyntaxError)
+      const contentType = response.headers.get("content-type");
+      let data;
+      
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        throw new Error(`Server error (${response.status}): تأكد من تشغيل المشروع باستخدام 'vercel dev'`);
+      }
 
-      if (!response.ok) throw new Error(data.error || "Unknown error");
-
+      if (!response.ok) {
+        throw new Error(data.error || 'حدث خطأ غير معروف');
+      }
+      
       setAiImage(data.result);
-      setSliderPosition(50); // إعادة السلايدر للمنتصف
-    } catch (err) {
+      setSliderPosition(50);
+    } catch (err: any) {
       console.error("Detailed Error:", err);
-      setError(
-        err.message ||
-          (isRTL
-            ? "عذراً، فشل توليد الصورة. حاول مرة أخرى."
-            : "Failed to generate image."),
-      );
+      setError(err.message || (isRTL ? 'عذراً، فشل توليد الصورة. حاول مرة أخرى.' : 'Failed to generate image.'));
     } finally {
       setLoading(false);
     }
