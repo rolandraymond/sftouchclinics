@@ -25,7 +25,7 @@ const casesData = [
   {
     id: 3,
     image: '/images/cases/tungsten-dr.sally-cases-lipfiller.png',
-    title: 'Laser Hair Removal Results',
+    title: 'Lip Filler',
     titleAr: 'نتائج إزالة الشعر بالليزر',
     category: 'Laser',
     categoryAr: 'الليزر',
@@ -33,7 +33,7 @@ const casesData = [
   {
     id: 4,
     image: '/images/cases/tungsten-dr.sally-cases-july-plla.png',
-    title: 'Hair Density Restoration',
+    title: 'Plla',
     titleAr: 'استعادة كثافة الشعر',
     category: 'Hair Care',
     categoryAr: 'عناية الشعر',
@@ -41,7 +41,7 @@ const casesData = [
   {
     id: 5,
     image: '/images/cases/tungsten-dr.sally-cases-july-temple-area-filler.png',
-    title: 'Acne Scars Treatment',
+    title: 'Temple Area Filler',
     titleAr: 'علاج آثار حب الشباب',
     category: 'Aesthetics',
     categoryAr: 'التجميل',
@@ -49,7 +49,7 @@ const casesData = [
   {
     id: 6,
     image: '/images/cases/farihan cace 3 july.png',
-    title: 'Acne Scars Treatment',
+    title: 'Filler Under Eyes',
     titleAr: 'علاج آثار حب الشباب',
     category: 'Aesthetics',
     categoryAr: 'التجميل',
@@ -57,7 +57,7 @@ const casesData = [
   {
     id: 7,
     image: '/images/cases/farihan cace 7 july.png',
-    title: 'Acne Scars Treatment',
+    title: 'Lip Filler',
     titleAr: 'علاج آثار حب الشباب',
     category: 'Aesthetics',
     categoryAr: 'التجميل',
@@ -65,7 +65,7 @@ const casesData = [
   {
     id: 8,
     image: '/images/cases/feerhan aug case 2.png',
-    title: 'Acne Scars Treatment',
+    title: 'Lip Filler',
     titleAr: 'علاج آثار حب الشباب',
     category: 'Aesthetics',
     categoryAr: 'التجميل',
@@ -73,7 +73,7 @@ const casesData = [
   {
     id: 9,
     image: '/images/cases/tungsten-dr.sally-biostimulator (Poly-L-Lactic Acid)-new-layout.jpg',
-    title: 'Acne Scars Treatment',
+    title: 'Biostimulator Poly-L-Lactic Acid',
     titleAr: 'علاج آثار حب الشباب',
     category: 'Aesthetics',
     categoryAr: 'التجميل',
