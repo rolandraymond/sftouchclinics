@@ -28,6 +28,7 @@ function json(data: unknown, status = 200) {
 
 function parseDataUrl(input: string) {
   const match = input.match(/^data:(.+?);base64,(.+)$/);
+
   if (match) {
     return {
       mimeType: match[1],
@@ -64,7 +65,10 @@ function arrayBufferToBase64(buffer: ArrayBuffer) {
   return btoa(binary);
 }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
+export async function onRequestPost(context: {
+  request: Request;
+  env: Env;
+}) {
   const { request, env } = context;
 
   try {
@@ -87,7 +91,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       return json({ error: "الرجاء رفع صورة" }, 400);
     }
 
-    // اختيار الـ Prompt المناسب للإجراء المحدد أو إرجاع الخيار الافتراضي
     const selectedPrompt =
       PROMPTS_MAP[treatment || ""] || PROMPTS_MAP.full_face;
 
@@ -115,6 +118,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ result: resultBase64 }, 200);
   } catch (error: unknown) {
     console.error("Serverless Function Error:", error);
+
     const errorMessage =
       error instanceof Error
         ? error.message
@@ -122,4 +126,4 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     return json({ error: errorMessage }, 500);
   }
-};
+}
