@@ -27,5 +27,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "api", "api/generate-ai.ts"]
+  "include": ["src", "functions/api", "functions/api/generate-ai.ts"]
 }
