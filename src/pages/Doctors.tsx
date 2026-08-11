@@ -30,10 +30,10 @@ const doctors: Doctor[] = [
     id: "02",
     name: "Dr. Freehan Zakria",
     nameAr: "د. فريهان زكريا",
-    specialty: "Dermatology, Aesthetic Medicine, Laser & Clinical Nutrition Specialist",
+    specialty: "aesthetic dermatologist Medicine, Laser & Clinical Nutrition Specialist",
     specialtyAr: "أخصائية الجلدية والتجميل والليزر والتغذية العلاجية",
     quote:
-      "Dermatology, Aesthetic Medicine, Laser & Clinical Nutrition Specialist\n\n" +
+      "Aesthetic dermatologist Medicine, Laser & Clinical Nutrition Specialist\n\n" +
       "Bachelor of Medicine & Surgery – Kasr Al Ainy\n" +
       "Master’s Degree in Dermatology – Suez Canal University\n" +
       "Diploma in Clinical Nutrition – National Nutrition Institute",
@@ -51,11 +51,11 @@ const doctors: Doctor[] = [
     id: "01",
     name: "Dr. Sally Eladawy",
     nameAr: "د. سالي العدوي",
-    specialty: "Dermatology, Aesthetic Medicine & Laser Specialist",
+    specialty: "aesthetic dermatologist Medicine & Laser Specialist",
     specialtyAr: "أخصائية الجلدية والتجميل والليزر",
     quote:
-      "Dermatology, Aesthetic Medicine & Laser Specialist\n\n" +
-      "Diploma in Dermatology, Aesthetic Medicine & Venereology – Menoufia University\n" +
+      "aesthetic dermatologist Medicine & Laser Specialist\n\n" +
+      "Diploma in aesthetic dermatologist Medicine & Venereology – Menoufia University\n" +
       "Diploma in Laser Medicine – National Institute of Laser Sciences, Cairo University",
     quoteAr:
       "أخصائية الجلدية والتجميل والليزر\n\n" +

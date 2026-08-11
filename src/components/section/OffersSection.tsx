@@ -11,7 +11,6 @@ import {
 import { useLanguage } from "@/context/LanguageContext";
 import {
   Sparkles,
-  ArrowUpRight,
   Star,
   TicketPercent,
   ChevronLeft,
@@ -80,7 +79,7 @@ const PerspectiveCard = ({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateY, rotateX, transformStyle: "preserve-3d" }}
-      className="relative h-[500px] w-full cursor-pointer group"
+      className="relative h-[500px] w-full group"
       dir={isRTL ? "rtl" : "ltr"}
       lang={language}
     >
@@ -123,8 +122,6 @@ const PerspectiveCard = ({
           <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,#D4AF37,#F2D27C)] text-[#0B1120] shadow-lg shadow-[#D4AF37]/30">
             <Sparkles className="w-5 h-5" />
           </div>
-
-          <ArrowUpRight className="w-6 h-6 text-white/45 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#D4AF37]" />
         </div>
 
         <h3 className="mb-2 text-2xl md:text-3xl font-serif font-bold text-white italic leading-tight">
@@ -163,7 +160,7 @@ const OffersSection = () => {
       description:
         language === "en"
           ? "Comprehensive skin rejuvenation with HydraFacial and advanced skincare technologies."
-          : "جديد متكامل للبشرة مع الهيدرا فيشل وتقنيات متقدمة للعناية بالبشرة.",
+          : "تجديد متكامل للبشرة مع الهيدرا فيشل وتقنيات متقدمة للعناية بالبشرة.",
       image:
         "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80",
     },
@@ -195,7 +192,6 @@ const OffersSection = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_26%),radial-gradient(circle_at_top_right,rgba(11,17,32,0.10),transparent_24%),radial-gradient(circle_at_bottom,rgba(212,175,55,0.08),transparent_36%)]" />{" "}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.38)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.38)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* تم تعديل هذا الجزء لتوسيط العنوان والبراجراف في منتصف الشاشة */}
         <div className="mb-16 md:mb-24 flex flex-col items-center justify-center text-center gap-4 md:gap-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
