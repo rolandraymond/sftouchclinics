@@ -126,7 +126,7 @@ const services: ServiceItem[] = [
     color: "#99627A",
     glow: "#D8A6C0",
     image:
-      "https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=600&q=75",
+      "/images/image15.png",
     title: { en: "Hair Loss Treatment", ar: "علاج التساقط" },
     description: {
       en: "Comprehensive treatment programs to stop hair loss.",

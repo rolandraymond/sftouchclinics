@@ -46,7 +46,7 @@ const services = [
     color: "#3D6E8F",
     glow: "#9AC6E0",
     image:
-      "https://images.unsplash.com/photo-1731355774353-4131a8e13e55?auto=format&fit=crop&w=600&q=75",
+      "/images/image16.png",
     title: { en: "Onda ", ar: "أوندا " },
     description: {
       en: "Coolwaves for cellulite and fat reduction.",
@@ -70,7 +70,7 @@ const services = [
     color: "#C9972B",
     glow: "#F3D98B",
     image:
-      "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?auto=format&fit=crop&w=600&q=75",
+      "/images/image17.png",
     title: { en: "Weight Follow-up", ar: "متابعة الوزن" },
     description: {
       en: "Regular follow-up to ensure you reach your goals.",

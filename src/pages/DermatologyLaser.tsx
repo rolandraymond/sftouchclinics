@@ -57,7 +57,7 @@ const services: ServiceItem[] = [
     color: "#D97A3E",
     glow: "#F6C88A",
     image:
-      "https://images.unsplash.com/photo-1731514771613-991a02407132?auto=format&fit=crop&w=600&q=75",
+      "/images/image11.avif",
     title: { en: "Skin Treatment", ar: "علاج البشرة" },
     description: {
       en: "Advanced treatments for skin issues like acne, pigmentation, and scars.",
@@ -81,7 +81,7 @@ const services: ServiceItem[] = [
     color: "#B85C6B",
     glow: "#F0AFBA",
     image:
-      "https://images.unsplash.com/photo-1731355771317-b2ab72c79124?auto=format&fit=crop&w=600&q=75",
+      "/images/image12.png",
     title: { en: "Botox & Fillers", ar: "البوتوكس والفيلر" },
     description: {
       en: "Medically supervised aesthetic injections to enhance facial appearance while maintaining natural results.",
@@ -93,7 +93,7 @@ const services: ServiceItem[] = [
     color: "#C9972B",
     glow: "#F3D98B",
     image:
-      "https://images.unsplash.com/photo-1730288951113-9cc087c14b83?auto=format&fit=crop&w=600&q=75",
+      "/images/image13.png",
     title: { en: "Pigmentation Treatment", ar: "علاج التصبغات" },
     description: {
       en: "Advanced techniques to target pigmentation and unify skin tone based on individual skin nature.",
@@ -117,7 +117,7 @@ const services: ServiceItem[] = [
     color: "#5B7A3A",
     glow: "#B7D08A",
     image:
-      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=75",
+      "/images/image14.png",
     title: { en: "Skin Tightening", ar: "شد البشرة" },
     description: {
       en: "RF technologies for non-surgical skin tightening and rejuvenation suited to your needs.",
