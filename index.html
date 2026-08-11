@@ -2,69 +2,160 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <!-- Primary SEO -->
     <title>
       SF Touch Clinic | Dermatology, Laser & Aesthetic Care in Damietta
     </title>
+
     <meta
       name="description"
       content="SF Touch Clinic in Damietta, Egypt offers dermatology, laser treatments, aesthetic care, and clinical nutrition with personalized care from qualified doctors."
     />
+
     <meta name="author" content="SF Touch Clinic" />
+
     <meta
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
+
+    <meta
+      name="googlebot"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+
     <meta name="theme-color" content="#0f172a" />
 
-    <link rel="canonical" href="https://sftouchclinics.com/" />
-    <link rel="icon" type="ico" href="favicon.ico" />
-    <link rel="apple-touch-icon" href="/images/sfLogo.png" />
+    <!-- Canonical -->
+    <link
+      rel="canonical"
+      href="https://sftouchclinics.com/"
+    />
 
-    <!-- Open Graph -->
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png"
+    />
+
+    <!-- Optional fallback -->
+    <link
+      rel="shortcut icon"
+      href="/favicon-32x32.png"
+      type="image/png"
+    />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="SF Touch Clinic" />
-    <meta property="og:url" content="https://sftouchclinics.com/" />
+
+    <meta
+      property="og:locale"
+      content="en_US"
+    />
+
+    <meta
+      property="og:site_name"
+      content="SF Touch Clinic"
+    />
+
+    <meta
+      property="og:url"
+      content="https://sftouchclinics.com/"
+    />
+
     <meta
       property="og:title"
       content="SF Touch Clinic | Dermatology, Laser & Aesthetic Care in Damietta"
     />
+
     <meta
       property="og:description"
-      content="SF Touch Clinic in Damietta, Egypt offers dermatology, laser treatments, aesthetic care, and clinical nutrition with personalized care."
+      content="SF Touch Clinic in Damietta, Egypt offers dermatology, laser treatments, aesthetic care, and clinical nutrition with personalized care from qualified doctors."
     />
+
     <meta
-      property="og:image:secure_url"
-      content="https://sftouchclinics.com/images/sfLogo.png?v=2"
+      property="og:image"
+      content="https://sftouchclinics.com/images/sfLogo.png"
     />
+
     <meta
       property="og:image:secure_url"
       content="https://sftouchclinics.com/images/sfLogo.png"
     />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:alt" content="SF Touch Clinic logo" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://sftouchclinics.com/" />
+    <meta
+      property="og:image:type"
+      content="image/png"
+    />
+
+    <meta
+      property="og:image:alt"
+      content="SF Touch Clinic logo"
+    />
+
+    <meta
+      property="og:image:width"
+      content="1200"
+    />
+
+    <meta
+      property="og:image:height"
+      content="630"
+    />
+
+    <!-- Twitter / X -->
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+
+    <meta
+      name="twitter:url"
+      content="https://sftouchclinics.com/"
+    />
+
     <meta
       name="twitter:title"
       content="SF Touch Clinic | Dermatology, Laser & Aesthetic Care in Damietta"
     />
+
     <meta
       name="twitter:description"
       content="SF Touch Clinic in Damietta, Egypt offers dermatology, laser treatments, aesthetic care, and clinical nutrition."
     />
+
     <meta
       name="twitter:image"
       content="https://sftouchclinics.com/images/sfLogo.png"
     />
-    <meta name="twitter:image:alt" content="SF Touch Clinic logo" />
 
+    <meta
+      name="twitter:image:alt"
+      content="SF Touch Clinic logo"
+    />
+
+    <!-- Medical Clinic Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -76,18 +167,26 @@
         "image": "https://sftouchclinics.com/images/sfLogo.png",
         "description": "SF Touch Clinic in Damietta, Egypt offers dermatology, laser treatments, aesthetic care, and clinical nutrition.",
         "telephone": "+201503656589",
+        "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Safwa Mall, Tower 2, 5th Floor, Apt 8",
           "addressLocality": "Damietta",
+          "addressRegion": "Damietta",
+          "postalCode": "34511",
           "addressCountry": "EG"
         }
       }
     </script>
+
+    <!-- Main Application -->
+    <script
+      type="module"
+      src="/src/main.tsx"
+    ></script>
   </head>
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
