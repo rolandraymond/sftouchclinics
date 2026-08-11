@@ -48,14 +48,14 @@ const BRANCHES: Branch[] = [
     name: { en: "Damietta Branch", ar: "فرع دمياط" },
     address: { en: "Safwa Mall, 2nd Floor", ar: "مول صفوة، الدور الثاني" },
     phones: ["01551820062", "01558008278", "572260062", "01147113246"],
-    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
+    hours: { en: "Daily 01:00 PM - 01:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
   },
   {
     id: "02",
     name: { en: "New Damietta", ar: "فرع دمياط الجديدة" },
     address: { en: "Central Zone", ar: "المنطقة المركزية" },
     phones: ["572430009", "01503656589", "01503656598", "01558008978"],
-    hours: { en: "Daily 12:00 PM - 10:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
+    hours: { en: "Daily 01:00 PM - 01:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
   },
 ];
 

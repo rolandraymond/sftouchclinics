@@ -329,7 +329,7 @@ const Footer = () => {
                         {isRTL ? "ساعات العمل" : "Working Hours"}
                       </p>
                       <p className="text-xs text-slate-400">
-                        {t.footer?.hours || "10:00 AM - 10:00 PM"}
+                        {t.footer?.hours || "01:00 AM - 01:00 PM"}
                       </p>
                     </div>
                   </div>
