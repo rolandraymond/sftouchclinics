@@ -7,6 +7,8 @@ import CTASection from '@/components/home/CTASection';
 import OffersSection from '@/components/section/OffersSection';
 import Cases3DCarousel from  '@/components/home/Carousel';
 import AIGeneratorSection from '@/components/home/AIGeneratorSection';
+import VideoGallery from "@/components/section/VideoGallery";
+
 const Index = () => {
   return (
     <>
@@ -14,7 +16,8 @@ const Index = () => {
       <OffersSection />
       <ServicesSection />
       <Cases3DCarousel />
-      <AIGeneratorSection />
+      <VideoGallery />
+      {/* <AIGeneratorSection /> */}
       {/* <RealResults/> */}
       <TechnologiesSection />
       <WhyUsSection />
