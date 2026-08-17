@@ -11,13 +11,16 @@ import {
   SendHorizontal,
   MessageSquareText,
   Navigation,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const WHATSAPP_NUMBER = "201503656589";
-
-const MAP_URL =
-  "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.bing.com%2Fmaps%2Fdefault.aspx%3Fv%3D2%26pc%3DFACEBK%26mid%3D8100%26where1%3D%25D8%25AF%25D9%2585%25D9%258A%25D8%25A7%25D8%25B7%2520%25D8%25A7%25D9%2584%25D9%2582%25D8%25AF%25D9%258A%25D9%2585%25D8%25A9%2520%25D8%25A7%25D9%2584%25D8%25B5%25D9%2581%25D9%2588%25D8%25A9%2520%25D9%2585%25D9%2588%25D9%2584%2520-%2520%25D8%25A8%25D8%25B1%25D8%25AC%25202%2520-%2520%25D8%25A7%25D9%2584%25D8%25AF%25D9%2588%25D8%25B1%2520%25D8%25A7%25D9%2584%25D8%25AE%25D8%25A7%25D9%2585%25D8%25B3%2520-%2520%25D8%25B4%25D9%2582%25D8%25A9%25208%252C%2520Damietta%252C%2520Egypt%26FORM%3DFBKPL1%26mkt%3Den-GB%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExTHJPbXU1MjJlbHhWMEc2THNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR7Vk4jXc-1tmq5NtmXZnkanP8UM4XxGvK4VHoYZxlu5rzz85KON-dG4BiE3cw_aem_6_azjJNvW9dZSr_rIV1dXQ&h=AUAGq-9EPxt6oIe3_qk2RjpiGZOe1uOGzNpFZV75PCiL-fjWPR9F5-EVmzV7qsP0Oe9obI_xoGPmTTYdjnXKDzDym178GotZkKAxJ2bbgYXbIa1UWHSSQm8dofk7G9xvM-m_";
+// ============================================
+// ضع هنا الـ URL اللي خدته من Google Apps Script
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxd9wHEBRNTSKHHadtNCAzBWS0ifdPa_G_9tR6nRCs_3wLX4f98CHwMnWCNSJ-9ITW/exec";
+// ============================================
 
 type LocaleKey = "en" | "ar";
 
@@ -48,14 +51,14 @@ const BRANCHES: Branch[] = [
     name: { en: "Damietta Branch", ar: "فرع دمياط" },
     address: { en: "Safwa Mall, 2nd Floor", ar: "مول صفوة، الدور الثاني" },
     phones: ["01551820062", "01558008278", "572260062", "01147113246"],
-    hours: { en: "Daily 01:00 PM - 01:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
+    hours: { en: "Daily 01:00 PM - 01:00 AM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحًا" },
   },
   {
     id: "02",
     name: { en: "New Damietta", ar: "فرع دمياط الجديدة" },
     address: { en: "Central Zone", ar: "المنطقة المركزية" },
     phones: ["572430009", "01503656589", "01503656598", "01558008978"],
-    hours: { en: "Daily 01:00 PM - 01:00 PM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحأ" },
+    hours: { en: "Daily 01:00 PM - 01:00 AM", ar: "يوميًا من 1 ظهرًا إلى 1 صباحًا" },
   },
 ];
 
@@ -64,6 +67,9 @@ const ContactUs = () => {
   const dir: LocaleKey = language === "ar" ? "ar" : "en";
 
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  
   const [formData, setFormData] = useState<FormDataState>({
     fullName: "",
     phone: "",
@@ -76,50 +82,65 @@ const ContactUs = () => {
 
   const updateField = (field: keyof FormDataState, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    if (submitStatus !== "idle") setSubmitStatus("idle");
   };
 
-  const buildWhatsAppMessage = () => {
-    const selectedBranch =
-      branches.find((b) => b.id === formData.branch) ?? branches[0];
-
-    const lines =
-      dir === "ar"
-        ? [
-            "صفحة تواصل معنا",
-            "----------------",
-            `الاسم: ${formData.fullName || "غير مذكور"}`,
-            `رقم الهاتف: ${formData.phone || "غير مذكور"}`,
-            `البريد الإلكتروني: ${formData.email || "غير مذكور"}`,
-            `الفرع المطلوب: ${selectedBranch.name.ar}`,
-            `العنوان: ${selectedBranch.address.ar}`,
-            "",
-            "الرسالة:",
-            formData.message || "لا توجد رسالة.",
-          ]
-        : [
-            "Contact us page",
-            "----------------",
-            `Name: ${formData.fullName || "Not provided"}`,
-            `Phone: ${formData.phone || "Not provided"}`,
-            `Email: ${formData.email || "Not provided"}`,
-            `Preferred branch: ${selectedBranch.name.en}`,
-            `Address: ${selectedBranch.address.en}`,
-            "",
-            "Message:",
-            formData.message || "No message provided.",
-          ];
-
-    return encodeURIComponent(lines.join("\n"));
+  const getBranchName = (id: string) => {
+    const b = branches.find((b) => b.id === id);
+    return b ? b.name[dir] : id;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${buildWhatsAppMessage()}`;
-    window.open(waUrl, "_blank", "noopener,noreferrer");
+    
+    if (!formData.fullName.trim() || !formData.phone.trim() || !formData.branch) {
+      // ممكن تضيف validation أكتر هنا
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const payload = {
+        fullName: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        branch: getBranchName(formData.branch),
+        message: formData.message,
+      };
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("success");
+        // إعادة تعيين الفورم
+        setFormData({
+          fullName: "",
+          phone: "",
+          email: "",
+          branch: "",
+          message: "",
+        });
+      } else {
+        throw new Error(result.error || "Unknown error");
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputBase =
-    "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent transition-colors duration-300 focus:border-amber-500";
+    "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent transition-colors duration-300 focus:border-amber-500 disabled:opacity-50";
   const labelBase =
     "absolute top-3 text-slate-400 transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-amber-600 peer-focus:font-bold peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 pointer-events-none";
 
@@ -160,15 +181,12 @@ const ContactUs = () => {
             {isRTL ? (
               <>
                 {heroTitlePrimary} <br />
-                <span className="font-light text-slate-500 italic">
-                </span>
+                <span className="font-light text-slate-500 italic"></span>
               </>
             ) : (
               <>
                 {heroTitlePrimary} <br />
-                <span className="font-light text-slate-500 italic">
-                  with care and clarity
-                </span>
+                <span className="font-light text-slate-500 italic">with care and clarity</span>
               </>
             )}
           </h1>
@@ -179,22 +197,19 @@ const ContactUs = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Branches Column */}
           <motion.div
             initial={{ opacity: 0, x: isRTL ? 24 : -24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className={cn(
-              "lg:col-span-5 flex flex-col gap-6",
-              isRTL ? "lg:order-2" : "lg:order-1",
-            )}
+            className={cn("lg:col-span-5 flex flex-col gap-6", isRTL ? "lg:order-2" : "lg:order-1")}
           >
-            {branches.map((branch, index) => (
+            {branches.map((branch) => (
               <div
                 key={branch.id}
                 className="group relative bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_20px_60px_rgb(0,0,0,0.06)] hover:border-amber-100 overflow-hidden"
               >
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-300 via-amber-500 to-orange-400 opacity-70" />
-
                 <div
                   dir="ltr"
                   className={cn(
@@ -210,7 +225,6 @@ const ContactUs = () => {
                     <h3 className={cn("text-2xl font-bold text-slate-900", isRTL ? "text-right" : "text-left")}>
                       {branch.name[dir]}
                     </h3>
-
                     <div className="flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-amber-700 text-xs font-bold">
                       <Navigation className="w-3.5 h-3.5" />
                       {isRTL ? "زيارة" : "Visit"}
@@ -222,21 +236,8 @@ const ContactUs = () => {
                       <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
                         <MapPin className="w-5 h-5 stroke-[1.5]" />
                       </div>
-
                       <div className={cn(isRTL ? "text-right" : "text-left")}>
-                        <p className="text-slate-600 font-medium leading-relaxed">
-                          {branch.address[dir]}
-                        </p>
-
-                        <a
-                          href={MAP_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 mt-2 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors uppercase tracking-wider"
-                        >
-                          {isRTL ? "الخريطة والاتجاهات" : "Map & Directions"}
-                          <ArrowRight className={cn("w-3.5 h-3.5", isRTL && "rotate-180")} />
-                        </a>
+                        <p className="text-slate-600 font-medium leading-relaxed">{branch.address[dir]}</p>
                       </div>
                     </div>
 
@@ -244,16 +245,12 @@ const ContactUs = () => {
                       <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
                         <Phone className="w-5 h-5 stroke-[1.5]" />
                       </div>
-
                       <div className={cn("space-y-2", isRTL ? "text-right" : "text-left")}>
                         {branch.phones.map((phone) => (
                           <a
                             key={phone}
                             href={`tel:${phone.replace(/\s+/g, "")}`}
-                            className={cn(
-                              "block text-slate-600 font-medium hover:text-slate-900 transition-colors text-lg",
-                              isRTL ? "text-right" : "text-left"
-                            )}
+                            className="block text-slate-600 font-medium hover:text-slate-900 transition-colors text-lg"
                             dir="ltr"
                           >
                             {phone}
@@ -266,11 +263,8 @@ const ContactUs = () => {
                       <div className="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-400 transition-colors group-hover:bg-amber-50 group-hover:text-amber-600">
                         <Clock className="w-5 h-5 stroke-[1.5]" />
                       </div>
-
                       <div className={cn(isRTL ? "text-right" : "text-left")}>
-                         <p className="text-slate-600 font-medium leading-relaxed">
-                           {branch.hours[dir]}
-                         </p>
+                        <p className="text-slate-600 font-medium leading-relaxed">{branch.hours[dir]}</p>
                       </div>
                     </div>
                   </div>
@@ -279,13 +273,14 @@ const ContactUs = () => {
             ))}
           </motion.div>
 
+          {/* Form Column */}
           <motion.div
             initial={{ opacity: 0, x: isRTL ? -24 : 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
               "lg:col-span-7 bg-white/60 backdrop-blur-3xl border border-white p-10 sm:p-14 lg:p-16 rounded-[2.5rem] shadow-[0_20px_80px_rgba(15,23,42,0.04)]",
-              isRTL ? "lg:order-1 text-right" : "lg:order-2 text-left",
+              isRTL ? "lg:order-1 text-right" : "lg:order-2 text-left"
             )}
           >
             <div className="mb-12">
@@ -293,17 +288,46 @@ const ContactUs = () => {
                 <MessageSquareText className="w-4 h-4" />
                 {isRTL ? "نموذج سريع" : "Quick Form"}
               </div>
-
               <h2 className="text-3xl font-bold text-slate-900 mb-4">
                 {isRTL ? "اكتب رسالتك" : "Write your message"}
               </h2>
-
               <p className="text-slate-500 font-medium leading-relaxed max-w-xl">
                 {isRTL
-                  ? "املأ البيانات الأساسية، واختار الفرع المناسب، ثم أرسل التفاصيل مباشرة إلى الفريق عبر واتساب."
-                  : "Fill in the basic details, choose the right branch, then send your request directly to the team on WhatsApp."}
+                  ? "املأ البيانات الأساسية، واختار الفرع المناسب، ثم أرسل التفاصيل مباشرة إلى الفريق."
+                  : "Fill in the basic details, choose the right branch, then send your request directly to the team."}
               </p>
             </div>
+
+            {/* Success / Error Toast */}
+            {submitStatus === "success" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-8 flex items-center gap-3 rounded-2xl bg-emerald-50 border border-emerald-100 p-4 text-emerald-800"
+              >
+                <CheckCircle2 className="w-5 h-5 shrink-0" />
+                <p className="font-bold text-sm">
+                  {isRTL
+                    ? "تم إرسال رسالتك بنجاح! هنتواصل معاك قريب."
+                    : "Your message has been sent successfully! We'll contact you soon."}
+                </p>
+              </motion.div>
+            )}
+
+            {submitStatus === "error" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-8 flex items-center gap-3 rounded-2xl bg-red-50 border border-red-100 p-4 text-red-800"
+              >
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <p className="font-bold text-sm">
+                  {isRTL
+                    ? "حصل مشكلة في الإرسال. جرب تاني أو كلمنا على الواتساب."
+                    : "Something went wrong. Please try again or contact us on WhatsApp."}
+                </p>
+              </motion.div>
+            )}
 
             <form className="space-y-10" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-6">
@@ -316,21 +340,14 @@ const ContactUs = () => {
                     onBlur={() => setFocusedInput(null)}
                     placeholder=" "
                     autoComplete="name"
+                    disabled={isSubmitting}
                     dir={isRTL ? "rtl" : "ltr"}
                     className={cn(inputBase, isRTL ? "text-right" : "text-left")}
                   />
                   <label className={cn(labelBase, isRTL ? "right-0" : "left-0")}>
-                    {isRTL ? "الاسم بالكامل" : "Full Name"}
+                    {isRTL ? "الاسم بالكامل *" : "Full Name *"}
                   </label>
-                  <div
-                    className={cn(
-                      "absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out",
-                      focusedInput === "fullName"
-                        ? "w-full opacity-100"
-                        : "w-0 opacity-0",
-                      isRTL ? "right-0" : "left-0",
-                    )}
-                  />
+                  <div className={cn("absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out", focusedInput === "fullName" ? "w-full opacity-100" : "w-0 opacity-0", isRTL ? "right-0" : "left-0")} />
                 </div>
 
                 <div className="relative group">
@@ -342,21 +359,14 @@ const ContactUs = () => {
                     onBlur={() => setFocusedInput(null)}
                     placeholder=" "
                     autoComplete="tel"
+                    disabled={isSubmitting}
                     dir="ltr"
                     className={cn(inputBase, isRTL ? "text-right" : "text-left")}
                   />
                   <label className={cn(labelBase, isRTL ? "right-0" : "left-0")}>
-                    {isRTL ? "رقم الهاتف" : "Phone Number"}
+                    {isRTL ? "رقم الهاتف *" : "Phone Number *"}
                   </label>
-                  <div
-                    className={cn(
-                      "absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out",
-                      focusedInput === "phone"
-                        ? "w-full opacity-100"
-                        : "w-0 opacity-0",
-                      isRTL ? "right-0" : "left-0",
-                    )}
-                  />
+                  <div className={cn("absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out", focusedInput === "phone" ? "w-full opacity-100" : "w-0 opacity-0", isRTL ? "right-0" : "left-0")} />
                 </div>
               </div>
 
@@ -370,21 +380,14 @@ const ContactUs = () => {
                     onBlur={() => setFocusedInput(null)}
                     placeholder=" "
                     autoComplete="email"
+                    disabled={isSubmitting}
                     dir="ltr"
                     className={cn(inputBase, isRTL ? "text-right" : "text-left")}
                   />
                   <label className={cn(labelBase, isRTL ? "right-0" : "left-0")}>
                     {isRTL ? "البريد الإلكتروني" : "Email Address"}
                   </label>
-                  <div
-                    className={cn(
-                      "absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out",
-                      focusedInput === "email"
-                        ? "w-full opacity-100"
-                        : "w-0 opacity-0",
-                      isRTL ? "right-0" : "left-0",
-                    )}
-                  />
+                  <div className={cn("absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out", focusedInput === "email" ? "w-full opacity-100" : "w-0 opacity-0", isRTL ? "right-0" : "left-0")} />
                 </div>
 
                 <div className="relative group">
@@ -393,11 +396,9 @@ const ContactUs = () => {
                     onChange={(e) => updateField("branch", e.target.value)}
                     onFocus={() => setFocusedInput("branch")}
                     onBlur={() => setFocusedInput(null)}
+                    disabled={isSubmitting}
                     dir={isRTL ? "rtl" : "ltr"}
-                    className={cn(
-                      "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none appearance-none transition-colors duration-300 focus:border-amber-500",
-                      isRTL ? "text-right" : "text-left",
-                    )}
+                    className={cn("peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none appearance-none transition-colors duration-300 focus:border-amber-500 disabled:opacity-50", isRTL ? "text-right" : "text-left")}
                   >
                     <option value="" disabled hidden></option>
                     {branches.map((branch) => (
@@ -406,28 +407,10 @@ const ContactUs = () => {
                       </option>
                     ))}
                   </select>
-
-                  <label
-                    className={cn(
-                      "absolute transition-all duration-300 pointer-events-none",
-                      (focusedInput === "branch" || formData.branch)
-                        ? "-top-4 text-xs font-bold " + (focusedInput === "branch" ? "text-amber-600" : "text-slate-400")
-                        : "top-3 text-base text-slate-400",
-                      isRTL ? "right-0" : "left-0"
-                    )}
-                  >
-                    {isRTL ? "الفرع المفضل" : "Preferred Branch"}
+                  <label className={cn("absolute transition-all duration-300 pointer-events-none", (focusedInput === "branch" || formData.branch) ? "-top-4 text-xs font-bold " + (focusedInput === "branch" ? "text-amber-600" : "text-slate-400") : "top-3 text-base text-slate-400", isRTL ? "right-0" : "left-0")}>
+                    {isRTL ? "الفرع المفضل *" : "Preferred Branch *"}
                   </label>
-
-                  <div
-                    className={cn(
-                      "absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out",
-                      focusedInput === "branch"
-                        ? "w-full opacity-100"
-                        : "w-0 opacity-0",
-                      isRTL ? "right-0" : "left-0",
-                    )}
-                  />
+                  <div className={cn("absolute bottom-0 h-[2px] bg-amber-500 transition-all duration-500 ease-out", focusedInput === "branch" ? "w-full opacity-100" : "w-0 opacity-0", isRTL ? "right-0" : "left-0")} />
                 </div>
               </div>
 
@@ -439,48 +422,40 @@ const ContactUs = () => {
                   onBlur={() => setFocusedInput(null)}
                   placeholder=" "
                   rows={5}
+                  disabled={isSubmitting}
                   dir={isRTL ? "rtl" : "ltr"}
-                  className={cn(
-                    "peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent resize-none transition-colors duration-300 focus:border-amber-500",
-                    isRTL ? "text-right" : "text-left",
-                  )}
+                  className={cn("peer w-full bg-transparent border-b border-slate-200 py-3 text-lg text-slate-900 focus:outline-none placeholder-transparent resize-none transition-colors duration-300 focus:border-amber-500 disabled:opacity-50", isRTL ? "text-right" : "text-left")}
                 />
-                <label
-                  className={cn(
-                    "absolute top-7 text-slate-400 transition-all duration-300 peer-focus:top-0 peer-focus:text-xs peer-focus:text-amber-600 peer-focus:font-bold peer-placeholder-shown:top-7 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 pointer-events-none",
-                    isRTL ? "right-0" : "left-0",
-                  )}
-                >
+                <label className={cn("absolute top-7 text-slate-400 transition-all duration-300 peer-focus:top-0 peer-focus:text-xs peer-focus:text-amber-600 peer-focus:font-bold peer-placeholder-shown:top-7 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 pointer-events-none", isRTL ? "right-0" : "left-0")}>
                   {isRTL ? "اكتب استفسارك أو تفاصيل الحجز" : "Write your inquiry or booking details"}
                 </label>
-                <div
-                  className={cn(
-                    "absolute bottom-1 h-[2px] bg-amber-500 transition-all duration-500 ease-out",
-                    focusedInput === "message"
-                      ? "w-full opacity-100"
-                      : "w-0 opacity-0",
-                    isRTL ? "right-0" : "left-0",
-                  )}
-                />
+                <div className={cn("absolute bottom-1 h-[2px] bg-amber-500 transition-all duration-500 ease-out", focusedInput === "message" ? "w-full opacity-100" : "w-0 opacity-0", isRTL ? "right-0" : "left-0")} />
               </div>
 
               <div className={cn("pt-4", isRTL ? "text-right" : "text-left")}>
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className={cn(
-                    "group/submit relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-slate-900 px-10 py-4 font-bold text-white transition-all hover:bg-amber-500 hover:shadow-[0_10px_40px_rgba(245,158,11,0.3)] active:scale-95 w-full sm:w-auto",
-                    isRTL ? "flex-row-reverse" : "",
+                    "group/submit relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-slate-900 px-10 py-4 font-bold text-white transition-all hover:bg-amber-500 hover:shadow-[0_10px_40px_rgba(245,158,11,0.3)] active:scale-95 w-full sm:w-auto disabled:opacity-70 disabled:cursor-not-allowed",
+                    isRTL ? "flex-row-reverse" : ""
                   )}
                 >
-                  <span className="relative z-10 tracking-wide">
-                    {isRTL ? "إرسال للفريق" : "Send to Team"}
-                  </span>
-                  <SendHorizontal
-                    className={cn(
-                      "relative z-10 w-5 h-5 transition-transform duration-300 group-hover/submit:translate-x-1",
-                      isRTL ? "rotate-180 group-hover/submit:-translate-x-1" : "",
-                    )}
-                  />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="relative z-10 w-5 h-5 animate-spin" />
+                      <span className="relative z-10 tracking-wide">
+                        {isRTL ? "جاري الإرسال..." : "Sending..."}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="relative z-10 tracking-wide">
+                        {isRTL ? "إرسال للفريق" : "Send to Team"}
+                      </span>
+                      <SendHorizontal className={cn("relative z-10 w-5 h-5 transition-transform duration-300 group-hover/submit:translate-x-1", isRTL ? "rotate-180 group-hover/submit:-translate-x-1" : "")} />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
