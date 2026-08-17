@@ -40,7 +40,7 @@ const testimonials: Testimonial[] = [
     roleAr: "أخصائية التغذية العلاجية",
     quoteEn: "Weight stability isn't just about diet. Stress, lack of sleep, and random weight loss drugs can slow down your metabolism.",
     quoteAr: "ثبات الوزن مش بس دايت! الضغط النفسي، السهر، وأدوية التخسيس العشوائية بتقلل الحرق وتأثر على النتيجة.",
-    thumbnail: "images/OES02435.jpg",
+    thumbnail: "images/OES02404.jpg",
     videoId: "nFExdl3kxBk",
   },
   {
@@ -51,7 +51,7 @@ const testimonials: Testimonial[] = [
     roleAr: "الطب التجميلي",
     quoteEn: "Restoring volume to cheeks and lips isn't an exaggeration, it's returning to a more beautiful version of yourself with calculated angles.",
     quoteAr: "في فرق بين التكبير المبالغ فيه واستعادة الحجم. بنملى بزوايا ومقاسات دقيقة عشان ترجعي نسخة أحلى وأصغر من نفسك.",
-    thumbnail: "images/OES02416.jpg",
+    thumbnail: "images/OES02435.jpg",
     videoId: "125u0Rt-qos",
   },
   {
@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
     roleAr: "أخصائية تنسيق القوام",
     quoteEn: "The Schwarzy device doesn't just break down fat; it builds and stimulates muscles as if you just finished a heavy gym workout.",
     quoteAr: "جهاز شوارزي مش بس بيكسر الدهون، ده بيبني العضلات وينشطها كأنك رحتي الجيم بالظبط وعملتي تمرين كامل!",
-    thumbnail: "images/OES02435.jpg",
+    thumbnail: "images/OES02416.jpg",
     videoId: "XbTzyDwSMKk",
   },
 ];
