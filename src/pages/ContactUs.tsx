@@ -4,7 +4,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import {
   MapPin,
   Phone,
-  Mail,
   Clock,
   ArrowRight,
   Sparkles,
@@ -19,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 // ============================================
 // ضع هنا الـ URL اللي خدته من Google Apps Script
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxd9wHEBRNTSKHHadtNCAzBWS0ifdPa_G_9tR6nRCs_3wLX4f98CHwMnWCNSJ-9ITW/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbycTUhZcZUx_D-zX2gKqNK-rbrL9hCodDu06fF14K5cS_oxNWYs_YUShEcC33PKZG-e/exec";
 // ============================================
 
 type LocaleKey = "en" | "ar";
@@ -69,7 +68,7 @@ const ContactUs = () => {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-  
+
   const [formData, setFormData] = useState<FormDataState>({
     fullName: "",
     phone: "",
@@ -92,9 +91,10 @@ const ContactUs = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
+    // التحقق من الحقول المطلوبة
     if (!formData.fullName.trim() || !formData.phone.trim() || !formData.branch) {
-      // ممكن تضيف validation أكتر هنا
+      setSubmitStatus("error");
       return;
     }
 
@@ -110,27 +110,26 @@ const ContactUs = () => {
         message: formData.message,
       };
 
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      // الحل الأساسي: no-cors + text/plain عشان نتجنب CORS
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain",
+        },
         body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
+      // بنفترض النجاح لأننا مش قادرين نقرأ الرد
+      setSubmitStatus("success");
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        branch: "",
+        message: "",
+      });
 
-      if (result.success) {
-        setSubmitStatus("success");
-        // إعادة تعيين الفورم
-        setFormData({
-          fullName: "",
-          phone: "",
-          email: "",
-          branch: "",
-          message: "",
-        });
-      } else {
-        throw new Error(result.error || "Unknown error");
-      }
     } catch (error) {
       console.error("Submit error:", error);
       setSubmitStatus("error");
@@ -323,8 +322,8 @@ const ContactUs = () => {
                 <AlertCircle className="w-5 h-5 shrink-0" />
                 <p className="font-bold text-sm">
                   {isRTL
-                    ? "حصل مشكلة في الإرسال. جرب تاني أو كلمنا على الواتساب."
-                    : "Something went wrong. Please try again or contact us on WhatsApp."}
+                    ? "يرجى ملء الاسم والتليفون واختيار الفرع."
+                    : "Please fill in your name, phone, and select a branch."}
                 </p>
               </motion.div>
             )}
