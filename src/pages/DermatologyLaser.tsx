@@ -113,7 +113,7 @@ const services: ServiceItem[] = [
     },
   },
   {
-    icon: Waves,
+    icon: Sparkles,
     color: "#5B7A3A",
     glow: "#B7D08A",
     image:
