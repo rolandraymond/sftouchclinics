@@ -46,7 +46,7 @@ const services = [
     color: "#3D6E8F",
     glow: "#9AC6E0",
     image:
-      "/images/image16.png",
+      "/images/dev12.png",
     title: { en: "Onda ", ar: "أوندا " },
     description: {
       en: "Coolwaves for cellulite and fat reduction.",
@@ -54,11 +54,11 @@ const services = [
     },
   },
   {
-    icon: Dumbbell,
+    icon: Activity,
     color: "#B85C6B",
     glow: "#F0AFBA",
     image:
-      "https://images.unsplash.com/photo-1775993719568-290840203239?auto=format&fit=crop&w=600&q=75",
+      "/images/dev11.png",
     title: { en: "Schwarzy", ar: "شوارزي" },
     description: {
       en: "Muscle building and body toning device.",

@@ -2,12 +2,12 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import {
-  Sparkles,
+ ScanFace,
   Zap,
   Syringe,
   Sun,
-  Target,
-  Waves,
+  CircleDot,
+  Scan,
   type LucideIcon,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -53,11 +53,11 @@ const T: Record<string, TextPair> & { hover: TextPair } = {
 
 const services: ServiceItem[] = [
   {
-    icon: Sparkles,
+
+    icon: ScanFace,
     color: "#D97A3E",
     glow: "#F6C88A",
-    image:
-      "/images/image11.avif",
+    image: "/images/image11.avif",
     title: { en: "Skin Treatment", ar: "علاج البشرة" },
     description: {
       en: "Advanced treatments for skin issues like acne, pigmentation, and scars.",
@@ -65,11 +65,12 @@ const services: ServiceItem[] = [
     },
   },
   {
+  
     icon: Zap,
     color: "#2F6F62",
     glow: "#8FCBB8",
     image:
-      "https://images.unsplash.com/photo-1746806942799-b4db209e9a6b?auto=format&fit=crop&w=600&q=75",
+      "/images/Motus PRO device with lit screen.jpeg",
     title: { en: "Laser Hair Removal", ar: "إزالة الشعر بالليزر" },
     description: {
       en: "Motus Pro technology for laser hair removal, tailored to each case for a safe and effective experience.",
@@ -77,11 +78,11 @@ const services: ServiceItem[] = [
     },
   },
   {
+
     icon: Syringe,
     color: "#B85C6B",
     glow: "#F0AFBA",
-    image:
-      "/images/image12.png",
+    image: "/images/image12.png",
     title: { en: "Botox & Fillers", ar: "البوتوكس والفيلر" },
     description: {
       en: "Medically supervised aesthetic injections to enhance facial appearance while maintaining natural results.",
@@ -89,11 +90,11 @@ const services: ServiceItem[] = [
     },
   },
   {
+
     icon: Sun,
     color: "#C9972B",
     glow: "#F3D98B",
-    image:
-      "/images/image13.png",
+    image: "/images/image13.png",
     title: { en: "Pigmentation Treatment", ar: "علاج التصبغات" },
     description: {
       en: "Advanced techniques to target pigmentation and unify skin tone based on individual skin nature.",
@@ -101,7 +102,8 @@ const services: ServiceItem[] = [
     },
   },
   {
-    icon: Target,
+
+    icon: CircleDot,
     color: "#3D6E8F",
     glow: "#9AC6E0",
     image:
@@ -113,11 +115,11 @@ const services: ServiceItem[] = [
     },
   },
   {
-    icon: Sparkles,
+
+    icon: Scan,
     color: "#5B7A3A",
     glow: "#B7D08A",
-    image:
-      "/images/image14.png",
+    image: "/images/image14.png",
     title: { en: "Skin Tightening", ar: "شد البشرة" },
     description: {
       en: "RF technologies for non-surgical skin tightening and rejuvenation suited to your needs.",

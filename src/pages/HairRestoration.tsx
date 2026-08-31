@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import {
-  Scissors,
   Droplets,
   Syringe,
   Sparkles,
-  Activity,
-  HeartPulse,
+  ScanSearch,
+  Search,
+  ShieldPlus,
   type LucideIcon,
 } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { GiHairStrands} from "react-icons/gi";
 
 /**
  * Advanced Hair Restoration Page Design
@@ -29,7 +30,7 @@ interface TextPair {
 }
 
 interface ServiceItem {
-  icon: LucideIcon;
+  icon: React.ElementType;
   color: string;
   glow: string;
   image: string;
@@ -40,7 +41,7 @@ interface ServiceItem {
 interface LightOrbProps {
   color: string;
   glow: string;
-  Icon: LucideIcon;
+  Icon: React.ElementType;
   id: number;
   image: string;
   alt: string;
@@ -63,11 +64,11 @@ const T: Record<string, TextPair> & { hover: TextPair } = {
 
 const services: ServiceItem[] = [
   {
-    icon: Droplets,
+    icon: GiHairStrands,
     color: "#8A5A44",
     glow: "#D4A373",
     image:
-      "https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&w=600&q=75",
+      "/images/how-does-hair-transplant-work.webp",
     title: { en: "Hair Transplant", ar: "زراعة الشعر" },
     description: {
       en: "FUE & DHI techniques for natural results.",
@@ -91,7 +92,7 @@ const services: ServiceItem[] = [
     color: "#4A7C72",
     glow: "#8BC3B8",
     image:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=75",
+      "/images/mesotherapy-for-hair-1.webp",
     title: { en: "Mesotherapy", ar: "الميزوثيرابي" },
     description: {
       en: "Vitamin and mineral injections to nourish the scalp.",
@@ -99,11 +100,11 @@ const services: ServiceItem[] = [
     },
   },
   {
-    icon: Sparkles,
+    icon: ScanSearch,
     color: "#C49A45",
     glow: "#F0D194",
     image:
-      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=75",
+      "/images/images (1).jpeg",
     title: { en: "Baldness Treatment", ar: "علاج الصلع" },
     description: {
       en: "Comprehensive solutions for hereditary baldness.",
@@ -111,7 +112,7 @@ const services: ServiceItem[] = [
     },
   },
   {
-    icon: Activity,
+    icon: Search,
     color: "#466C8C",
     glow: "#98BBE0",
     image: "/images/imagedev3.png",
@@ -122,11 +123,10 @@ const services: ServiceItem[] = [
     },
   },
   {
-    icon: HeartPulse,
+    icon: ShieldPlus,
     color: "#99627A",
     glow: "#D8A6C0",
-    image:
-      "/images/image15.png",
+    image: "/images/image15.png",
     title: { en: "Hair Loss Treatment", ar: "علاج التساقط" },
     description: {
       en: "Comprehensive treatment programs to stop hair loss.",

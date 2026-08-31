@@ -101,7 +101,7 @@ const TechnologiesSection = () => {
       description: 'Muscle Building & Toning',
       arabicDescription: 'بناء العضلات وشد الجسم بالموجات المغناطيسية',
       image: '/images/dev11.png',
-      icon: Zap,
+      icon: Waves,
     },
     {
       id: 12,

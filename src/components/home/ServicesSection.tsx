@@ -5,7 +5,7 @@ import {
   ArrowRight,
   Sparkles,
   Apple,
-  Scissors,
+  Sprout,
   Activity,
   ShieldCheck,
   Stethoscope,
@@ -82,7 +82,7 @@ const ServicesSection = () => {
         (isRTL
           ? "أحدث التقنيات لاستعادة كثافة الشعر وحيويته بأسلوب طبيعي."
           : "Latest technologies to restore hair density and natural vitality."),
-      icon: Scissors,
+      icon: Sprout,
       image: "/images/6485892b-1ae1-45e5-b3dc-6aa57ed65001-1.png",
       href: "/services/hair-restoration",
       gridClass: "md:col-span-1 min-h-[300px]",
@@ -270,7 +270,7 @@ const ServicesSection = () => {
                     {/* Content Layer */}
                     <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10">
                       {/* Top Header */}
-                      {/* تم حذف الأيقونة من هنا وتعديل المحاذاة لـ justify-end ليبقى الرقم في مكانه */}
+                      
                       <div className="flex items-start justify-end">
                         <span className="text-4xl font-black text-white/20 sm:text-5xl">
                           {service.id}

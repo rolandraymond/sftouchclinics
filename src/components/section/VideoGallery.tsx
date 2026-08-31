@@ -20,51 +20,58 @@ interface Testimonial {
   videoId: string;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    id: "1",
-    nameEn: "SF Touch Expert",
-    nameAr: "خبير تجميل SF Touch",
-    roleEn: "Dermatology & Aesthetics",
-    roleAr: "طب وتجميل الجلد",
-    quoteEn: "Beauty is a carefully studied decision, not just a procedure. Every face needs a unique, customized treatment plan.",
-    quoteAr: "الجمال مش مجرد إجراء، الجمال قرار مدروس. كل وش بيحتاج خطة علاجية مخصصة ليه عشان النتيجة تكون متكاملة.",
-    thumbnail: "images/OES02416.jpg",
-    videoId: "iplg6K7V2Ys",
-  },
-  {
-    id: "2",
-    nameEn: "Dr. Mai",
-    nameAr: "د. مي",
-    roleEn: "Clinical Nutritionist",
-    roleAr: "أخصائية التغذية العلاجية",
-    quoteEn: "Weight stability isn't just about diet. Stress, lack of sleep, and random weight loss drugs can slow down your metabolism.",
-    quoteAr: "ثبات الوزن مش بس دايت! الضغط النفسي، السهر، وأدوية التخسيس العشوائية بتقلل الحرق وتأثر على النتيجة.",
-    thumbnail: "images/OES02404.jpg",
-    videoId: "nFExdl3kxBk",
-  },
-  {
-    id: "3",
-    nameEn: "SF Touch Expert",
-    nameAr: "خبير تجميل SF Touch",
-    roleEn: "Aesthetic Medicine",
-    roleAr: "الطب التجميلي",
-    quoteEn: "Restoring volume to cheeks and lips isn't an exaggeration, it's returning to a more beautiful version of yourself with calculated angles.",
-    quoteAr: "في فرق بين التكبير المبالغ فيه واستعادة الحجم. بنملى بزوايا ومقاسات دقيقة عشان ترجعي نسخة أحلى وأصغر من نفسك.",
-    thumbnail: "images/OES02435.jpg",
-    videoId: "125u0Rt-qos",
-  },
-  {
-    id: "4",
-    nameEn: "Dr. Sally",
-    nameAr: "د. سالي",
-    roleEn: "Body Contouring Specialist",
-    roleAr: "أخصائية تنسيق القوام",
-    quoteEn: "The Schwarzy device doesn't just break down fat; it builds and stimulates muscles as if you just finished a heavy gym workout.",
-    quoteAr: "جهاز شوارزي مش بس بيكسر الدهون، ده بيبني العضلات وينشطها كأنك رحتي الجيم بالظبط وعملتي تمرين كامل!",
-    thumbnail: "images/OES02416.jpg",
-    videoId: "XbTzyDwSMKk",
-  },
+
+  const testimonials: Testimonial[] = [
+ {
+  id: "1",
+  nameEn: "Dr. Sally",
+  nameAr: "د. سالي",
+
+  roleEn: "Dermatology, Cosmetic & Laser",
+  roleAr: "الجلدية والتجميل والليزر",
+
+  quoteEn:
+    "Healthy skin is the foundation of natural, elegant beauty.",
+
+  quoteAr:
+    "البشرة الصحية هي أساس الجمال الطبيعي والنتائج الراقية.",
+
+  thumbnail: "images/OES02416.jpg",
+  videoId: "XbTzyDwSMKk",
+},
+{
+  id: "2",
+  nameEn: "Dr. Freehan",
+  nameAr: "د. فريهان",
+
+  roleEn: "Dermatology, Laser & Nutrition",
+  roleAr: "الجلدية والليزر والتغذية العلاجية",
+
+  quoteEn:
+    "Natural beauty comes from precise, balanced enhancements.",
+
+  quoteAr:
+    "الجمال الطبيعي يبدأ من لمسات دقيقة ونتائج متناسقة.",
+
+  thumbnail: "images/OES02435.jpg",
+  videoId: "125u0Rt-qos",
+},{
+  id: "3",
+  nameEn: "Dr. Mai",
+  nameAr: "د. مي",
+
+  roleEn: "Clinical Nutritionist",
+  roleAr: "أخصائية التغذية العلاجية",
+
+  quoteEn:
+    "Healthy weight starts with balanced nutrition and better daily habits.",
+
+  quoteAr:
+    "الوزن الصحي يبدأ من تغذية متوازنة وعادات يومية أفضل.",
+
+  thumbnail: "images/OES02404.jpg",
+  videoId: "nFExdl3kxBk",
+},
 ];
 
 const VideoGallery = () => {
@@ -99,18 +106,35 @@ const VideoGallery = () => {
           </p>
         </motion.div>
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-              className="group relative cursor-pointer h-[420px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-              onClick={() => setSelectedVideo(testimonial)}
-            >
+     {/* Video Grid */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+  {testimonials.map((testimonial, index) => (
+<motion.div
+  key={testimonial.id}
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-50px" }}
+  transition={{
+    duration: 0.6,
+    delay: index * 0.15,
+    ease: "easeOut",
+  }}
+  className="group relative cursor-pointer h-[420px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
+  onClick={() => setSelectedVideo(testimonial)}
+>
+  {/* Card Number */}
+  <div className="absolute top-4 left-4 z-30 w-10 h-10 rounded-full bg-white/90 text-black flex items-center justify-center font-bold text-lg shadow-lg">
+    {testimonial.id}
+  </div>
+
+  {/* Background Thumbnail */}
+  <div className="absolute inset-0">
+    <img
+      src={testimonial.thumbnail}
+      alt={language === "en" ? testimonial.nameEn : testimonial.nameAr}
+      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+  </div>
               {/* Background Thumbnail */}
               <div className="absolute inset-0">
                 <img
