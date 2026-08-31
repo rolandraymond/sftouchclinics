@@ -6,7 +6,7 @@ import CTASection from '@/components/home/CTASection';
 //import RealResults from '@/components/section/RealResult';
 import OffersSection from '@/components/section/OffersSection';
 import Cases3DCarousel from  '@/components/home/Carousel';
-import AIGeneratorSection from '@/components/home/AIGeneratorSection';
+//import AIGeneratorSection from '@/components/home/AIGeneratorSection';
 import VideoGallery from "@/components/section/VideoGallery";
 
 const Index = () => {
