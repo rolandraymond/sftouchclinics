@@ -19,6 +19,10 @@ import HairRestoration from "./pages/HairRestoration";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import Preloader from "@/components/effects/Preloader";
+import BookingSection from "./pages/BookingSection";
+import Booking from './pages/Booking';
+
+
 
 const queryClient = new QueryClient();
 
@@ -55,9 +59,11 @@ const App = () => (
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/offers" element={<Offers />} />
               <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/booking" element={<Booking />} />
               <Route path="*" element={<NotFound />} />
+              
             </Routes>
-            {/* 🚀 الـ WhatsApp Button ثابت هنا ليرافق المستخدم في كل الصفحات */}
+            
                     <WhatsAppButton />
           </Layout>
         </BrowserRouter>

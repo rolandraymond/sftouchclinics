@@ -5,9 +5,6 @@ import { Menu, X, Phone, Globe, MapPin, Clock, ArrowRight, ChevronDown, Zap, Act
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
 
-// ----------------------------------------------------------------------
-// 1. زر "Book Appointment" مع تأثير اللمعان
-// ----------------------------------------------------------------------
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: 'primary' | 'outline';
@@ -95,11 +92,12 @@ const Navbar = () => {
     { href: '/contact-us', label: t.nav.contact },
   ];
 
-  const handleBookAppointment = () => {
-    setIsOpen(false);
-    setIsMobileServicesOpen(false);
-    navigate('/contact-us');
-  };
+const handleBookAppointment = () => {
+  setIsOpen(false);
+  setIsMobileServicesOpen(false);
+  setIsServicesHovered(false);
+  navigate('/booking');
+};
 
   return (
     <>
@@ -289,30 +287,39 @@ const Navbar = () => {
           </nav>
 
           {/* ACTIONS */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggleLanguage}
-              className="hidden lg:flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors border border-transparent hover:border-slate-200"
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>{language === 'en' ? 'AR' : 'EN'}</span>
-            </button>
+        {/* ACTIONS */}
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="hidden lg:flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors border border-transparent hover:border-slate-200"
+          >
+            <Globe className="w-3.5 h-3.5" />
+            <span>{language === 'en' ? 'AR' : 'EN'}</span>
+          </button>
 
-            <ShimmerButton
-              onClick={handleBookAppointment}
-              className={cn(isScrolled ? "px-5 py-2 text-xs" : "px-6 py-2.5 text-sm")}
-            >
-              {t.nav.bookAppointment}
-            </ShimmerButton>
+          <ShimmerButton
+            onClick={handleBookAppointment}
+            className={cn(
+              'whitespace-nowrap',
+              isScrolled
+                ? 'px-4 py-2 text-xs'
+                : 'px-4 sm:px-6 py-2.5 text-xs sm:text-sm'
+            )}
+          >
+            {t.nav.bookAppointment}
+          </ShimmerButton>
 
-            <button
-              onClick={() => setIsOpen(true)}
-              className="lg:hidden p-2.5 text-slate-800 bg-white rounded-full shadow-sm border border-slate-100 active:scale-90 transition-transform"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            aria-label={language === 'en' ? 'Open menu' : 'افتح القائمة'}
+            className="lg:hidden p-2.5 text-slate-800 bg-white rounded-full shadow-sm border border-slate-100 active:scale-90 transition-transform"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
         </div>
+      </div>
       </motion.header>
 
       {/* ======================= MOBILE MENU ======================= */}
@@ -348,7 +355,6 @@ const Navbar = () => {
               <div className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
                 {navLinks.map((link, i) => {
                   
-                  // 🌟 الإبداع في قائمة الموبايل (Mobile Accordion) 🌟
                   if (link.hasDropdown) {
                     return (
                       <motion.div
@@ -455,12 +461,16 @@ const Navbar = () => {
                   </button>
                 </div>
 
-                <ShimmerButton
-                  onClick={handleBookAppointment}
-                  className="w-full py-4 text-base rounded-2xl"
+                <Link
+                  to="/booking"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsMobileServicesOpen(false);
+                  }}
+                  className="flex w-full items-center justify-center rounded-2xl bg-slate-900 px-5 py-4 text-base font-semibold text-white transition-colors hover:bg-slate-800"
                 >
-                  {t.nav.bookAppointment}
-                </ShimmerButton>
+                  {language === 'en' ? 'Book an Appointment' : 'احجز موعد'}
+                </Link>
               </div>
             </motion.div>
           </>
