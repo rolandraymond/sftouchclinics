@@ -1,7 +1,12 @@
 import { InferenceClient } from "@huggingface/inference";
+import { onRequestPost as handleBooking } from "../functions/api/booking";
 
 interface Env {
   HUGGINGFACE_API_KEY: string;
+  BOOKING_SCRIPT_URL: string;
+  ASSETS: {
+    fetch(request: Request): Promise<Response>;
+  };
 }
 
 const PROMPTS_MAP: Record<string, string> = {
@@ -23,8 +28,26 @@ function jsonResponse(data: unknown, status = 200): Response {
     status,
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
+      "Cache-Control": "no-store",
     },
   });
+}
+
+function methodNotAllowed(): Response {
+  return new Response(
+    JSON.stringify({
+      ok: false,
+      code: "METHOD_NOT_ALLOWED",
+    }),
+    {
+      status: 405,
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        "Cache-Control": "no-store",
+        Allow: "POST",
+      },
+    }
+  );
 }
 
 function parseDataUrl(input: string) {
@@ -43,7 +66,7 @@ function parseDataUrl(input: string) {
   };
 }
 
-function base64ToUint8Array(base64: string): Uint8Array {
+function base64ToUint8Array(base64: string) {
   const binary = atob(base64);
   const bytes = new Uint8Array(binary.length);
 
@@ -57,7 +80,6 @@ function base64ToUint8Array(base64: string): Uint8Array {
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
   const bytes = new Uint8Array(buffer);
   const chunkSize = 0x8000;
-
   let binary = "";
 
   for (let i = 0; i < bytes.length; i += chunkSize) {
@@ -70,28 +92,38 @@ function arrayBufferToBase64(buffer: ArrayBuffer): string {
 }
 
 export default {
-  async fetch(
-    request: Request,
-    env: Env
-  ): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    /*
-     * API
-     * POST /api/generate-ai
-     */
-    if (url.pathname === "/api/generate-ai") {
+    if (url.pathname === "/api/booking") {
       if (request.method !== "POST") {
-        return jsonResponse(
-          {
-            error: "Method Not Allowed",
-          },
-          405
-        );
+        return methodNotAllowed();
       }
 
       try {
-        // التأكد من وجود Hugging Face API Key
+        return await handleBooking({ request, env });
+      } catch (error: unknown) {
+        console.error(
+          "Booking handler failed:",
+          error instanceof Error ? error.message : String(error)
+        );
+
+        return jsonResponse(
+          {
+            ok: false,
+            code: "BOOKING_HANDLER_ERROR",
+          },
+          500
+        );
+      }
+    }
+
+    if (url.pathname === "/api/generate-ai") {
+      if (request.method !== "POST") {
+        return methodNotAllowed();
+      }
+
+      try {
         if (!env.HUGGINGFACE_API_KEY) {
           return jsonResponse(
             {
@@ -102,7 +134,6 @@ export default {
           );
         }
 
-        // قراءة بيانات الطلب
         const body = (await request.json()) as {
           image?: string;
           treatment?: string;
@@ -119,13 +150,10 @@ export default {
           );
         }
 
-        // اختيار الـ prompt
         const selectedPrompt =
           PROMPTS_MAP[treatment || ""] || PROMPTS_MAP.full_face;
 
-        // تحويل الصورة
         const { mimeType, base64 } = parseDataUrl(image);
-
         const imageBytes = base64ToUint8Array(base64);
 
         const imageBlob = new Blob([imageBytes], {
@@ -133,15 +161,9 @@ export default {
         });
 
         console.log("Starting Hugging Face image generation...");
-        console.log("Treatment:", treatment);
-        console.log("Prompt:", selectedPrompt);
 
-        // Hugging Face client
-        const client = new InferenceClient(
-          env.HUGGINGFACE_API_KEY
-        );
+        const client = new InferenceClient(env.HUGGINGFACE_API_KEY);
 
-        // Image to Image
         const result = await client.imageToImage({
           model: "black-forest-labs/FLUX.1-Kontext-dev",
           provider: "fal-ai",
@@ -151,11 +173,8 @@ export default {
           },
         });
 
-        // تحويل النتيجة إلى Base64
         const resultBuffer = await result.arrayBuffer();
-
-        const resultMimeType =
-          result.type || "image/png";
+        const resultMimeType = result.type || "image/png";
 
         const resultBase64 =
           `data:${resultMimeType};base64,` +
@@ -167,10 +186,7 @@ export default {
           result: resultBase64,
         });
       } catch (error: unknown) {
-        console.error(
-          "Cloudflare Worker Error:",
-          error
-        );
+        console.error("Cloudflare Worker Error:", error);
 
         const errorMessage =
           error instanceof Error
@@ -186,10 +202,16 @@ export default {
       }
     }
 
-    /*
-     * أي request غير الـ API
-     * Cloudflare Static Assets هيتعامل معاه تلقائيًا.
-     */
+    if (url.pathname.startsWith("/api/")) {
+      return jsonResponse(
+        {
+          ok: false,
+          code: "NOT_FOUND",
+        },
+        404
+      );
+    }
+
     return env.ASSETS.fetch(request);
   },
 };
